@@ -1,0 +1,51 @@
+\usepackage[utf8]{inputenc}
+\usepackage{FiraMono}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage{fancyhdr}
+\usepackage{marvosym}
+\usepackage[pdftex]{graphicx}
+%\usepackage[margin=2.5cm]{geometry} % i en wordmal på ntnu
+%\usepackage[lmargin=25mm,rmargin=25mm,tmargin=25mm,bmargin=30mm]{geometry} %anbefalt av ntnu trykk?
+\usepackage[width=150mm,top=25mm,bottom=30mm,bindingoffset=6mm]{geometry}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{url}
+
+\usepackage[english, main=norsk]{babel}
+\usepackage{parskip}
+
+\usepackage[threshold=1]{csquotes}
+
+\usepackage[style=apa,sortcites,backend=biber, natbib, hyperref=true]{biblatex}
+\DeclareLanguageMapping{norsk}{norsk-apa}
+
+%\linespread{1.5}
+
+\usepackage{blindtext}
+
+\setcounter{tocdepth}{2} 
+\usepackage[colorlinks=true, pdfstartview=FitV,
+linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\pdfcompresslevel=9
+
+\usepackage{tabularx,ragged2e}
+
+\usepackage[export]{adjustbox}[2011/08/13]
+\usepackage{longtable}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Kodesnutt}% Listing -> Kodesnutt
+
+\usepackage[acronym, toc]{glossaries}
+\usepackage{styling/javascript}
+
+\makeglossaries
+\addbibresource{refs.bib}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\fancyhead[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+

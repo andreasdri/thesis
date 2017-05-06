@@ -1,0 +1,92 @@
+%This is chapter 2
+%%=========================================
+\chapter[Equations, etc]{Stuff, Equations, Figures, and Tables}
+
+%%=========================================
+\subsection*{Literature Survey}
+You should here present the main books and articles that treat problems that are similar to what  you are studying. If you,  later in your thesis, describe the ``state of the art'' -- with a detailed literature survey, you may just give a very brief survey here (approx. a quarter of a page). If this is the only literature survey, you need to go into more details. An objective of the literature survey is to show the reader that you are familiar with the main literature within your field of research -- so that you do not ``reinvent the wheel.''
+
+
+References to literature can be given in two different ways:
+\begin{itemize}
+\item As an \emph{explicit} reference: It is shown by \citet{lundteigen08} and partly also by \citet{rausand04}  that \ldots.
+\item As an \emph{implicit} reference: It is shown \citep[e.g., see][Chap. 4]{rausand04} that \ldots.
+\end{itemize}
+
+
+When you refer to the scientific literature, you should always write in \emph{present} tense. Example: \citet{rausand04} show that \ldots.
+
+%%=========================================
+\subsection*{What Remains to be Done?}
+After you have defined and delimited your problem -- and presented the relevant results found in the literature within this field, you should sum up which parts of the problem that remain to be solved.
+%%=========================================
+\section{Including Figures}
+If you use pdf\LaTeX\ (as recommended), all the figures must be in pdf, png, or jpg format. We recommend you to use the pdf format.  Please place the figure files in the directory \textbf{fig}. Figures are included by the command shown for Figure~\ref{fig1}. Please notice the ``path'' to the figure file written by a \emph{forward} slash (/). You should not include the format of the figure file (pdg, png, or jpg) -- just write the ``name'' of the figure. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.6,angle=15]{fig/NTNU}
+\caption{This is the logo of NTNU (rotated 15 degrees).}
+\label{fig1}
+\end{figure}
+
+Each figure should include a unique \emph{label} as shown in the command for Figure~\ref{fig1}. You can then refer to the figure by the \emph{ref} command.
+Notice that you can scale the size of the figure by the option \texttt{scale=k}. You may also define a specific width or height of the figure by replacing the \texttt{scale} options by \texttt{width=k} or \texttt{height=k}. The factor \texttt{k} can here be specified in mm, cm, pc, and many other length measures. You may also give \texttt{k} as a fraction of the width of the text or of the height of the text, for example, \texttt{width=0.45$\backslash$textwidth}. If you later change the margins of the text, the figure width will change accordingly. As illustrated in Figure~\ref{fig1}, you may also rotate the figure -- and also do many other things (please check the documentation of the package \texttt{graphicx} -- it is available on your computer, or you may find it on the Internet).
+
+In \LaTeX\ all figures are floating objects and will normally be placed at the top of a page. This is the standard option in all scientific reports. If you insist on placing the figure exactly where you declare the figure, you may include the command \texttt{[h]} (here) immediately after $\backslash$\texttt{begin\{figure\}}. If you will force the figure to be located either at the top or bottom of the page, you may alternatively use  \texttt{[t]} or \texttt{[b]}. For more options, check the documentation.
+
+Large figures may be included as a \emph{sidewaysfigure} as shown in Figure~\ref{fig2}:\footnote{You can use a similar command for large tables.}
+\begin{sidewaysfigure}
+\centering
+\includegraphics[scale=1.8]{fig/NTNU}
+\caption{This is the logo of NTNU.}
+\label{fig2}
+\end{sidewaysfigure}
+
+%%=========================================
+\section{Including Tables}
+\LaTeX\ has a lot of different options to include tables. Only one of them is illustrated here.
+
+\begin{table}
+	\centering\small
+	\caption{The degree of newness of technology.}
+	\label{tab1}
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc}
+			\toprule
+			  &\multicolumn{3}{c}{Level of technology maturity}\\
+  \cmidrule{2-4}
+			Experience with the		   &  & Limited field history or not & New or \\
+              operating  condition  & Proven &  used by company/user & unproven \\
+        
+			\midrule
+			  Previous experience & 1 & 2 & 3 \\
+		          No experience by company/user & 2 & 3 & 4 \\
+		          No industry experience & 3 & 4 & 4 \\
+			\bottomrule
+		\end{tabular*}
+\end{table}
+
+\begin{remark}
+Notice that figure captions (Figure text) shall be located \emph{below} the figure -- and that the caption of tables shall be \emph{above} the table. This is done by placing the $\backslash$\texttt{caption} command beneath the command $\backslash$\texttt{includegraphics} for figures, and above the command $\backslash$\texttt{begin\{tabular*\}} for tables.
+\end{remark}
+%%=========================================
+\section{Copying Figures and Tables}
+In some cases, it may be relevant to include figures and tables from from other publications in your report. This can be a direct copy or that you retype the table or redraw the figure. In both cases, you should include a reference to the source in the figure or table caption. The caption might then be written as: \textsl{Figure/Table xx: The caption text is coming here \citep{rausand04}.}
+
+In other cases, you get the idea from a figure or table in a publication, but modify the figure/table to fit your purpose. If the change is significant, your caption should have the following format: \textsl{Figure/Table xx: The caption text is coming here \citep[adapted from][]{rausand04}.}
+
+%%=========================================
+\section{References to Figures and Tables}
+Remember that all figures and tables shall be referred to and explained/discussed in the text. If a figure/table is not referred to in the text, it shall be deleted from the report.
+%%=========================================
+\section{Plagiarism}
+Plagiarism is defined as ``use, without giving reasonable and appropriate credit to or acknowledging the author or source, of another person's original work, whether such work is made up of code, formulas, ideas, language, research, strategies, writing or other form'', and is a very serious issue in all academic work. You should adhere to the following rules:
+\begin{itemize}
+\item Give proper references to all the sources you are using as a basis for your work. The references should be give to the original work and not to newer sources that mention the original sources.
+\item You may copy paragraphs up to 50 words when you include a proper reference. In doing so, you should place the copied text in inverted commas (i.e., ``Copied text follows \ldots''). Another option is to write the copied text as a quotation, for example:
+\begin{quote}
+Birnbaum's measure of reliability importance of component $i$ at time $t$ is equal to the probability that the system is in such a state at time $t$ that component $i$ is critical for the system.\newline \mbox{} \hfill \citet{rausand04}
+\end{quote}
+\end{itemize}
+
+
+

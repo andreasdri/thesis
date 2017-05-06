@@ -1,0 +1,99 @@
+\chapter{Introduksjon}
+\label{ch:introduction}
+Hensikten med dette forskningsprosjektet er å utvikle ny teknologi for avstandsoppfølging av kronisk
+syke i form av en første prototype av et smart pulsoksimeter som alltid er på nett. Prototypen
+vil vises fram for prosjektledere og forskere innen velferdsteknologi for
+å avdekke hva som vil bli viktige aspekter ved utviklingen av helseprodukter
+basert på \gls{iot}-skyløsninger i fremtiden. Velferdsteknologiprogrammet i Trondheim kommune og
+SINTEF Avdeling Helse bistår prosjektet. 
+
+Dette kapittelet beskriver bakgrunnen for forskningsprosjektet: hva som motiverer det,
+forskningsspørsmålene som skal besvares og forskingsdesignet som understøtter det,
+hvilke begrensninger og avveininger som er gjort og til slutt en disposisjon av oppgaven.
+
+\section{Bakgrunn og motivasjon}
+\gls{iot} gir nye og spennende muligheter for kreative løsninger på problemer på forskjellige områder, alt fra husholdningsapparater
+og fjernoppdatering av programvare i biler, til oppfølging av helseproblemer innen velferdsteknologi. Datakraft- og lagring
+har blitt mye billigere, noe som gjør at man i større grad enn tidligere kan samle inn informasjon om verden rundt oss
+med sensorer. De to største leverandørene av skytjenester, \gls{aws} og Microsoft Azure,
+har i løpet av det siste halvannet året lansert nye tjenester for å få sensorenheter tilkoblet til Internett
+på en enkel og sikker måte.
+
+Velferdsteknologi har vært høyt prioritert av helsemyndighetene i Norge de siste årene. Trondheim kommune prøver ut
+et prosjekt med avstandsoppfølging av kronisk syke kalt HelsaMi+ på oppdrag fra Helsedirektoratet. 
+Avstandsoppfølging kan øke trygghetsfølelsen for innbyggerne og føre til lavere kostnader og færre sykehusinnleggelser (kilde?).
+Løsningen til Trondheim kommune innebærer bruk av et nettbrett der man daglig svarer på spørsmål om hvordan formen er. Noen av pasientene
+kan måle vekt, blodtrykk, pulsfrekvens og oksygenmetning ved hjelp av sensorer koblet til nettbrettet.
+
+Motivasjonen for dette forskningsprosjektet er å ta i bruk den nye skyteknologien fra \gls{aws} i en frittstående
+pulsoksimeterprototype for avstandsoppfølging av kronisk syke, og lage noe annerledes enn den løsningen Trondheim
+kommune tester ut i dag. Det vil gjøre at dette prosjektet kan sammenligne de to løsningene og undersøke hvordan ny
+teknologi kan brukes i avstandsoppfølging av kronisk syke.
+
+\section{Forskningsspørsmål}
+\label{sec:res_questions}
+Det overordnete forskningsspørsmålet er: «Hvor egnet er skybasert \acrfull{iot} som teknologisk plattform for avstandsoppfølging av kronisk syke?»
+Dette spørsmålet legger premissene for de konkrete forskningsspørsmålene under:
+
+\begin{enumerate}
+  \item[\textbf{FS1}] Hvordan gjøres avstandsoppfølging av kronisk syke i dag, og hvilke planer finnes for ny teknologi på dette området?
+  \item[\textbf{FS2}] Hva er en mulig teknologistakk for realisering av skybasert \gls{iot} for avstandsoppfølging av kronisk syke,
+    [og hvordan skiller dette/denne seg fra eksisterende og planlagte løsninger]?
+  \item[\textbf{FS3}] Hvordan vurderer domeneeksperter innen velferdsteknologi frittstående skybaserte \gls{iot}-løsninger for avstandsoppfølging av kronisk syke?
+  \item[\textbf{FS4}] Basert på funnene fra FS1, FS2 og FS3, hva er implikasjonene for utviklingen av skybasert \gls{iot} som teknologisk plattform
+    for avstandsoppfølging av kronisk syke?
+\end{enumerate}
+
+Heretter vil «avstandsoppfølging av kronisk syke» bli betegnet som «avstandsoppfølging».
+
+\section{Forskningsmetoder og forskningsdesign}
+Forskningsprosjektet baserer seg på prosessen beskrevet i \citet{oates}. Hovedstrategien for å besvare på \textbf{FS1} i
+seksjon \ref{sec:res_questions} er å gjøre en liten eksempelstudie på hvordan avstandsoppfølging foregår i Trondheim kommune. Datagenereringsmetoder
+er intervjuer og dokumenter. 
+
+For å svare på \textbf{FS2} og \textbf{FS3} vil den primære strategien være «design og kreasjon» (prototyping/«proof of concept»)
+med intervjuer og dokumenter som datageneringsmetode. Eksempelstudiet vil også hjelpe til med å besvare disse spørsmålene. \textbf{FS4} vil drøftes kvalitativt 
+utifra svarene på de andre forskningsspørsmålene. Det vil kun gjøres kvalitative dataanalyser. De to forskningsstiene er vist i figur ref1 og figur ref2.
+
+Forskningsmetodene og forskningsdesignet er utdypet i kapittel \ref{ch:method}.
+
+\section{Avgrensning av forskningen}
+Om man kan gjøre kliniske vurderinger basert på sensordataene, kommer ikke til å være i søkelyset for dette prosjektet,
+men vil nevnes kort i et senere kapittel. Det er noe som kunne vært problematisert i en annen oppgave.
+Denne forskningen kommer til å anta at det er nyttig å samle inn helsedata fra sensorer for å kartlegge helsetilstanden til kroniske pasienter.
+
+Prototypen gjennomgår ikke brukbarhetstesting. En annen tilnærming til oppgaven kunne vært å gjennomføre brukertester på pasienter eller andre brukere, men det
+fører med seg krav om behandling av sensitive helseopplysninger. 
+
+\section{Deltakere i prosjektet}
+Fra Trondheim kommune sin side er Ingar Børre Sandvik (prosjektleder, HelsaMi+, program for velferdsteknologi) og Renate Enger
+(delprosjektleder HelsaMi+, program for velferdsteknologi+) involvert. Kommunen låner ut et pulsoksimeter.
+
+Anita Das (forsker ved SINTEF teknologi og helse, avdeling helse) er med på evalueringen fra SINTEF. SINTEF gjør mye forskning på
+avstandsoppfølging, og bidro også til å få i gang et samarbeid med Trondheim kommune.
+
+Terje Røsand (overingeniør, institutt for datateknologi og informatikk) bistår med teknisk hjelp til prototyping og 3D-printing.
+
+Alle aktørene er gjort kjent med formålet for forskningsprosjektet og hva den innsamlede dataen skal brukes til. De er informert om at
+intervjuene tas opp på telefon.
+
+\section{Disposisjon av oppgaven}
+Neste kapittel gir en teoretisk bakgrunn innenfor velferdsteknologifeltet og avstandsoppfølging av kronisk syke spesielt.
+Det inneholde også bakgrunn om \gls{iot} og bruken av \gls{iot} i velferdsteknologi.
+
+Kapittel \ref{ch:method} beskriver hvilke forskningsmetoder og hvilket forskningsdesign som brukes i prosjektet for å besvare forskningsspørsmålene. 
+Det inneholderr også en drøfting om hvorvidt forskningsmetodene er hensiktsmessige, og hva validiteten til forskningsfunnene er.
+
+Kapittel \ref{ch:case} handler om avstandsoppfølging i Trondheim kommune som en eksempelstudie. Det baserer seg på intervjuer gjort med
+prosjektledere og skjermbilder av løsningen.
+
+I kapittel \ref{ch:requirements}, drøftes krav til en frittstående \gls{iot}-løsning til bruk i avstandsoppfølging basert på krav fra Helsedirektoratet,
+Datatilsynet og eksempelstudien.
+
+Kapittel \ref{ch:technology} går igjennom teknologi som er relevant for implementasjonen av et frittstående og skytilkoblet pulsoksimeter,
+før kapittel \ref{ch:implementation1} går i detalj på hvordan prototypen ble laget og hvordan den ble seende ut (+noe om videre arbeid?).
+
+Evalueringen av prototypen skjer i kapittel \ref{ch:evaluation1}, der resultatene av intervjuene gjort hos SINTEF og Trondheim kommune oppsummeres.
+
+Avslutningsvis omhandler kapittel \ref{ch:discussion} diskusjon og drøfting av resultatene fra evalueringene, og konklusjonen i kapittel \ref{ch:conclusion}
+oppsummerer funnene i oppgaven med bakgrunn i forskningsspørsmålene, med en del om videre arbeid.
