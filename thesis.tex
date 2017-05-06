@@ -1,6 +1,6 @@
 %%===================================
 \documentclass[12pt, a4paper, twoside, norsk, openright, notitlepage]{report}
-\usepackage{styling/styles}
+\usepackage{settings/main}
 \include{content/forkortelser}
 
 %%===================================
@@ -25,11 +25,11 @@
 \clearpage
 
 \printglossary[type=\acronymtype,title=Forkortelser]
-%\printglossary
 \clearpage
 
 \include{content/sitat}
 
+%%=========================================
 \setcounter{page}{0}
 \pagenumbering{arabic}
 
@@ -44,9 +44,9 @@
 \include{content/diskusjon}
 \include{content/konklusjon}
 %%=========================================
+\printbibliography[heading=bibintoc, title=Referanser]
+%%=========================================
 \appendix
 \include{content/appendix}
 %%=========================================
-\printbibliography[heading=bibintoc]
-
 \end{document}
