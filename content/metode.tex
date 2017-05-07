@@ -3,7 +3,7 @@
 
 I dette kapittelet presenteres og drøftes forskningsmetodene og forskningsdesignet til studien.
 I tillegg diskuteres validiteten til forskningen. 
-Som skrevet tidligere, bygger forskningsprosessen på boken «Researching Information Systems and Computing» \citep{oates} (se figur \ref{fig:oates_model}).
+Som skrevet tidligere, bygger forskningsprosessen på boken «Researching Information Systems and Computing» \citep{oates} (figur \ref{fig:oates_model}).
 
 \iffalse
 I en forskningsartikkel er avsnittet om metode ofte det viktigste. Det samme gjelder metodekapitlet i en empirisk oppgave. Dette kan også være et vanskelig kapittel å skrive, fordi det ikke alltid er klart hvilken «jobb» det skal gjøre. Et metodekapittel skal ikke gjengi innholdet i fagets metodebøker. Dersom du har brukt intervju er det for eksempel ikke nødvendig å liste opp forskjellige typer forskningsintervju. Du trenger heller ikke redegjøre for forskjellene mellom kvantitative og kvalitative metoder, eller liste opp ulike typer validitet og reliabilitet.
@@ -26,7 +26,7 @@ Presentasjon
 %[width=0.85\textwidth,center]
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{fig/oates/oates_research_norwegian}
+\includegraphics[width=0.85\textwidth]{fig/oates/oates_research_norwegian}
 \caption{Modell av forskningsprosessen fra \citet{oates}.}
 \label{fig:oates_model}
 \end{figure}
@@ -39,27 +39,63 @@ med avstandsoppfølging. De to strategiene er kort drøftet under.
 
 \subsection{Design og kreasjon av et pulsoksimeter}
 \textquote[\cite{oates}]{Forskningsmetoden design og kreasjon fokuserer på utvikling av nye IT-produkter, også kalt \textit{artefakter}.
-Typer IT-artifakter inkluderer (March \& Smith, 1995): begreper, modeller, metoder og implementasjoner (engelsk: instantiations)}{.}
+Typer IT-artifakter inkluderer (March \& Smith, 1995): begreper, modeller, metoder og implementasjoner (eng: instantiations)}{.}
+Hovedpoenget er å lære gjennom å lage, og \citet{oates} identifiserer fem steg for denne prosessen:
+bevisstgjøring (hva er problemet?), forslag (hvordan kan problemet løses?), utvikling (problemløsingsfasen), evaluering (hvordan gikk dette?)
+og konklusjon (hva kan vi trekke ut av dette?).
 
 I følge \citet[s.121-122]{oates} er fordelene til denne strategien at det er enklere å relatere til noe som eksisterer i virkeligheten enn en íde, en tanke eller et konsept.
 Den raske teknologiutviklingen gjør også at det er mulig å foreslå og utvikle nye artefakter, og at man dermed bidrar til ny kunnskap.
 
 Ulempen med å velge denne strategien er at det er fort gjort at en kun demonstrerer
 teknisk kompetanse uten at det kvalifiserer som god forskning. I tillegg til det nye produktet må ny kunnskap utvikles, bygget på analyse, argumenter
-og kritiske evalueringer \citep[s. 109]{oates}. En ting er at det lages en prototype av et nytt produkt i et domene -- viktigere momenter er hvilken ny informasjon den fører
+og kritiske evalueringer \citep[s. 109]{oates}. En ting er at det lages et nytt produkt i et domene -- viktigere momenter er hvilken ny informasjon den fører
 til og konteksten den blir satt inn i.
 
+Artefakten i dette prosjektet er en høynivå prototype i form av et «proof of concept», både på hardware- og softwaresiden. Siden teknologiutforsking er et mål, vil
+prototypen implementeres, og ikke være en lavnivå papirprototype. Den industrielle utformingen av prototypen vektlegges ikke. Det er
+ikke meningen at prototypen skal ut i produksjon. En annen tilnærming kunne vært å vektlegge brukerperspektivet enda mer,
+og gjennomføre flere runder med brukertester med pasienter. Det ville medført krav om riktig behandling av sensitive helseopplysninger og en godkjent søknad
+til Norsk senter for forskningsdata (NSD).
+
 Brukersentrert utvikling er metodikken som brukes til designet og kreasjonen av prototypen. Det er en prosess der brukeren er involvert i hvert steg.
-Stegene er å forstå brukskonteksten, etablere krav, implementere artefakt og evaluere artefakt. Dette er en syklus som kan gjentas flere ganger (se figur xxx).
+Stegene er å forstå brukskonteksten, etablere krav, implementere artefakt og evaluere artefakt. Dette er en syklus som kan gjentas flere ganger.
+\citet{dis20099241} standardiserer brukersentrert utvikling. Se figur \ref{fig:iso9241-210}
+for de ulike stegene i prosessen.
+Brukersentrert utvikling passer godt i de fem stegene som inngår i «design og kreasjon»-forskningsmetoden.
+
 Målet er å gjøre to iterasjoner av syklusen for å få mest mulig ut av metoden. Filosofien bak å inkludere brukeren i hvert aspekt av utviklingen er å fortere
-finne ut hva som ikke fungerer slik at en ikke maler seg inn i et hjørne. Noe om ISO blabla. Eksempelstudien av avstandsoppfølging i Trondheim kommune vil
-hjelpe til med å forstå konteksten pulsoksimeteret skal brukes i og hvordan det skal brukes, noe som vil føre til at utviklingen av en prototype blir enklere.
+finne ut hva som ikke fungerer slik at en ikke maler seg inn i et hjørne. Eksempelstudien av avstandsoppfølging i Trondheim kommune
+hjelper til med å forstå konteksten pulsoksimeteret skal brukes i og hvordan det skal brukes, noe som fører til at utviklingen av en prototype blir enklere.
+
+\iffalse
+\begin{description}
+  \item [Bevisstgjøring] Intervju med Trondheim kommune om velferdsteknologi og avstandsoppfølging. Kort litteraturstudie av velferdsteknologi
+      og avstandsoppfølging.
+  \item [Forslag] En frittstående og skytilkoblet velferdsteknologiløsning der sensorene er innebygget vil fungere bedre
+      eller like bra som eksisterende løsninger med tablet.
+  \item [Utvikling] En prototype av et skytilkoblet pulsoksimeter med fingeravtrykksensor som autentisering.
+  \item [Evaluering] Intervjuer med Trondheim kommune og SINTEF der prototypen vises fram.
+  \item [Konklusjon] Baseres på alle de foregående stegene.
+\end{description}
+\fi
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{fig/iso9241-210}
+\caption{Gjensidige avhengigheter innenfor menneskeorientert designaktiviteter \citep{dis20099241}.}
+\label{fig:iso9241-210}
+\end{figure}
 
 Noe om hvordan evalueringen skal foregå: intervju og observasjon
 
 
 \subsection{Eksempelstudie: Avstandsoppfølging i Trondheim kommune}
-\blindtext
+\textquote[\cite{oates}]{En eksempelstudie fokuserer på én instans av det som skal undersøkes: en organisasjon, en avdeling, et informasjonssystem,
+    et diskusjonsforum (...). Denne ene instansen, eller tilfellet, studeres i detalj med forskjellige datagenereringsmetoder som
+    intervju, observasjon, dokumenter (...)}{.}
+
+
 
 \section{Forskningsspørsmål}
 \subsection{Forskningsspørmål 1}
