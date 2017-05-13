@@ -1,4 +1,4 @@
-\chapter[Bakgrunn]{Bakgrunn}
+\chapter{Bakgrunn}
 \label{ch:background}
 \blindtext
 
@@ -42,7 +42,7 @@ eller innleggelse i institusjon.
     eksportere disse innovasjonene. Omsorgsfeltet åpnes opp for importering av eksportering av varer og tjenester.
 \end{enumerate}
 
-Spesielt teknoplan og nasjonalt program er interessant for denne oppgaven blabla (skrive noe mer om de to punktene).
+% @Todo: Spesielt teknoplan og nasjonalt program er interessant for denne oppgaven blabla (skrive noe mer om de to punktene).
 
 Stortingsmeldingen «Morgendagens omsorg» bygger på arbeidet til \citet{regjeringen_hagen} \citep{morgendagens_omsorg}.
 I denne meldingen legger regjeringen frem «Omsorgsplan 2020» som inkluderer et program for velferdsteknologi de neste årene.
@@ -61,117 +61,112 @@ initativene i programmet er:
     \item Bidra til økt aktivitet (inkl. fritidsaktiviteter) for barn og unge med nedsatt funksjonsevne
 \end{enumerate}
 
-Avstandsoppfølging er dekket nærmere i delkapittel \ref{sec:remotemonitoring}.
-
-\iffalse
-According to \citet{welfare_ethical}, welfare technology has a moral end. It is supposed to
-e.g. give better and more focused care, and reduced risk and increased safety for people. See table
-\ref{table:welfare_definition} for different applications of welfare technology. 
-
-\newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
-
-\begin{table}[!ht]
-\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
-\centering
-\begin{tabularx}{\textwidth}{|X|X|}
-\hline
-\textbf{Technology/purpose} & \textbf{Examples/function} \\ \hline
-Communication support & Technologies for real time audio-visual contact \\ \hline
- & Physical Activity Monitoring for Aging People (PAMP) \\ \hline
- & Patient information (web-based, interactive) \\ \hline
-Compensatory technology, assistive technology & Safety systems (alarms for heat, light, locking doors);
-  security alarms; fall detector \\ \hline
-  & Alarm systems (sound, light, vibration) \\ \hline
-  & Mobility technologies, advanced rollators,wheelchairs for staircases, \\ \hline
-Help to every day practical tasks & Housekeeping (making food, (vacuum) cleaning, tidying) \\ \hline
-
-\end{tabularx}
-\caption{Welfare technology classified according to purpose and function. \citep{welfare_ethical}}
-\label{table:welfare_definition}
-\end{table}
-
-\fi
+\textquote{mHelse, eller personlige mobile helseløsninger, er å benytte mobilbaserte verktøy og helseapplikasjoner
+(helse-apper) til helseformål}{.} % @TODO: kilde: https://ehelse.no/m-helse
+De ulike initiativene går litt inn i hverandre. Avstandsoppfølging kan føre til mer trygghet og mestring hjemme
+og ta i bruk mHelse. Avstandsoppfølging er dekket nærmere i delkapittel \ref{sec:remotemonitoring}.
 
 \section{Avstandsoppfølging av kronisk syke}
 \label{sec:remotemonitoring}
+% @Todo: Chronic diseases are the most common causes of death and disability worldwide (med kilde).
+\citet{rojahn2016remote} definerer avstandsoppfølging som \textquote{overvåking av en poliklinisk pasient
+med en enhet som overfører data}{.}
+I avstandsoppfølging følges pasienter opp i sitt eget hjem, og
+målet med avstandsoppfølging er å unngå sykehusinnleggelse ved å oppdage forverringer tidlig og la
+pasientene behandle sin egen sykdom. Innleggelse på sykehus koster 10 000 kr per døgn og er en stor utgift
+for helsemyndighetene. % @Todo: kilde?
+
+I følge \citet{sintef_sensorer}, kan kroniske sykdommer som KOLS, hjerte- og karsykdommer og diabetes
+følges opp klinisk med noen få sensorer: vekt, blodtrykksmåler, pulsoksimeter og spirometer. Typiske
+tegn på hjertesvikt kan være tungpusthet, vektforandring, hoste, hjertebank, hevelser i beina og
+tretthet/tiltaksløshet \citep{ehelse_hjertesvikt}. % @TODO: http://nasjonalforeningen.no/hjerte-og-kar/ulike-hjertesykdommer/hjertesvikt/
+
+% @Todo: Skrive noe om de ulike kommunene som tester ut avstandsoppfølging i Norge basert
+% på nasjonalt program for velferdsteknologi.
+
+% @Todo: Skrive noe om resultatene og evalueringen av avstandsoppfølging basert på rojahn,
+% https://helsedirektoratet.no/nyheter/bedre-kvalitet-med-velferdsteknologi-i-helse-og-omsorgstjenestene
+% http://www.ks.no/contentassets/7f30e3e8219b425484c885a3ee0dcd41/une-tangen.pdf
+
+\section{Eldre pasienter og IT} 
 \blindtext
 
-\section{Eldre pasienter og IT}
-\blindtext
+\section{Tingenes internett (IoT)}
+\citet{iot_legal} definerer tingenes internett som en
+\textquote{fremvoksende global Internett-basert informasjonsarkitektur som
+fasiliterer utvekslingen av varer og tjenester}{.} I denne definisjonen ligger det en
+visjon av en verden knyttet sammen av objekter som kommuniserer med hverandre.
 
-\section{Tingenes Internett}
-\citet{iot_legal} define Internet of Things as "an emerging global
-Internet-based information architecture facilitating the exchange of
-goods and services". Therein lies a vision of a connected world of objects
-communicating with each other. Multiple definitions of IoT exist depending on the business domain.
-\citet{iot_harvard_smart} writes that the phrase "Internet of Things" is not a very good description
-of the new era of interconnected devices:
+Andre definisjoner av \gls{iot} eksisterer avhengig av bransje. \citet{iot_harvard_smart} skriver
+at tingenes internett ikke er en veldig god beskrivelse av den nye trenden med
+sammenkoblete enheter: 
+\textquote{Det som gjør smarte, tilkoblede produkter fundamentalt annerledes er ikke Internett,
+men at «tingenes» natur endrer seg. Det er de nye mulighetene til smarte, tilkoblede produkter
+og dataen de genererer som fører til en ny periode med konkurranse}{.}
 
-\blockquote{\enquote{What makes smart, connected products fundamentally different is not the internet,
-but the changing nature of the “things.” It is the expanded capabilities of smart, connected
-products and the data they generate that are ushering in a new era of competition.}}
+Derfor introduserer de begrepet «smarte produkter» som består av tre elementer:
 
-Therefore, they coin the term "smart products" which comprise three elements:
-
-\begin{itemize}
-    \item Physical components: the electrical and mechanical parts of the product.
-    \item "Smart" components: sensors, processors, software, operating system, storage, user interface.
-    \item Connectivity components: ports, antennae, protocols enabling wired/wireless connections
-    one-to-one, one-to-many, many-to-many.
+ \begin{itemize}
+    \item Fysiske komponenter: de elektriske og mekaniske delene til produktet.
+    \item «Smarte» komponenter: sensorer, prosessorer, programvare, operativsystem, lagring, brukergrenesnitt.
+    \item Tilkoblingskomponenter: porter, antenner, protokoller som muliggjør kablede/trådløse tilkoblinger
+    én-til-én, én-til-mange, mange-til-mange.
 \end{itemize}
-Smart products introduce a new technology stack (figure \ref{fig:iot_harvard_smart}), with products connected to a product cloud.
-The product cloud includes a big-data database system, and a rules/analytics engine to run business logic efficiently,
-and utilize and analyze all the information from the products. These smart, connected products have four capabilities building
-on each other (figure \ref{fig:iot_harvard_capabilities}): Monitoring, control, optimization and autonomy.
-Tesla is an example of a smart product combining monitoring, control and optimization to allow autonomy. The car itself performs
-self-diagnosis, and updates automatically without external car service.
 
-\citet{iot_harvard_smartcompanies} suggests that smart, connected products are transforming companies as well, by altering
-every step in value chain. The utilization of data is more important, and product design is not only a mechanical venture,
-but an interdisciplinary journey which requires more software engineering.
+Smarte produkter introduserer en ny teknologistakk (figur \ref{fig:iot_harvard_smart}) med produkter koblet til
+en produktsky. Produktskyen inkluderer et «Big Data»-databasesystem og regel- og analysemotor for å håndtere
+forretningslogikk på en effektiv måte, og utnytte og analysere all informasjonen fra produktene.
+Disse smarte, tilkoblede produktene har fire egenskaper som bygger på hverandre: Overvåking, kontroll,
+optimalisering og autonomi. Tesla er et eksempel på et smart produkt som kombinerer overvåking, kontroll og
+optimalisering for å oppnå autonomi. Bilen diagnoserer seg selv, og oppdaterer seg selv automatisk uten
+at den må på verksted.
+
+\citet{iot_harvard_smartcompanies} antyder at smarte, tilkoblede produkter endrer selskaper også, ved
+å endre hvert steg i verdikjeden. Utnyttelse av data blir mer viktig, og produktdesign er ikke bare noe
+mekanisk, men et tverrfaglig samarbeid der programvareutvikling vil spille en større rolle. 
 
 \begin{figure}
 \includegraphics[width=1.1\textwidth,center]{fig/harvard_technology}
-\caption{The new technology stack \citep{iot_harvard_smart}}
+\caption{Den nye teknologistakken \citep{iot_harvard_smart}.}
 \label{fig:iot_harvard_smart}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=1.1\textwidth,center]{fig/harvard_capabilities}
-\caption{Capabilities of smart products \citep{iot_harvard_smart}}
+\caption{Egenskapene til smarte produkter \citep{iot_harvard_smart}.}
 \label{fig:iot_harvard_capabilities}
 \end{figure}
 
 
 \subsection{Sikkerhet i tingenes internett}
-Experts have raised concerns regarding the security model of IoT. On October 21, 2016, the Internet core
-infrastructure company \textit{Dyn} was attacked by millions of small devices (mainly routers and cameras)
-with small to none security \citep{iot_attack_ddos}. This affected several large websites such as Twitter,
-Spotify, and PayPal. Routers and web cameras often ship with common default passwords that users
-do not change, and can be remotely accessed through common ports (22/SSH, 80/HTTP, 23/Telnet)
-\citep{iot_mirai_botnet}. 
+Eksperter har kommet med innvendinger når det gjelder sikkerhetsmodellen til \gls{iot}.
+21. oktober 2017 ble Internett-kjerneinfrastrukturselskapet \textit{Dyn} angrepet av flere millioner
+små enheter (hovedsaklig rutere og kameraer) med lav grad av sikkerhet \citep{iot_attack_ddos}.
+Dette påvirket flere store nettsider som Twitter, Spotify og PayPal. Rutere og webkameraer leveres
+ofte med standardpassord som brukere ikke endrer selv. I tillegg til dette kan flere vanlige
+porter som 22 (SSH), 80 (HTTP) og 23 (Telnet) være helt åpne mot omverdenen \citep{iot_mirai_botnet}.
 
-\citet{iot_schneier_regulation} calls for the government to impose regulations on IoT. He argues that
-the markets fail to protect the security of the consumers. The consumers do not care, the manufacturers
-do not care, and the products can never be patched after they are shipped and sold. However,
-he emphasizes that the discussion about regulations should be made proactively, and not
-after an IoT disaster where feelings are heated.
-
-\section{Tingenes Internett i velferdsteknologi}
-Personal Connected Health Alliance (PCHA) publishes the Continua Design Guidelines every year,
-an open framework for end-to-end interoperability of personal connected health devices and systems \citep{continua_guidelines}.
-An overview of the Continua framework can be found in figure \ref{fig:continua}. Personal devices
-communicate with protocols like Bluetooth or Zigbee to a hub (Personal Area Network), and the hub sends information
-to a Telehealth Service Center. From there, the data can be transmitted to health records.
+\citet{iot_schneier_regulation} oppfordrer myndighetene til å pålegge restriksjoner på \gls{iot}.
+Han argumenterer for at markedene selv ikke klarer å beskytte sikkerheten til forbrukerne.
+Forbrukerne bryr seg ikke, produsentene bryr seg ikke og produktene kan aldri patches
+etter de er solgt og levert. Denne diskusjonen om reguleringer må gjøres før det skjer
+en \gls{iot}-katastrofe, mener Schneier. % @Todo: en iot-katastrofe where feelings are heated?
 
 
-As part of Care plan 2020 and National program for welfare technology, the government decided
-in late 2014 that the Continua framework should be the foundation for every
-welfare technology solution in Norway, on recommendation from the Norwegian Health Directorate \citep{regjeringen_continua}.
-The standardization framework makes sure that different solutions work well together.
+\section{Tingenes internett i velferdsteknologi}
+Personal Connected Health Alliance (PCHA) publiserer Continua-designretningslinjene hvert år,
+et åpent rammeverk for ende-til-ende-kompabilitet i personlige, tilkoblede helseenheter og helsesystemer \citep{continua_guidelines}.
+En oversikt av Continua-rammeverket kan finnes i figur \ref{fig:continua}. Personlige enheter kommuniserer med
+protokoller som Bluetooth eller Zigbee til en hub (Personal Area Network), og denne huben sender informasjonen
+videre til et telehelse-servicesenter. Derfra kan dataen overføres til helseregisteret.
+
+Som en del av «Omsorgsplan 2020» og nasjonalt program for velferdsteknologi, bestemte regjeringen
+i slutten av 2014 at Continua-rammeverket skal være grunnlaget for alle velferdsteknologiløsninger i Norge.
+Dette var også anbefalingen til Helsedirektoratet --
+å standardisere på ett rammeverk sikrer at ulike løsninger virker godt sammen \citep{regjeringen_continua}.
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth,center]{fig/continua}
-\caption{Continua framework overview}
+\caption{Oversikt over Continua-rammeverket}
 \label{fig:continua}
 \end{figure}
