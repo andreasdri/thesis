@@ -1,2 +1,87 @@
 \chapter{Konklusjon}
 \label{ch:conclusion}
+
+\section{Forskningsspørmål 1}
+\textbf{Hvordan gjøres avstandsoppfølging av kronisk syke i dag, og hvilke planer finnes for ny teknologi på dette området?}
+
+I Trondheim kommune har over 70 brukere fått avstandsoppfølging hjemme. Det
+foregår med et Android-nettbrett brukerne får utlevert. Dette nettbrettet har en
+applikasjon der brukerne kan svare på hvordan dagsformen er. Spørsmålene er
+tilpasset diagnosen til brukeren. I samråd med fastlegen har brukeren en
+egenbehandlingsplan som iverksettes på bakgrunn av helsetilstanden. Fastlegen
+har ikke direkte tilgang til avstandsoppfølgingssystemet. Koordinasjon skjer via med
+helsevakta i Trondheim kommune. Noen få brukere har fått sensorer de kan bruke
+til målinger. Dette gjøres også via applikasjonen. Helsevakta får tilgang til
+spotmålingen og svarene på spørsmålene i en adminapplikasjon. Tilbakemeldingene
+på prosjektet er positive.
+
+
+\section{Forskningsspørmål 2}
+\textbf{Hva er en mulig teknologistakk for realisering av skybasert \gls{iot} for avstandsoppfølging av kronisk syke,
+    [og hvordan skiller dette/denne seg fra eksisterende og planlagte løsninger]?}
+
+En mulig teknologistakk for realisering av skybasert \gls{iot} for
+avstandsoppfølging er skissert i figur TODO. Denne er basert på arbeidet som er
+gjort i dette prosjektet med noen små modifikasjoner. Stakken har en hub som
+alle sensorene kobler seg på. Sensorene kommuniserer med huben med Bluetooth 4.2
+eller nyere. Alle sensorer skal bondes med huben slik at sensorene ikke må pares
+på nytt hver gang det skal sendes data. En mulig strategi for autentisering er å
+bruke et klientsidesertifikat, og at dette sertifikatet er unikt for hver bruker
+av løsningen. Dette er mest egnet for en backendløsning som håndterer
+sertifikater, for eksempel AWS, der MQTT over \gls{tls} med egne sertifikater
+støttes. Det er helt klart mulig å benytte andre metoder for autentisering slik
+at brukeren slipper å skrive inn passord hele tiden. Transport av data skal
+uansett alltid skje med ende-til-ende-kryptering (\gls{tls}).
+
+Teknologistakken har en regelbasert backend der dataen lagres fortløpende og
+prosesseres i sanntid.
+% @Todo: klientside, node? noe mer?
+
+
+\section{Forskningsspørmål 3}
+\textbf{Hvordan vurderer domeneeksperter innen velferdsteknologi frittstående skybaserte \gls{iot}-løsninger
+for avstandsoppfølging av kronisk syke?}
+
+Prosjektledere i Trondheim kommune mente at prototypen hadde tilstrekkelig
+brukskvalitet til å rulles ut til brukere. De mente imidlertid at det var bedre at
+sensor og hub var adskilt og ikke koblet sammen til ett smartprodukt.
+
+Forskere ved SINTEF var enige i at sensor og hub heller kunne vært adskilt, og trakk
+fram at prototypen manglet muligheten til å svare på hvordan
+dagsformen er. De så for seg at man kunne utvide prototypen med flere moduler,
+for eksempel en modul med muligheten til å svare på spørsmål.
+
+\section{Forskningsspørmål 4}
+\textbf{Basert på funnene fra FS1, FS2 og FS3, hva er implikasjonene for utviklingen av skybasert \gls{iot} som teknologisk plattform
+    for avstandsoppfølging av kronisk syke?}
+
+Det er noen juridiske bøyger for å benytte eksisterende skyløsninger som teknologiplattform
+for avstandsoppfølging -- norsk helsedata må lagres i Norge. Dette utelukker i
+praksis AWS og Azure per dags dato.
+
+\subsection{Sikkerhet}
+Dette er implikasjonene for sikkerhet i avstandsoppfølging:
+
+\begin{itemize}
+  \item Benytt ende-til-ende-kryptering (TLS).
+  \item Autentiser brukeren og benytt tofaktorautentisering.
+  \item Bruk den nyeste utgaven av Bluetooth-standarden som sensoren din
+  støtter. Helst utgave 4.2 eller nyere. Hvis du må bruke en eldre versjon må
+  du være observant på hvilke angrepspunkter som finnes og minimere risikoen for
+  sikkerhetsbrudd. Les nøye hva beste praksis er.
+\end{itemize}
+
+\subsection{Personvern}
+
+\begin{itemize}
+  \item Helsedata må lagres i Norge. Dette utelukker per dags dato skyløsninger
+  som har mange nødvendige sikkerhetsprimitiver innebygd som minstestandard.
+  \item Med EUs nye personvernsforordning får brukeren enda mer rett over sin egen data.
+  Brukeren må kunne se hva som er lagret, slette det og tilbyderen må kunne argumentere
+  med hvorfor dataen må lagres.
+\end{itemize}
+
+Mer forskning trengs på hva man kan gjøre med dataen etter at den forlater sensoren.
+Avstandsoppfølging har et stort potensiale til å gjøre sanntidsberegninger på data
+som kommer inn. Disse beregningene kan påvirkes av menneskelige vurderinger knyttet
+opp mot hver enkelt bruker.

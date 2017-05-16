@@ -1,2 +1,87 @@
 \chapter{Diskusjon}
 \label{ch:discussion}
+
+\section{Begrensninger med
+prototypen}\label{begrensninger-med-prototypen}
+
+\begin{itemize}
+\tightlist
+\item
+  Lav grad av toveiskommunikasjon implementert.
+\item
+  Fingeravtrykk-template lagres direkte på sensoren, den burde blitt
+  hentet fra sensoren og så lagret i skyen. Deretter burde den blitt
+  hentet hver gang man trengte den.
+\item
+  Paring og bonding med Bluetooth. Enheten må pares hver gang i
+  prototypen. Dette er en begrensning med det underliggende rammeverket
+  som brukes.
+\item
+  I prototypen brukes MQTT over WebSockets til å sende data. Men det er
+  såpass få målepunkter som sendes hver dag at man like gjerne kunne
+  brukt HTTP REST med kryptering. Det er få fordeler med å bruke en
+  protokoll som MQTT i dette prosjektet. Det hadde vært mer relevant om
+  sensorene sendte data kontinuerlig hele døgnet.
+\end{itemize}
+
+\section{Sikkerhet}\label{sikkerhet}
+
+\begin{itemize}
+\tightlist
+\item
+  Tofaktorautentisering
+\item
+  Hva oppfyller kravene til tofaktorautentisering? Oppfyller
+  klientsertifikat og enhet utplassert i hjem sammen med
+  fingeravtrykksensor kravene?
+\item
+  Hvilke alternativer finnes det til å bruke fingeravtrykkssensor som
+  autentisering? Både med tanke på brukbarhet og sikkerhet.
+\item
+  Bluetooth
+\item
+  BLE har flere sikkerhetsproblemer, spesielt i versjon 4.0 og 4.1. Skal
+  man gjøre en oppfordring om kun å bruke Bluetooth 4.2? Hvilke
+  avveininger og anbefalinger burde man gjøre dersom man må bruke en
+  enhet med 4.0 eller 4.1? Det tar lang tid å ta i bruk en ny
+  Bluetooth-standard. Produsenter av velferdsteknologi må følge med på
+  den teknologiske utviklingen. Problemer her: tar lang tid å få et
+  produkt godkjent, koster sikkert masse penger.
+\end{itemize}
+
+\section{Personvern og datalagring}\label{personvern-og-datalagring}
+
+\begin{itemize}
+\tightlist
+\item
+  Krav om at norske helsedata skal ligge i Norge. Dermed kan man ikke
+  bruke en eksisterende skyløsning som AWS. AWS lagrer data i Europa.
+  Det fører til at mye av infrastrukturen må lages fra bunnen av. Snakk
+  om at Azure skal få til en løsning der man har hele økosystemet
+  kjørende i Norge.
+\item
+  Ny personvernforordning gir flere rettigheter til forbrukere. Det
+  gjelder blant annet kontroll på egen data, oversikt over hva den
+  brukes til, mulighet til å slette den osv. Man må kunne argumentere
+  for at dataen som lagres er nyttig for forbrukeren. Er da å lagre all
+  sensordataen nyttig? Kan man argumentere for det?
+\end{itemize}
+
+\section{Frittstående løsninger kontra nettbrett, mobil,
+PC}\label{frittstuxe5ende-luxf8sninger-kontra-nettbrett-mobil-pc}
+
+Diskusjon og drøfting på bakgrunn av evalueringen om hvor vellykket det
+var å implementere en frittstående løsning. Hvilke fordeler og ulemper
+har man med å ta i bruk et eksisterende økosystem? Stikkord:
+sikkerhetsoppdateringer, vedlikehold, innkjøpskostnad, hva har brukere
+hjemme osv.
+
+\section{Metodediskusjon}\label{metodediskusjon}
+
+\begin{itemize}
+\tightlist
+\item
+  Diskutere forskningsmetodene som er brukt? Hvor stor troverdighet kan
+  man ha til forskningen? Kunne noe vært gjort annerledes?
+\end{itemize}
+
