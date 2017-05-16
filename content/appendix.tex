@@ -58,3 +58,128 @@ Nonin3230.prototype.connectAndSetup = function(callback) {
 module.exports = Nonin3230;
 
 \end{lstlisting}
+
+
+\chapter{Formell henvendelse til Trondheim kommune}
+\label{appendix:formell}
+Til Prosjekt- og programledelsen Velferdsteknologi, Trondheim kommune
+
+Vi søker med dette om samarbeid for en forskningsprosjekt for en masterstudent (Andreas Drivenes) ved Institutt for Datateknikk og Informatikk ved
+NTNU innen området veldferdsteknologi med undertegnede som veileder. Prosjektet omhandler forbedring av brukervennlighet for pulsoksimeter til
+avstandsoppfølging av kronisk syke. Bakgrunnen for prosjektet er et mangeårig samarbeid med SINTEF Helse v/Jarl Reitan rundt brukervennlighet og
+design av veldferdsteknologi.
+
+Vår kontaktperson i kommunen er Renate Enger, og hun har lånt oss et Nonin Pulsoksiometer som studenten har koblet opp mot en skytjeneste via
+Bluetooth. Bakgrunnen for prosjektet er en mistanke om at en del kronisk syke vil ha problemer med tekniske løsninger for avstandsoppfølging dersom
+de selv alene skal bruke måleutstyr som krever teknisk kunnskap, f.eks. oppkobling av bluetooth til nettbrett. Den nye s.k. Internet-of-Things
+teknologien med direkte kobling til skytjenester gjør det mulig å ha måleutstyret direkte på internett, slik at man slipper å gå veien om f.eks. et
+nettbrett. Vi tror dette vil kunne bedre brukervennligheten for kronisk syke, og gi en bedre tjenestekvalitet. Det vil muligens også kunne redusere
+behovet for nettbrett for noen brukere.
+
+Rent konkret så ser vi for oss følgende samarbeid med kommunen:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Fortsatt samarbeidet med Renate Enger i form av:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ett intervju a maks to timer (mars)
+  \item
+    Feedback på teknisk løsning, maks to timer (april).
+  \end{itemize}
+\end{enumerate}
+
+Hvis mulig ønsker vi også å få tilbakemelding fra helsearbeidere som er
+nærmere feltet:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fokusgruppe med 4-5 helsearbeidere som har erfaring med
+  avstandsoppfølging av kronisk syke.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hjelp til rekruttering av fokusgruppedeltagere.
+  \item
+    Frikjøp av helsearbeidere, maks en time. (april).
+  \end{itemize}
+\end{enumerate}
+
+Med håp om konstruktivt samarbeid.
+
+mvh
+Dag Svanæs
+
+\begin{verbatim}
+__________________________________________________
+Dag Svanæs, Professor, PhD
+Department of Computer Science (IDI)
+Norwegian University of Science and Technology (NTNU)
+Trondheim, Norway
+\end{verbatim}
+
+
+\chapter{Invitasjoner til intervju}
+
+\section{Intervjuhenvendelse til Trondheim kommune (case-studie)}
+Hei!
+
+Har dere mulighet til å ta et intervju torsdag eller fredag i neste uke? Når som helst på dagen passer. 
+Ellers så passer det når som helst på dagtid uka etter det igjen (27. mars - 31. mars).
+
+Det hadde vært flott om jeg fikk lov til å ta opp intervjuet. Jeg kommer til å forberede noen skriftlige spørsmål
+(som jeg kan sende på forhånd om dere ønsker),
+men vi kan gjerne bevege oss litt utover det med oppfølgingsspørsmål om det passer seg sånn. 
+
+Det hadde vært fint å titte kort på løsningen dere har nå etter intervjuet, og ta noen bilder av den.
+
+Andreas
+
+\section{Intervjuhenvendelse til Trondheim kommune og SINTEF (evaluering og oppsummering)}
+Hei! 
+
+Jeg har utviklet en prototype dere kan se på og teste, og som jeg gjerne vil ha tilbakemeldinger på.
+
+Etter testen tenkte jeg at vi kunne snakke litt om hvordan brukere har opplevd løsningen som Trondheim kommune prøver nå, hva dere tenker om smarte
+og integrerte sensorer som alltid er på nett, og hva som vil være viktig når det skal utvikles smarte velferdsteknologiprodukter for oppfølging av
+kronisk syke i fremtiden.
+
+Har dere mulighet til å møte meg i slutten av neste uke, eller tidlig uken etter det igjen (tidsrommene 26. - 28. april og 2. - 5. mai)? Jeg anslår
+at det kommer til å ta en time til halvannen time, og jeg er veldig fleksibel på tidspunkt på dagtid. 
+
+Vi kan godt møtes hos dere, Renate, hvis det er enklest for dere.
+
+Andreas
+
+\section{Intervjuhenvendelse til teknologileverandøren Imatis}
+Hei! 
+
+Mitt navn er Andreas Drivenes, og jeg går siste året på datateknologi på NTNU. Jeg skriver for tiden en masteroppgave
+om avstandsoppfølging av kronisk syke i samarbeid med Trondheim kommune og SINTEF. Veilederen min er professor Dag Svanæs.
+
+Jeg har fått låne et Nonin 3230-pulsoksimeter av Trondheim kommune som jeg har integrert med en Raspberry Pi Zero.
+Den har en fingeravtrykkssensor, en knapp og to leds. Den publiserer sensordataen til AWS IoT, og jeg har satt opp en helt
+enkel grafisk applikasjon som viser målingene. Koden til oppgaven kommer til å ligge åpent på Github.
+
+Det ville være til stor hjelp for oppgaven om dere kunne snakke litt om hva slags teknologi dere bruker i løsningen deres i dag.
+
+Rent konkret lurer jeg på om du (eller noen andre) kunne være med på et kort intervju på appear.in eller lignende? 
+Jeg ser for meg at det kommer til å ta maks 30-45 minutter. Temaer for samtalen kommer til å være hvilken teknologi og arkitektur
+dere bruker i løsningen for Trondheim kommune i dag, sikkerhet, tanker om prototypen og teknologien jeg har brukt, og den
+digitale utviklingen i velferdsteknologi og avstandsoppfølging av kronisk syke i årene som kommer.
+
+Jeg er ledig på dagtid det meste av den neste uken.
+
+Jeg sender selvsagt en kopi av masteroppgaven når den blir ferdig i midten av juni.
+
+\verb|--| \newline
+Med vennlig hilsen \newline
+Andreas Drivenes \newline

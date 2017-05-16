@@ -1,5 +1,154 @@
-\chapter{Evaluering av pulsoksimeter}
+\chapter{Evaluering av prototype}
 \label{ch:evaluation1}
+Kapittelet beskriver resultatet av evalueringene gjort med SINTEF og Trondheim kommune.
 
-\section{Fokusgruppe med Trondheim kommune}
-\section{Fokusgruppe med SINTEF}
+\section{Planlegging av evaluering}
+Kapittel \ref{ch:design} redegjør for og drøfter valgene av evalueringsmetoder.
+Evalueringsmetoden er semistrukturerte intervjuer med innlagt demonstrasjon av prototype.
+Kontakten med Trondheim kommune ble initiert av Jarl Reitan på SINTEF.
+
+Forskningsprosjektet utformet en formell henvendelse om samarbeid til velferdsteknologiprogrammet i Trondheim kommune.
+Se tillegg \ref{appendix:formell} for hele henvendelsen. I henvendelsen spurte prosjektet om å få et intervju med Renate Enger i mars
+(maks to timer), og et intervju i april med tilbakemeldinger på den tekniske løsningen (maks to timer). Hvis mulig ble det også
+ytret et ønske om å få til en fokusgruppe med fire-fem frikjøpte helsearbeidere. Svaret på sistnevnte var at Trondheim kommune
+nettopp har startet opp med mottak av sensormålinger, og at de var usikre på hvilk
+
+
+\section{Intervju med Trondheim
+kommune}\label{intervju-med-trondheim-kommune}
+
+% For tettere mellomrom:
+%\providecommand{\tightlist}{%
+%  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\def\tightlist{}
+
+\begin{itemize}
+\tightlist
+\item
+  Tilstede: Renate Enger (09.30-10.15) og Ingar Børre Sandvik
+  (09.30-10.00)
+\item
+  Formål: Demonstrere og vise fram prototypen. Gi muligheten til på
+  prøve selv. Ha en samtale om hva som vil bli viktig i utviklingen av
+  produkter for avstandsoppfølging i fremtiden.
+\item
+  Stil: Uformelt, ikke noe brukertest. Semistrukturert intervju etterpå
+  der intervjueren hadde forberedt samtaleemner og noen spørsmål.
+\item
+  Oppsummering av tilbakemeldinger på prototypen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Veldig enkelt å bruke.
+  \item
+    Imponert over hvor kort tid det hadde tatt å utvikle den, og hvor
+    billig løsningen var.
+  \item
+    Kunne vært rullet ut for pasienter.
+  \item
+    De var mer optimistiske på vegne av løse sensorer rundt en liten hub
+    enn å integrere sensoren i selve produktet. Dette passer også bedre
+    om en kommune skal bruke flere forskjellige sensorer.
+  \item
+    De mente at Nonin burde utviklet et pulsoksimeter som var mer
+    integrert. Vi snakket litt om at det er enklere for Nonin å kun
+    utvikle måleteknologien og gi instruksjoner for hvordan man henter
+    ut data enn å lage en liten datamaskin.
+  \item
+    At det kommer opp et ``checkmark'' på pulsoksimeteret når en måling
+    er ferdig var noe de ikke hadde i sin egen løsning i dag, og var
+    interessert i å implementere selv.
+  \item
+    Trondheim kommune gjør en ``spot-check''-måling (kun én måling som
+    er verifisert bra sendes) og ikke kontinuerlige målinger.
+  \end{itemize}
+\item
+  Oppsummering av tanker om fremtiden
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Trondheim kommune ønsker å være tilstede på de plattformene brukerne
+    er fra før av, det seg være iOS, Android, PC osv.
+  \item
+    De ser for seg i fremtiden at brukeren selv kan velge hva slags
+    løsning de vil bruke og at de slipper å levere ut et eget nettbrett
+    til brukeren.
+  \item
+    En egenutviklet hub kan være en del av en slik fremtid.
+  \end{itemize}
+\end{itemize}
+
+\section{Intervju med SINTEF}\label{intervju-med-sintef}
+
+\begin{itemize}
+\tightlist
+\item
+  Tilstede: Anita Das og Kristine Holbø
+\item
+  Formål: Demonstrere og vise fram prototypen. Ha en samtale om
+  avstandsoppfølging og hva som vil bli viktig i utviklingen av
+  produkter for avstandsoppfølging i fremtiden.
+\item
+  Stil: Uformelt, ikke noe brukertest. Semistrukturert intervju der
+  intervjueren hadde forberedt samtaleemner og noen spørsmål.
+\item
+  Innhold
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Introduksjon av meg og prosjektet.
+  \item
+    Introduksjon av intervjuobjekter og hva de jobber med.
+  \item
+    Samtale rundt velferdsteknologi og avstandsoppfølging
+  \item
+    Visning av prototype
+  \item
+    Samtale om hva de synes om prototypen og hva som vil bli viktig for
+    utviklingen av produkter for avstandsoppfølging i framtiden.
+  \end{itemize}
+\item
+  Oppsummering og evaluering
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sarpsborg kommune har flere pasienter som bruker sensorer og en
+    annen teknologileverandør.
+  \item
+    Brukerne er forskjellige. Noen har veldig stor tillit til å levere
+    fra seg måledata, mens andre er veldig skeptiske til hele konseptet.
+  \item
+    Tilbakemeldingene på prosjektet i Trondheim kommune som helhet er
+    veldig positive.
+  \item
+    Bluetooth: Snakket om sikkerhet i Bluetooth og viktigheten av å være
+    raskt ute med ny teknologi. De var ikke klar over
+    sikkerhetsproblematikken til Bluetooth 4.0 og at pulsoksimeteret
+    bruker denne standarden.
+  \item
+    Prototype: Muligheten til å kunne melde inn dagsform (subjektiv) må
+    være tilstede i løsningen. Det gir økt trygghet for brukeren.
+  \item
+    Prototype: Fingeravtrykksensor vil ikke fungere som
+    autentiseringsløsning for alle brukere. Noen har dårlig
+    blodgjennomstrømning og tykke fingre. Må finne på nye måter for å
+    autentisere slik at det blir tofaktor (sertifikat + noe annet).
+  \item
+    Prototype: De likte også bedre at huben var for seg selv og at
+    sensorene var løse.
+  \item
+    Fremtiden: Så for seg en løsning som flere moduler. Slik at man kan bygge
+    sammen alt som flere klosser for å tilpasse det til forskjellige
+    brukere. For eksempel en modul for å rapportere dagsform.
+  \item
+    Fremtiden: De hadde veldig stor tro på innrapportering av sensordata.
+    Teknologioptimistiske. Mente det var fremtiden. Så for seg
+    automatisk analyse av data og bedre toveiskommunikasjon som et
+    positivt hjelpemiddel.
+  \end{itemize}
+\end{itemize}
