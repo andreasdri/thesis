@@ -1,7 +1,53 @@
 \chapter{Design og implementasjon av et skytilkoblet pulsoksimeter}
 \label{ch:implementation1}
 
-\section{Klientsideløsning}
+Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksimeter med innebygget autentisering ble utviklet.
+Første del av kapittelet handler om valg av teknologien før blabla
+
+\section{Valg av komponenter}
+Løsningen består av følgende komponenter:
+
+\begin{itemize}
+  \item Raspberry Pi Zero W
+  \item GT-511C3 (fingeravtrykksensor)
+  \item Nonin 3230 (pulsoksimeter med \gls{ble})
+  \item Standard trykknapp
+  \item Tre RGB-lysdioder og én hvit lysdiode
+  \item 3D-printet hus
+\end{itemize}
+
+Komponentene er presentert i forrige kapittel. Raspberry Pi Zero W ble valgt som prototypeplattform istedenfor
+alternativer som Tessel 2 og Arduino Yún. Det var et ønske om å bruke JavaScript og Node.js som utviklingsmiljø, og Arduino
+bruker C/C++ som utviklingsspråk. Tessel 2 er en prototypeplattform basert på Node.js, men har få konfigurasjonsmuligheter
+og \gls{ble} er ikke innebygget.
+
+\section{Oversikt over løsning}
+
+
+\begin{figure}
+\includegraphics[width=0.55\textwidth, center]{fig/prototype/oversiktlosning}
+\caption{Sammenhengen mellom de ulike komponentene}
+\label{fig:prototypeoversikt}
+\end{figure}
+
+\section{Komponenter}
+
+\subsection{Trykknapp og lysdioder}
+
+\begin{figure}
+\includegraphics[width=0.75\textwidth, center]{fig/prototype/breadbord}
+\caption{Oppkobling av trykkknapp og lysdioder}
+\label{fig:breadboard}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.95\textwidth, center]{fig/prototype/schmeatic}
+\caption{Koplingsskjema av trykknapp og lysdioder}
+\label{fig:schematics}
+\end{figure}
+
+\subsection{GT-511C3}
+
 \subsection{Nonin 3230}
 Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
 Nonin 3230 er et pulsoksimeter med støtte for \gls{ble} 4.0. Dette pulsoksimeteret ble anbefalt av \citet{austad2016sensorer}
