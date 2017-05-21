@@ -4,7 +4,7 @@
 Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksimeter med innebygget autentisering ble utviklet.
 Første del av kapittelet handler om valg av teknologien før blabla
 
-\section{Valg av komponenter}
+\section{Komponentoversikt}
 Løsningen består av følgende komponenter:
 
 \begin{itemize}
@@ -16,13 +16,12 @@ Løsningen består av følgende komponenter:
   \item 3D-printet hus
 \end{itemize}
 
-Komponentene er presentert i forrige kapittel. Raspberry Pi Zero W ble valgt som prototypeplattform istedenfor
+Komponentene ble presentert i forrige kapittel. Raspberry Pi Zero W ble valgt som prototypeplattform istedenfor
 alternativer som Tessel 2 og Arduino Yún. Det var et ønske om å bruke JavaScript og Node.js som utviklingsmiljø, og Arduino
 bruker C/C++ som utviklingsspråk. Tessel 2 er en prototypeplattform basert på Node.js, men har få konfigurasjonsmuligheter
 og \gls{ble} er ikke innebygget.
 
-\section{Oversikt over løsning}
-
+Oversikt over løsningen med hvordan komponentene kommuniserer med Raspberry Pi er i figur \ref{fig:prototypeoversikt}.
 
 \begin{figure}
 \includegraphics[width=0.55\textwidth, center]{fig/prototype/oversiktlosning}
@@ -33,20 +32,44 @@ og \gls{ble} er ikke innebygget.
 \section{Komponenter}
 
 \subsection{Trykknapp og lysdioder}
+Figur \ref{fig:breadboard} viser hvordan trykknappen og lysdiodene er koblet på
+portene til Raspberry Pi med et \textit{breadboard}. Oppkoblingen er logisk ekvivalent med prototypen.
+I selve prototypen er to RGB-lysdioder og en knapp loddet fast med motstander på et kobberbrett. % @TODO kobberbrettfig
+Koblingsskjemaet er i figur \ref{fig:schematics}. Alle komponentene deler felles jord.
 
 \begin{figure}
 \includegraphics[width=0.75\textwidth, center]{fig/prototype/breadbord}
-\caption{Oppkobling av trykkknapp og lysdioder}
+\caption{Oppkobling av trykknapp og lysdioder}
 \label{fig:breadboard}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=0.95\textwidth, center]{fig/prototype/schmeatic}
-\caption{Koplingsskjema av trykknapp og lysdioder}
+\caption{Koblingsskjema av trykknapp og lysdioder}
 \label{fig:schematics}
 \end{figure}
 
+For å gjøre håndteringen av knapp og lysdioder enklere, ble det utviklet et lite JavaScript-bibliotek.
+Koden til dette biblioteket er lagt ved i tillegg \ref{appendix:pigpio-components}. Kodesnutt
+\ref{lst:pigpio-components-usage} er et eksempel på bruk av dette biblioteket med den samme oppkoblingen som i
+figur \ref{fig:breadboard}.
+
+\begin{lstlisting}[frame=single, language=JavaScript,
+    caption=Bruk av pigpio-components, label=lst:pigpio-components-usage]
+const button = new Button({ gpio: 24, isPullup: true });
+const rgbLed1 = new RGBLed({ red: 25, green: 8, blue: 7 });
+const rgbLed2 = new RGBLed({ red: 17, green: 27, blue: 22 });
+const whiteLed = new Led(12);
+
+button.on('click', () =>
+  console.log('press and release within 500 ms'));
+whiteLed.on();
+rgbLed1.color('blue').on();
+rgbLed2.color('#DC143C').strobe();
+\end{lstlisting}
+
 \subsection{GT-511C3}
+
 
 \subsection{Nonin 3230}
 Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
@@ -55,10 +78,10 @@ i rapporten «Sensorer til støtte for avstandsoppfølging». De trakk fram at a
 er klinisk validerte, støtten for Bluetooth Smart,   
 
 Utgaven Trondheim kommune har kjøpt inn bruker en proprietær Bluetooth-tjeneste med 128 bit \gls{uuid}.
-I nyere utgaver kan man også bruke den åpne spesifikasjonen til «Bluetooth SIG Pulse Oximeter Service».
-Den proprietære tjenesten heter «Nonin Oximetry Service» og har \gls{uuid} \textit{46a970e00d5f11e28b5e0002a5d5c51b}.
-Tjenesten har to karakteristikker -- «Nonin Oximetry Measurement» som sender data hvert sekund som spesifiert
-i tabell \ref{table:nonin-datapacket} og «Nonin Control Point» som kan brukes til å synkronisere skjermen,
+I nyere utgaver kan man også bruke den åpne spesifikasjonen til \textit{Bluetooth SIG Pulse Oximeter Service}.
+Den proprietære tjenesten heter \textit{Nonin Oximetry Service} og har \gls{uuid} \textit{46a970e00d5f11e28b5e0002a5d5c51b}.
+Tjenesten har to karakteristikker -- \textit{Nonin Oximetry Measurement} som sender data hvert sekund som spesifiert
+i tabell \ref{table:nonin-datapacket} og \textit{Nonin Control Point} som kan brukes til å synkronisere skjermen,
 indikere at en måling er ferdig, eller sette sikkerhetsmodus. 
 
 Et \gls{npm}-biblotek (fotnote url) kalt \textit{nonin-3230-ble} ble utviklet for å gjøre integrasjonen mot sensoren enklere.

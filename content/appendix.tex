@@ -3,7 +3,200 @@
 
 \chapter{Kode}
 
+\section{pigpio-components}
+\label{appendix:pigpio-components}
+Link til Github-repo med kode: \url{https://github.com/andybb/pigpio-components}.
+
+\begin{lstlisting}[frame=single, language=JavaScript,
+    caption=pigpio-components: Button class, label=lst:pigpio-components-button]
+const EventEmitter = require('events');
+const { Gpio } = require('pigpio');
+
+class Button extends EventEmitter {
+  constructor(options) {
+    super();
+    this._button = new Gpio(options.gpio, {
+      mode: Gpio.INPUT,
+      pullUpDown: options.isPullup ? Gpio.PUD_UP : Gpio.PUD_DOWN,
+      edge: Gpio.EITHER_EDGE
+    });
+    this._timer = null;
+    this._onInterrupt();
+  }
+
+  _onInterrupt() {
+    let intervals = 0;
+    this._button.on('interrupt', (value) => {
+      if (value === 0) {
+        this._timer = setInterval(() => {
+          intervals++;
+        }, 500);
+      }
+      else if (value === 1 && intervals === 0) {
+        clearInterval(this._timer);
+        intervals = 0;
+        this.emit('click');
+      }
+      else if (value === 1 && intervals >= 4) {
+        clearInterval(this._timer);
+        intervals = 0;
+        this.emit('long press');
+      }
+      else {
+        if (this._timer) {
+          clearInterval(this._timer);
+          intervals = 0;
+        }
+      }
+
+    });
+  }
+};
+
+module.exports = Button;
+
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single, language=JavaScript,
+    caption=pigpio-components: Led classes, label=lst:pigpio-components-led]
+const { Gpio } = require('pigpio');
+const Color = require('color');
+
+class Led {
+  constructor(gpio) {
+    this._led = new Gpio(gpio, { mode: Gpio.OUTPUT });
+    process.on('SIGINT', () => {
+      this.off();
+      setTimeout(() => process.exit(1), 100);
+    });
+  }
+  
+  setValue(val) {
+    if (val >= 0 && val < 256) {
+      this._led.pwmWrite(val);
+    }
+    else {
+      throw new Error('Value must be between 0 and 255');
+    }
+  }
+
+  on() {
+    this.setValue(255);
+  }
+
+  off() {
+    this._led.digitalWrite(0);
+  }
+};
+
+class RGBLed {
+  constructor(ports) {
+    this._leds =
+      [new Led(ports.red), new Led(ports.green), new Led(ports.blue)];
+    this._timer = null;
+    this._rgb = Color.rgb(255, 255, 255).rgb().array();
+    process.on('SIGINT', () => {
+      this.stop();
+      // Wait until other LEDs are cleaned up
+      setTimeout(() => process.exit(1), 100);
+    });
+  }
+
+  color(color) {
+    this._rgb = Color(color).rgb().array();
+    return this;
+  }
+
+  on() {
+    this._leds.forEach((led, index) => led.setValue(this._rgb[index]));
+    return this;
+  }
+
+  off() {
+    this._leds.forEach((led) => led.off());
+    return this;
+  }
+  
+  stop() {
+    this.off();
+    if (this._timer) {
+      clearInterval(this._timer);
+    }
+    return this;
+  }
+
+  strobe(interval = 1000) {
+    if (this._timer) {
+      clearInterval(this._timer);
+    }
+
+    let on = true; 
+    this.on();
+    this._timer = setInterval(() => {
+      if (on) {
+        this.off();
+        on = false;
+      }
+      else {
+        this.on();
+        on = true;
+      }
+    }, interval);
+    return this;
+  }
+
+  pulse(speed = 100) {
+    if (this._timer) {
+      clearInterval(this._timer);
+    }
+
+    let r = 0, g = 0, b = 0;
+    this._timer = setInterval(() => {
+      this._leds[0].setValue(r);
+      this._leds[1].setValue(g);
+      this._leds[2].setValue(b);
+      r += 5;
+      g += 7;
+      b += 9;
+      if (r > 255) {
+        r -= 255;
+      }
+      if (g > 255) {
+        g -= 255;
+      }
+      if (b > 255) {
+        b -= 255;
+      }
+    }, speed);
+    return this;
+  }
+
+  rainbow(speed = 500) {
+    if (this._timer) {
+      clearInterval(this._timer);
+    }
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+    let index = 0;
+
+    this._timer = setInterval(() => {
+      this.color(colors[index]);
+      this.on();
+      index++;
+      if (index > colors.length - 1) {
+        index = 0;
+      }
+    }, speed);
+    return this;
+  }
+}
+
+module.exports = { RGBLed, Led };
+
+\end{lstlisting}
+
 \section{nonin-3230-ble}
+Link til Github-repo med kode: \url{https://github.com/andybb/nonin-3230-ble}.
+
 \begin{lstlisting}[frame=single, language=JavaScript,
     caption=Nonin 3230 noble-device library, label=lst:nonin-3230-library]
 const NobleDevice = require('noble-device');

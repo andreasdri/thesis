@@ -3,6 +3,71 @@
 
 \section{Funksjonelle krav}
 
+
+\subsection{Krav til prototype}
+
+\begin{enumerate}
+    \item [FK1] Når brukeren trykker på knappen skal systemet sette i gang en måling
+        \begin{enumerate}
+          \item [FK1.1] Brukeren må legge fingeren på fingeravtrykksensoren for å autentisere innen 10 sekunder.
+          \item [FK1.2] Ved vellykket autentisering skal brukeren få 120 sekunder til å gjennomføre
+              en måling.
+          \item [FK1.3] Brukeren starter målingen ved å stikke fingeren inn i pulsoksimeteret.
+              En måling er definert som kontinuerlig datainnhenting i 20 sekunder.
+          \item [FK1.4] Systemet skal sende data fra målingen kontinuerlig til en skytjeneste.
+          \item [FK1.5] Når en måling er ferdig, skal skjermen på pulsoksimeteret og lysdiodene indikere til brukeren
+              at det er godkjent.
+          \item [FK1.6]Systemet skal vise rødt lys og sende brukeren tilbake til sovende modus dersom et av de
+              foregående kravene ikke oppfylles.
+        \end{enumerate}
+    \item [FK2] Når brukeren holder inne knappen i over fire sekunder og slipper i utviklingsmodus,
+        skal prosessen for å registrere et fingeravtrykk settes i gang.
+        \begin{enumerate}
+          \item [FK2.1] Registreringen blir gjort sammen med helsepersonell som forklarer hva som skal gjøres.
+          \item [FK2.2] Dersom noe går galt under registreringen, skal systemet vise rødt lys og sende brukeren
+              tilbake til sovende modus igjen.
+        \end{enumerate}
+\end{enumerate}
+
+% øke vinduet for autentisering: mange mange minutter. tilbakemelding fra sintef
+
+\section{Kvalitetskrav}
+
+\begin{enumerate}
+    \item Sikkerhet
+    \item Personvern
+    \item Interoperabilitet
+    \item Tilgjengelighet
+    \item Ytelse
+    \item Brukbarhet
+\end{enumerate}
+
+Disse kvalitetskravene er beskrevet nøyere i de neste delkapitlene.
+
+\subsection{Sikkerhet}
+Systemet skal være beskyttet mot \gls{mitm} og tyvlytting, og skal ha tilgangskontroll på alle ressurser.
+Alle kommuniserende enheter skal være autentisert for å unngå "forging of data". % @TODO fix
+Det skal være intern tilgangskontroll for utviklere, helsepersonell og tredjepartsløsninger.
+
+\subsection{Privacy}
+The Norwegian Data Protection Authority suggests that new welfare technology systems should be made with the Privacy by Design principles (built-in protection of personal privacy) \citep{datatilsynet_privacy}, and lists ten different guidelines for
+welfare technology \citep{datatilsynet_welfare}:
+
+\begin{enumerate}
+    \item Choose the least invading solution
+    \item Limit the amount of data stored
+    \item Choose a real-time solution if possible
+    \item Store data locally if possible
+    \item Let the user be in control
+    \item Delete user data when possible
+    \item Limit the access to information
+    \item Access to your own data
+    \item The data should be encrypted
+    \item Anonymous data when possible 
+\end{enumerate}
+
+\subsection{Krav til velferdsteknologi}
+%Helsedirektoratet
 \subsection{Krav til prototypeplattform}
 
 \begin{itemize}
@@ -12,8 +77,5 @@
     \item Ha innebygget \gls{ble}.
 \end{itemize}
 
-\section{Krav til velferdsteknologi}
-%Helsedirektoratet
 
-\section{Ikke-funksjonelle krav}
 %helsedir/datatilsynet
