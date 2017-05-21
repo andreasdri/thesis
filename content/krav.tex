@@ -3,28 +3,27 @@
 
 \section{Funksjonelle krav}
 
-
 \subsection{Krav til prototype}
 
 \begin{enumerate}
-    \item [FK1] Når brukeren trykker på knappen skal systemet sette i gang en måling
+    \item [\textbf{FK1}] Når brukeren trykker på knappen skal systemet sette i gang en måling
         \begin{enumerate}
-          \item [FK1.1] Brukeren må legge fingeren på fingeravtrykksensoren for å autentisere innen 10 sekunder.
-          \item [FK1.2] Ved vellykket autentisering skal brukeren få 120 sekunder til å gjennomføre
+          \item [\textbf{FK1.1}] Brukeren må legge fingeren på fingeravtrykksensoren for å autentisere innen 10 sekunder.
+          \item [\textbf{FK1.2}] Ved vellykket autentisering skal brukeren få 120 sekunder til å gjennomføre
               en måling.
-          \item [FK1.3] Brukeren starter målingen ved å stikke fingeren inn i pulsoksimeteret.
+          \item [\textbf{FK1.3}] Brukeren starter målingen ved å stikke fingeren inn i pulsoksimeteret.
               En måling er definert som kontinuerlig datainnhenting i 20 sekunder.
-          \item [FK1.4] Systemet skal sende data fra målingen kontinuerlig til en skytjeneste.
-          \item [FK1.5] Når en måling er ferdig, skal skjermen på pulsoksimeteret og lysdiodene indikere til brukeren
+          \item [\textbf{FK1.4}] Systemet skal sende data fra målingen kontinuerlig til en skytjeneste.
+          \item [\textbf{FK1.5}] Når en måling er ferdig, skal skjermen på pulsoksimeteret og lysdiodene indikere til brukeren
               at det er godkjent.
-          \item [FK1.6]Systemet skal vise rødt lys og sende brukeren tilbake til sovende modus dersom et av de
+          \item [\textbf{FK1.6}]Systemet skal vise rødt lys og sende brukeren tilbake til sovende modus dersom et av de
               foregående kravene ikke oppfylles.
         \end{enumerate}
-    \item [FK2] Når brukeren holder inne knappen i over fire sekunder og slipper i utviklingsmodus,
+    \item [\textbf{FK2}] Når brukeren holder inne knappen i over fire sekunder og slipper i utviklingsmodus,
         skal prosessen for å registrere et fingeravtrykk settes i gang.
         \begin{enumerate}
-          \item [FK2.1] Registreringen blir gjort sammen med helsepersonell som forklarer hva som skal gjøres.
-          \item [FK2.2] Dersom noe går galt under registreringen, skal systemet vise rødt lys og sende brukeren
+          \item [\textbf{FK2.1}] Registreringen blir gjort sammen med helsepersonell som forklarer hva som skal gjøres.
+          \item [\textbf{FK2.2}] Dersom noe går galt under registreringen, skal systemet vise rødt lys og sende brukeren
               tilbake til sovende modus igjen.
         \end{enumerate}
 \end{enumerate}
@@ -33,13 +32,18 @@
 
 \section{Kvalitetskrav}
 
+I følge \citet{softarch} er sikkerhet, ytelse og tilgjengelighet de viktigste kvalitetskravene for skyteknologi.
+Personvern er viktig for kritiske helsedata, og er noe som Datatilsynet legger stor vekt på. I tillegg til disse kvalitetskravene
+er interoperabilitet og brukervennlighet trukket fram som kvalitetskrav. Basert på bakgrunnsmaterialet og case-studien,
+ble kvalitetskravene rangert for en frittstående skybasert velferdsteknologiløsning.
+
 \begin{enumerate}
     \item Sikkerhet
     \item Personvern
     \item Interoperabilitet
     \item Tilgjengelighet
     \item Ytelse
-    \item Brukbarhet
+    \item Brukervennlighet
 \end{enumerate}
 
 Disse kvalitetskravene er beskrevet nøyere i de neste delkapitlene.
@@ -49,22 +53,45 @@ Systemet skal være beskyttet mot \gls{mitm} og tyvlytting, og skal ha tilgangsk
 Alle kommuniserende enheter skal være autentisert for å unngå "forging of data". % @TODO fix
 Det skal være intern tilgangskontroll for utviklere, helsepersonell og tredjepartsløsninger.
 
-\subsection{Privacy}
-The Norwegian Data Protection Authority suggests that new welfare technology systems should be made with the Privacy by Design principles (built-in protection of personal privacy) \citep{datatilsynet_privacy}, and lists ten different guidelines for
-welfare technology \citep{datatilsynet_welfare}:
+\subsection{Personvern}
+Datatilsynet foreslår at alle nye velferdsteknologisystemer lages med innebygd personvern (\textit{privacy by design}),
+noe som vil si at det tas hensyn til personvern i alle fasene av utviklingsløpet \citep{datatilsynet_privacy}. Det er mye billigere
+enn å endre systemet for øke personvernshensynet i etterkant.
+
+For velferdsteknologi spesielt, oppgir \citet{datatilsynet_welfare} ti viktige generelle retningslinjer for å sikre personvernet
+i utviklingen av ny velferdsteknologi:
 
 \begin{enumerate}
-    \item Choose the least invading solution
-    \item Limit the amount of data stored
-    \item Choose a real-time solution if possible
-    \item Store data locally if possible
-    \item Let the user be in control
-    \item Delete user data when possible
-    \item Limit the access to information
-    \item Access to your own data
-    \item The data should be encrypted
-    \item Anonymous data when possible 
+    \item Velg den minst inngripende løsningen
+    \item Begrens mengden data som lagres
+    \item Velg sanntidsløsning hvis mulig
+    \item Lagre lokalt hvis mulig
+    \item La brukeren ha kontroll over løsningen
+    \item Slett data etter bruk
+    \item Begrens tilgangen til informasjon
+    \item Innsyn i egne data
+    \item Dataene bør krypteres
+    \item Anonymisering av data
 \end{enumerate}
+
+\subsection{Interoperabilitet}
+Det er forventet at andre og tidligere utviklede systemer må integreres i løsningen. Derfor trenger løsningen flere forskjellige
+grensesnitt som gjør det mulig å kommunisere med andre plattformer. Norge har bestemt at Continua-rammeverket skal brukes i nye
+velferdsteknologiløsninger.
+
+\subsection{Tilgjengelighet}
+I velferdsteknologi kan tilgjengelighet være et spørsmål om liv og død. Dersom den nødvendige informasjonen ikke blir gitt til den
+riktige personen kan liv gå tapt. En leverandør av skytjenester lover typisk en oppetid på 99,95 \% i løpet av et år.
+
+\subsection{Ytelse}
+Løsningen må kunne skalere fra noen få brukere til flere tusen brukere. Hvis én bruker sender noen meldinger hver dag, kan det
+bety opp mot en million meldinger i døgnet. Løsningen må håndtere mange meldinger uanstrengt og uten avbrytelse.
+
+\subsection{Brukervennlighet}
+Brukervennlighet i denne konteksten betyr brukervennlighet for sluttbruker, utvikler og systemadministrator.
+Sluttbrukeren må føle seg trygg når løsningen benyttes, og forstå hvordan sensormålingene utføres.
+For utvikler og systemadminstrator er spørsmålene hvor god dokumentasjonen er, om det er mulig å automatisere
+utvikling og vedlikehold og hvordan løsningen man vedlikeholder og overvåker løsningen.
 
 \subsection{Krav til velferdsteknologi}
 %Helsedirektoratet
