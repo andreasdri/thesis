@@ -13,7 +13,9 @@ forskningsspørsmålene som skal besvares og forskingsdesignet som understøtter
 hvilke begrensninger og avveininger som er gjort og til slutt en disposisjon av oppgaven.
 
 \section{Bakgrunn og motivasjon}
-% @Todo: pluss et par setninger om IoT + velferdsteknologi (?)
+\acrfull{iot} er en global infrastruktur for informasjonssamfunnet som muliggjør avanserte tjenester ved å
+knytte sammen fysiske og virtuelle ting basert på eksisterende og fremadstormende kompatible informasjon- og kommunikasjonsteknologier.
+% @Todo: Kilde: http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060
 \gls{iot} gir nye og spennende muligheter for kreative løsninger på problemer på forskjellige områder, alt fra husholdningsapparater
 og fjernoppdatering av programvare i biler, til oppfølging av helseproblemer innen velferdsteknologi. Datakraft- og lagring
 har blitt mye billigere, noe som gjør at man i større grad enn tidligere kan samle inn informasjon om verden rundt oss
@@ -28,7 +30,7 @@ Løsningen til Trondheim kommune innebærer bruk av et nettbrett der man daglig 
 kan måle vekt, blodtrykk, pulsfrekvens og oksygenmetning ved hjelp av sensorer koblet til nettbrettet.
 
 Motivasjonen for dette forskningsprosjektet er å ta i bruk den nye skyteknologien fra \gls{aws} i en frittstående
-pulsoksimeterprototype for avstandsoppfølging av kronisk syke, og lage noe annerledes enn den løsningen Trondheim
+pulsoksimeterprototype for avstandsoppfølging av kronisk syke som et alternativ til den løsningen Trondheim
 kommune tester ut i dag. Det vil gjøre at dette prosjektet kan sammenligne de to løsningene og undersøke hvordan ny
 teknologi kan brukes i avstandsoppfølging av kronisk syke. Et pulsoksimeter er en sensor som kan måle pulsfrekvens og oksygenmetning i blodet. 
 \section{Forskningsspørsmål}
@@ -36,7 +38,8 @@ teknologi kan brukes i avstandsoppfølging av kronisk syke. Et pulsoksimeter er 
 % @Todo: Noe som presenterer forskningsspørsmålene her?
 
 \begin{enumerate}
-  \item[\textbf{FS1}] Hvordan gjøres avstandsoppfølging av kronisk syke i dag, og hvilke planer finnes for ny teknologi på dette området?
+  \item[\textbf{FS1}] Hvordan gjøres avstandsoppfølging av kronisk syke i Trondheim dag,
+     og hvilke planer finnes for ny teknologi på dette området?
   \item[\textbf{FS2}] Hva er en mulig teknologistakk for realisering av skybasert \gls{iot} for avstandsoppfølging av kronisk syke,
     [og hvordan skiller dette/denne seg fra eksisterende og planlagte løsninger]?
   \item[\textbf{FS3}] Hvordan vurderer domeneeksperter innen velferdsteknologi frittstående skybaserte \gls{iot}-løsninger for avstandsoppfølging av kronisk syke?
@@ -47,23 +50,23 @@ teknologi kan brukes i avstandsoppfølging av kronisk syke. Et pulsoksimeter er 
 Heretter vil «avstandsoppfølging av kronisk syke» bli betegnet som «avstandsoppfølging».
 
 \section{Forskningsmetoder og forskningsdesign}
-Forskningsprosjektet baserer seg på prosessen beskrevet i \citet{oates}. Hovedstrategien for å besvare på \textbf{FS1} i
-delkapittel \ref{sec:res_questions} er å gjøre en liten eksempelstudie på hvordan avstandsoppfølging foregår i Trondheim kommune. Datagenereringsmetoder
+Rammeverket for å beskrive forskningsprosjektet er hentet fra \citet{oates}. Hovedstrategien for å besvare på \textbf{FS1} i
+delkapittel \ref{sec:res_questions} er å gjøre en liten case-studie på hvordan avstandsoppfølging foregår i Trondheim kommune. Datagenereringsmetoder
 er intervjuer og dokumenter. 
 
-For å svare på \textbf{FS2} og \textbf{FS3} vil den primære strategien være «design og kreasjon» (prototyping/«proof of concept»)
-med intervjuer og dokumenter som datageneringsmetode. Eksempelstudiet vil også hjelpe til med å besvare disse spørsmålene. \textbf{FS4} vil drøftes kvalitativt 
+For å svare på \textbf{FS2} og \textbf{FS3} vil den primære strategien være \textit{design og kreasjon} (prototyping/\textit{proof of concept})
+med intervjuer og dokumenter som datageneringsmetode. Case-studien vil også hjelpe til med å besvare disse spørsmålene. \textbf{FS4} vil drøftes kvalitativt 
 utifra svarene på de andre forskningsspørsmålene. Det vil kun gjøres kvalitative dataanalyser. De to forskningsstiene er vist i figur ref1 og figur ref2.
 
-Forskningsmetodene og forskningsdesignet er utdypet i kapittel \ref{ch:method}.
+Forskningsmetodene og forskningsdesignet er utdypet i kapittel \ref{ch:method} og \ref{ch:design}.
 
 \section{Avgrensning av forskningen}
 Om man kan gjøre kliniske vurderinger basert på sensordataene, kommer ikke til å være i søkelyset for dette prosjektet,
-men vil nevnes kort i et senere kapittel. Det er noe som kunne vært problematisert i en annen oppgave.
+men vil drøftes kort i kapittel \ref{ch:discussion}. Det er noe som kunne vært problematisert i en annen oppgave.
 Denne forskningen kommer til å anta at det er nyttig å samle inn helsedata fra sensorer for å kartlegge helsetilstanden til kroniske pasienter.
 
 Prototypen gjennomgår ikke brukbarhetstesting. En annen tilnærming til oppgaven kunne vært å gjennomføre brukertester på pasienter eller andre brukere, men det
-fører med seg krav om behandling av sensitive helseopplysninger. 
+fører med seg krav om behandling av sensitive helseopplysninger. % @TODO: Dag: Mer i kap x....
 
 \section{Deltakere i prosjektet}
 Fra Trondheim kommune sin side er Ingar Børre Sandvik (prosjektleder, HelsaMi+, program for velferdsteknologi) og Renate Enger
@@ -84,7 +87,7 @@ Det inneholde også bakgrunn om \gls{iot} og bruken av \gls{iot} i velferdstekno
 Kapittel \ref{ch:method} beskriver hvilke forskningsmetoder og hvilket forskningsdesign som brukes i prosjektet for å besvare forskningsspørsmålene. 
 Det inneholder også en drøfting om hvorvidt forskningsmetodene er hensiktsmessige, og hva validiteten til forskningsfunnene er.
 
-Kapittel \ref{ch:case} handler om avstandsoppfølging i Trondheim kommune som en eksempelstudie. Det baserer seg på intervjuer gjort med
+Kapittel \ref{ch:case} handler om avstandsoppfølging i Trondheim kommune som en case-studie. Det baserer seg på intervjuer gjort med
 prosjektledere og skjermbilder av løsningen.
 
 I kapittel \ref{ch:requirements}, drøftes krav til en frittstående \gls{iot}-løsning til bruk i avstandsoppfølging basert på krav fra Helsedirektoratet,
