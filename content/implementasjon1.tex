@@ -72,12 +72,7 @@ rgbLed2.color('#DC143C').strobe();
 
 
 \subsection{Nonin 3230}
-Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
-Nonin 3230 er et pulsoksimeter med støtte for \gls{ble} 4.0. Dette pulsoksimeteret ble anbefalt av \citet{austad2016sensorer}
-i rapporten «Sensorer til støtte for avstandsoppfølging». De trakk fram at alle Nonins produkter
-er klinisk validerte, støtten for Bluetooth Smart,   
-
-Utgaven Trondheim kommune har kjøpt inn bruker en proprietær Bluetooth-tjeneste med 128 bit \gls{uuid}.
+Utgaven av Nonin 3230 Trondheim kommune har kjøpt inn bruker en proprietær Bluetooth-tjeneste med 128 bit \gls{uuid}.
 I nyere utgaver kan man også bruke den åpne spesifikasjonen til \textit{Bluetooth SIG Pulse Oximeter Service}.
 Den proprietære tjenesten heter \textit{Nonin Oximetry Service} og har \gls{uuid} \textit{46a970e00d5f11e28b5e0002a5d5c51b}.
 Tjenesten har to karakteristikker -- \textit{Nonin Oximetry Measurement} som sender data hvert sekund som spesifiert
@@ -90,12 +85,6 @@ koble til, lytte etter ny sensordata og indikere at en måling er ferdig. Sensor
 og inneholder teller, pulsfrekvens, SpO2 og et statusobjekt (tabell \ref{table:nonin-status}).
 Koden er lagt ved i appendiks \ref{lst:nonin-3230-library}.
 Eksempel på bruk kan finnes i kodesnutt \ref{lst:nonin-3230-usage}.
-
-\begin{figure}
-\includegraphics[width=0.95\textwidth, center]{fig/Nonin3230iPad}
-\caption{Nonin 3230. Foto: Nonin}
-\label{fig:nonin-3230}
-\end{figure}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[frame=single, language=JavaScript,
