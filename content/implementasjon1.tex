@@ -3,9 +3,11 @@
 
 Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksimeter med innebygget autentisering ble utviklet.
 Første del av kapittelet handler om valg av teknologien før blabla
+Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med delkapitlene
+\textit{Implementasjon av klientkomponenter} og \textit{Implementasjon av skytilkobling}.
 
 \section{Komponentoversikt}
-Løsningen består av følgende komponenter:
+Løsningen bestod av følgende komponenter:
 
 \begin{itemize}
   \item Raspberry Pi Zero W
@@ -29,13 +31,13 @@ Oversikt over løsningen med hvordan komponentene kommuniserer med Raspberry Pi 
 \label{fig:prototypeoversikt}
 \end{figure}
 
-\section{Implementasjon av komponenter}
+\section{Implementasjon av klientkomponenter}
 
 \subsection{Trykknapp og lysdioder}
-Figur \ref{fig:breadboard} viser hvordan trykknappen og lysdiodene er koblet på
+Figur \ref{fig:breadboard} viser hvordan trykknappen og lysdiodene ble koblet på
 portene til Raspberry Pi med et \textit{breadboard}. Oppkoblingen er logisk ekvivalent med prototypen.
-I selve prototypen er to RGB-lysdioder og en knapp loddet fast med motstander på et et lite brett (se figur \ref{fig:brett}).
-Koblingsskjemaet er i figur \ref{fig:schematics}. Alle komponentene deler felles jord.
+I selve prototypen ble to RGB-lysdioder og en knapp loddet fast med motstander på et et lite brett (se figur \ref{fig:brett}).
+Koblingsskjemaet er i figur \ref{fig:schematics}. Alle komponentene delte felles jord.
 
 \begin{figure}
 \includegraphics[width=0.75\textwidth, center]{fig/prototype/breadbord}
@@ -75,16 +77,16 @@ rgbLed2.color('#DC143C').strobe();
 \end{lstlisting}
 
 \subsection{GT-511C3}
-Koden til fingeravtrykksensoren er en tynn abstraksjon over \gls{npm}-biblioteket \textit{GT-511C3}
+Koden til fingeravtrykksensoren ble utviklet som en tynn abstraksjon over \gls{npm}-biblioteket \textit{GT-511C3}
 \footnote{\url{https://github.com/the-AjK/GT-511C3}}, utgitt under BSD-3-lisens. Implementasjonen ligger
 i filen \textit{index.js} i modulen \textit{fingerprint}
 \footnote{\url{https://github.com/andybb/smart-pulse-oximeter/blob/master/fingerprint/index.js}}.
 Denne modulen eksporterer to metoder: \textit{enrollFingerAndRetrieveTemplate} og \textit{setFingerprintTemplateAndVerify}.
 
 Den første metoden går igjennom prosessen for å legge til et fingeravtrykk i databasen til sensoren, og henter ut et avtrykk
-på 498 bytes. Dette avtrykket kan og bør lagres i en skytjeneste, men dette er ikke implementert i prototypen nå.
+på 498 bytes. Dette avtrykket kan og bør lagres i en skytjeneste, men dette ble ikke implementert i prototypen.
 Den andre metoden har støtte for å ta inn et slikt avtrykk, og legge det inn i databasen til sensoren før avtrykket
-verifiseres ved å legge riktig finger på sensoren. Prototypen antar nå at avtrykket er lagret på samme sted i databasen hver gang.
+verifiseres ved å legge riktig finger på sensoren. I prototypen ble det antatt at avtrykket lagres på samme sted i databasen hver gang.
 
 \subsection{Nonin 3230}
 Utgaven av Nonin 3230 Trondheim kommune har kjøpt inn bruker en proprietær Bluetooth-tjeneste med 128-bit \gls{uuid}.
@@ -167,14 +169,14 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 \end{table}
 
 \subsection{3D-printet hus}
-Det 3D-printede huset til prototypen er designet og printet ut av Terje Røsand basert på alle komponentstørrelsene i samarbeid
+Det 3D-printede huset til prototypen ble designet og printet ut av Terje Røsand basert på alle komponentstørrelsene i samarbeid
 med Andreas Drivenes. Å integrere pulsoksimeteret i huset var den mest utfordrende delen av designet, og det gjorde at det ikke var
 mulig å få plass til noen andre komponenter over denne sensoren. Alle de andre sensorene måtte plasseres til høyre for pulsoksimeteret.
-Huset består av to uliker deler som klikkes sammen. Figur \ref{fig:3dmodell_topp1}
+Huset bestod av to uliker deler som klikkes sammen. Figur \ref{fig:3dmodell_topp1}
 og figur \ref{fig:3dmodell_topp2} viser toppdelen, og figur \ref{fig:3dmodell_bunn} viser bunndelen.
 
-Pulsoksimeteret og brettet med lysdioder og knapp skrus fast med tre skruer til toppdelen. Pulsoksimeteret presses mot toppdelen
-med et innlagt, mykt materiale. Raspberry Pi Zero W skrus fast med fire skruer til bunndelen.
+Pulsoksimeteret og brettet med lysdioder og knapp ble skrudd fast med tre skruer til toppdelen. Pulsoksimeteret ble presset mot toppdelen
+med et innlagt, mykt materiale. Raspberry Pi Zero W ble skrudd fast med fire skruer til bunndelen.
 
 \begin{figure}
 \includegraphics[width=0.65\textwidth, center]{fig/prototype/hoved_fra_topp}
@@ -194,9 +196,102 @@ med et innlagt, mykt materiale. Raspberry Pi Zero W skrus fast med fire skruer t
 \label{fig:3dmodell_bunn}
 \end{figure}
 
-\section{Serversideløsning}
-\subsection{AWS IoT}
-\subsection{AWS Lambda}
-\subsection{InfluxDB og Grafana}
+\section{Implementasjon av skytilkobling}
 
-\subsection{Begrensninger med løsningen}
+\subsection{Registrering og oppkobling til AWS IoT}
+Som beskrevet i delkapittel \ref{sec:aws_iot}, må en enhet registreres i thing registry i AWS IoT og
+få tilknyttet et sertifikat for å fungere. Kodesnutt \ref{lst:aws_register} viser hvordan prototypen ble registrert
+hos AWS IoT med kommandolinjeverktøyet de tilbyr. Andre muligheter hadde vært å bruke webgrensesnittet eller
+gjort det programmatisk med REST API-et.
+
+Kommandoen på linje 2 i kodesnutt \ref{lst:aws_register} genererte et X.509-sertifikat og et 2048-bit RSA nøkkelpar.
+Den printet ut et Amazon Resource Number (ARN) og en id som hører til sertifikatet,
+sertifikatsdataen og det genererte nøkkelparet (assymetrisk). Sertifikatet ble satt til å være aktivt.
+Det er også mulig å registrere egne sertifikater fra en egen sertifikatutsteder.
+
+En policy trengs for at prototypen skal godkjennes av AWS IoT. Policy er et JSON-dokument med flere
+\textit{statements} som inkluderer feltene \textit{effect}, \textit{action} og \textit{resource}.
+Policyen til prototypen ble laget på linje 3 i kodesnutt \ref{lst:aws_register}, og kan sees i kodesnutt \ref{lst:aws_policy}.
+Denne policyen var veldig lite restriktiv og tillot alle actions (connect, publish, subscribe, get/modify thing shadow) på hvilken
+som helst resource. En mer restriktiv policy hadde vært mer relevant om prototypen skulle blitt satt i produksjon.
+
+De to siste kommandoene knyttet henholdsvis sertfikatet til tingen, og policyen til sertifikatet. Dette gjorde at man kunne autentisere prototypen
+basert på sertifikatet.
+
+\begin{lstlisting}[frame=single, language=bash, caption=Registrere en ting i AWS IoT, label=lst:aws_register]
+aws iot create-thing --thing-name "smart-pulse-oximeter"
+aws iot create-keys-and-certificate --set-as-active
+aws iot create-policy --policy-name "smart-pulse-oximeter-Policy" --policy-document "file://policy.json"
+aws iot attach-thing-principal --thing-name "smart-pulse-oximeter" --principal "[sertifikats-ARN generert paa linje 2]"
+aws iot attach-principal-policy --principal "[sertifikats-ARN generert paa linje to]" --policy-name "smart-pulse-oximeter-Policy"
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript, frame=single,
+    caption=Policy-dokument (policy.json), label=lst:aws_policy]
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iot:*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+  ]
+}
+\end{lstlisting}
+
+For å koble klientsiden av prototypen til AWS IoT, ble nøklene og sertifikatet generert over brukt.
+AWS IoT autentiserer prototypen basert på tingnavnet, nøklene og sertifikatet.
+Se kodesnutt \ref{lst:aws_connect}.
+%\lstset{
+%   aboveskip=20pt, belowskip=20pt,
+%   numbers=left
+% }
+\begin{lstlisting}[language=JavaScript, frame=single,
+    caption=Koble prototype til AWS IoT, label=lst:aws_connect]
+const awsIot = require('aws-iot-device-sdk');
+
+const device = awsIot.device({
+  keyPath: process.env.AWS_KEY_PATH,
+  certPath: process.env.AWS_CERT_PATH,
+  caPath: process.env.AWS_CA_PATH,
+  clientId: 'smart-pulse-oximeter',
+  region: 'eu-central-1'
+});
+
+device.on('message', (topic, payload) => { 
+  // do something with payload
+});
+device.subscribe('oximetry');
+
+// Pretend like we have got an object called 'oximetry' from the pulse oximeter
+device.publish('oximetry', JSON.stringify({ oximetry }));
+\end{lstlisting}
+
+\subsection{Oppsett av businessregler og visning av data}
+
+\begin{lstlisting}[frame=single, language=bash, caption=Sette opp en businessregel i AWS IoT, label=lst:aws_business]
+aws iot create-topic-rule --rule-name "smart-pulse-oximeter-Rule" --topic-rule-payload "file://payload.json"
+
+//payload.json mock:
+const payload =
+{
+  "sql": "SELECT * from 'oximetry'",
+  "description": "Send data from pulse oximeter to a database and viewing tool",
+  "actions": [
+    {
+      "lambda": {
+        "functionArn": "[ARN of lambda function]"
+      }
+    }
+  ],
+  "ruleDisabled": false,
+  "awsIotSqlVersion": "2016-03-23"
+};
+\end{lstlisting}
+
+
