@@ -1,5 +1,10 @@
 \chapter{Bakgrunn}
 \label{ch:background}
+Første delkapittel gir en innføring i velferdsteknologi, og tegner opp linjene for hvordan veien har gått
+fra Hagen-utvalget til utprøving av avstandsoppfølging i kommunene (delkapittel \ref{sec:remotemonitoring}).
+Videre blir personvern i helse- og velferdsteknologi kort drøftet med utgangspunkt i Datatilsynet sine retningslinjer
+og den nye personvernsforordningen til EU. De to siste delkapitlene handler om \gls{iot} med vekt på hvordan
+denne plattformen legger til rette for en ny teknologistakk, og til slutt kort om bruken av \gls{iot} i velferdsteknologi.
 
 \section{Velferdsteknologi}
 \citet{regjeringen_hagen} er en norsk offentlig utredning (NOU) om velferdsteknologi med tittelen «Innovasjon i omsorg».
@@ -35,7 +40,6 @@ eller innleggelse i institusjon.
     eksportere disse innovasjonene. Omsorgsfeltet åpnes opp for importering av eksportering av varer og tjenester.
 \end{enumerate}
 
-% @Todo: Spesielt teknoplan og nasjonalt program er interessant for denne oppgaven blabla (skrive noe mer om de to punktene).
 «Teknoplan 2015» legges fram som en trinnvis plan på tre punkter der punkt én handler om å «videreutvikle trygghetsalarmen
 til en trygghetspakke som inkludere tilrettelegging for smarthus» , punkt to handler om å ta i bruk moderne
 kommunikasjonsteknologi og sosiale medier for å redusere ensomhet og punkt tre handler om å «ta i bruk teknologi
@@ -63,8 +67,8 @@ initativene i programmet er:
     \item Bidra til økt aktivitet (inkl. fritidsaktiviteter) for barn og unge med nedsatt funksjonsevne
 \end{enumerate}
 
-\textquote{mHelse, eller personlige mobile helseløsninger, er å benytte mobilbaserte verktøy og helseapplikasjoner
-(helse-apper) til helseformål}{.} % @TODO: kilde: https://ehelse.no/m-helse
+\textquote[\cite{ehelse_mhelse}]{mHelse, eller personlige mobile helseløsninger, er å benytte mobilbaserte verktøy og helseapplikasjoner
+(helse-apper) til helseformål}{.}
 De ulike initiativene går litt inn i hverandre. Avstandsoppfølging kan føre til mer trygghet og mestring hjemme
 og ta i bruk mHelse. Avstandsoppfølging er dekket nærmere i delkapittel \ref{sec:remotemonitoring}.
 
@@ -75,13 +79,13 @@ med en enhet som overfører data}{.}
 I avstandsoppfølging følges pasienter opp i sitt eget hjem, og
 målet med avstandsoppfølging er å unngå sykehusinnleggelse ved å oppdage forverringer tidlig og la
 pasientene behandle sin egen sykdom. Innleggelse på sykehus koster gjennomsnittlig 40000 kr per døgn og er en stor utgift
-for helsemyndighetene. % @Todo: kilde? https://www.regjeringen.no/no/tema/helse-og-omsorg/sykehus/innsikt/nokkeltall-og-fakta---ny/ofte-stilte-sporsmal/id534086/
+for helsemyndighetene \citep{regjeringen_innleggelse}.
 
-Kroniske sykdommer er den mest vanlige dødsårsaken på verdensbasis. %@TODO Kilde? http://www.who.int/chp/en/
+Kroniske sykdommer er den mest vanlige dødsårsaken på verdensbasis \citep{who_chronic}.
 I følge \citet{austad2016sensorer}, kan kroniske sykdommer som KOLS, hjerte- og karsykdommer og diabetes
 følges opp klinisk med noen få sensorer: vekt, blodtrykksmåler, pulsoksimeter og spirometer. Typiske
 tegn på hjertesvikt kan være tungpusthet, vektforandring, hoste, hjertebank, hevelser i beina og
-tretthet/tiltaksløshet \citep{ehelse_hjertesvikt}. % @TODO: http://nasjonalforeningen.no/hjerte-og-kar/ulike-hjertesykdommer/hjertesvikt/
+tretthet/tiltaksløshet \citep{ehelse_hjertesvikt} \citep{nasjonalforeningen}.
 
 Fire kommuner ble valgt ut til å ta del i et nasjonalt prosjekt for å legge til rette for økt mestring
 og trygghet hjemme med nye digitale behandlingsmetoder: Trondheim kommune, Stavanger kommune, Oslo kommune og Sarpsborg kommune.
@@ -149,6 +153,9 @@ bot, eller opptil 4 \% av fjorårets globale omsetning.
 Mildere sanksjoner er skriftlige advarsler, og periodiske
 granskninger av datasikringen (Wikipedia, 2016b).
 %https://en.wikipedia.org/w/index.php?title=General_Data_Protection_Regulation&oldid=754575179
+
+\textbf{TODO:} Legge inn noe om at helsedata må lagres i Norge? Og om debatten om outsourcing som har vært i det siste?
+Pluss kanskje noe om tofaktorautentisering? Hvordan sette strek?
 
 %Datalagring. det med å sette tjenester til utlandet
 

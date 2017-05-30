@@ -13,9 +13,8 @@ forskningsspørsmålene som skal besvares og forskingsdesignet som understøtter
 hvilke begrensninger og avveininger som er gjort og til slutt en disposisjon av oppgaven.
 
 \section{Bakgrunn og motivasjon}
-\acrfull{iot} er en global infrastruktur for informasjonssamfunnet som muliggjør avanserte tjenester ved å
-knytte sammen fysiske og virtuelle ting basert på eksisterende og fremadstormende kompatible informasjon- og kommunikasjonsteknologier.
-% @Todo: Kilde: http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=y.2060
+\textquote[\cite{itu_iot}]{\Acrfull{iot} er en global infrastruktur for informasjonssamfunnet som muliggjør avanserte tjenester ved å
+knytte sammen fysiske og virtuelle ting basert på eksisterende og fremadstormende kompatible informasjon- og kommunikasjonsteknologier}{.}
 \gls{iot} gir nye og spennende muligheter for kreative løsninger på problemer på forskjellige områder, alt fra husholdningsapparater
 og fjernoppdatering av programvare i biler, til oppfølging av helseproblemer innen velferdsteknologi. Datakraft- og lagring
 har blitt mye billigere, noe som gjør at man i større grad enn tidligere kan samle inn informasjon om verden rundt oss
@@ -33,6 +32,7 @@ Motivasjonen for dette forskningsprosjektet er å ta i bruk den nye skyteknologi
 pulsoksimeterprototype for avstandsoppfølging av kronisk syke som et alternativ til den løsningen Trondheim
 kommune tester ut i dag. Det vil gjøre at dette prosjektet kan sammenligne de to løsningene og undersøke hvordan ny
 teknologi kan brukes i avstandsoppfølging av kronisk syke. Et pulsoksimeter er en sensor som kan måle pulsfrekvens og oksygenmetning i blodet. 
+
 \section{Forskningsspørsmål}
 \label{sec:res_questions}
 % @Todo: Noe som presenterer forskningsspørsmålene her?
@@ -40,8 +40,7 @@ teknologi kan brukes i avstandsoppfølging av kronisk syke. Et pulsoksimeter er 
 \begin{enumerate}
   \item[\textbf{FS1}] Hvordan gjøres avstandsoppfølging av kronisk syke i Trondheim dag,
      og hvilke planer finnes for ny teknologi på dette området?
-  \item[\textbf{FS2}] Hva er en mulig teknologistakk for realisering av skybasert \gls{iot} for avstandsoppfølging av kronisk syke,
-    [og hvordan skiller dette/denne seg fra eksisterende og planlagte løsninger]?
+  \item[\textbf{FS2}] Hva er en mulig teknologistakk for realisering av skybasert \gls{iot} for avstandsoppfølging av kronisk syke?
   \item[\textbf{FS3}] Hvordan vurderer domeneeksperter innen velferdsteknologi frittstående skybaserte \gls{iot}-løsninger for avstandsoppfølging av kronisk syke?
   \item[\textbf{FS4}] Basert på funnene fra FS1, FS2 og FS3, hva er implikasjonene for utviklingen av skybasert \gls{iot} som teknologisk plattform
     for avstandsoppfølging av kronisk syke?
@@ -56,7 +55,7 @@ er intervjuer og dokumenter.
 
 For å svare på \textbf{FS2} og \textbf{FS3} vil den primære strategien være \textit{design og kreasjon} (prototyping/\textit{proof of concept})
 med intervjuer og dokumenter som datageneringsmetode. Case-studien vil også hjelpe til med å besvare disse spørsmålene. \textbf{FS4} vil drøftes kvalitativt 
-utifra svarene på de andre forskningsspørsmålene. Det vil kun gjøres kvalitative dataanalyser. De to forskningsstiene er vist i figur ref1 og figur ref2.
+utifra svarene på de andre forskningsspørsmålene. Det vil kun gjøres kvalitative dataanalyser.
 
 Forskningsmetodene og forskningsdesignet er utdypet i kapittel \ref{ch:method} og \ref{ch:design}.
 
@@ -80,14 +79,14 @@ ble vist fram.
 Terje Røsand (overingeniør, institutt for datateknologi og informatikk) bistår med teknisk hjelp til prototyping og 3D-printing.
 
 Alle aktørene er gjort kjent med formålet for forskningsprosjektet og hva den innsamlede dataen skal brukes til. De er informert om at
-intervjuene tas opp på telefon.
+intervjuene tas opp på telefon. De har fått tilbud om å lese gjennom transkriberingen av intervjuene.
 
 \section{Disposisjon av oppgaven}
 Neste kapittel gir en teoretisk bakgrunn innenfor velferdsteknologifeltet og avstandsoppfølging av kronisk syke spesielt.
-Det inneholde også bakgrunn om \gls{iot} og bruken av \gls{iot} i velferdsteknologi.
+Det inneholde også bakgrunn om personvern, \gls{iot} og bruken av \gls{iot} i velferdsteknologi.
 
-Kapittel \ref{ch:method} beskriver hvilke forskningsmetoder og hvilket forskningsdesign som brukes i prosjektet for å besvare forskningsspørsmålene. 
-Det inneholder også en drøfting om hvorvidt forskningsmetodene er hensiktsmessige, og hva validiteten til forskningsfunnene er.
+Kapittel \ref{ch:method} redegjør for forskningsmetodene som brukes i prosjektet, og \ref{ch:design} beskriver hvilket forskningsdesign som brukes i prosjektet for å besvare forskningsspørsmålene.
+Sistnevnte kapittel inneholder også en drøfting om hvorvidt forskningsmetodene er hensiktsmessige, og hva validiteten til forskningsfunnene er.
 
 Kapittel \ref{ch:case} handler om avstandsoppfølging i Trondheim kommune som en case-studie. Det baserer seg på intervjuer gjort med
 prosjektledere og skjermbilder av løsningen.
@@ -96,7 +95,7 @@ I kapittel \ref{ch:requirements}, drøftes krav til en frittstående \gls{iot}-l
 Datatilsynet og eksempelstudien.
 
 Kapittel \ref{ch:technology} går igjennom teknologi som er relevant for implementasjonen av et frittstående og skytilkoblet pulsoksimeter,
-før kapittel \ref{ch:implementation1} går i detalj på hvordan prototypen ble laget og hvordan den ble seende ut (+noe om videre arbeid?).
+før kapittel \ref{ch:implementation1} går i detalj på hvordan prototypen ble laget og hvordan den ble seende ut.
 
 Evalueringen av prototypen skjer i kapittel \ref{ch:evaluation1}, der resultatene av intervjuene gjort hos SINTEF og Trondheim kommune oppsummeres.
 
