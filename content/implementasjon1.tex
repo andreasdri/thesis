@@ -6,15 +6,8 @@ Første del av kapittelet handler om valg av teknologien før blabla
 Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med delkapitlene
 \textit{Implementasjon av klientkomponenter} og \textit{Implementasjon av skytilkobling}.
 
-
-Prototypen bestod av to deler, en klientsideløsning og en serverløsning. Klientsideløsningen ble utviklet rundt
-et Nonin 3230-pulsoksimeter utlånt av Trondhem kommune.
-
-Det første som ble utviklet var integrasjonen
-mot pulsoksimeteret ved hjelp
-
-\section{Komponentoversikt}
-Løsningen bestod av følgende komponenter:
+\section{Beskrivelse av prototype}
+Prototypen bestod av følgende komponenter:
 
 \begin{itemize}
   \item Raspberry Pi Zero W
@@ -30,20 +23,38 @@ alternativer som Tessel 2 og Arduino Yún. Det var et ønske om å bruke JavaScr
 bruker C/C++ som utviklingsspråk. Tessel 2 er en prototypeplattform basert på Node.js, men har få konfigurasjonsmuligheter
 og \gls{ble} er ikke innebygget.
 
-Oversikt over løsningen med hvordan komponentene kommuniserer med Raspberry Pi er i figur \ref{fig:prototypeoversikt}.
-
+Prototypen bestod av to deler, en klientsideløsning og en serverløsning.
+Oversikt over klientsideløsningen med hvordan komponentene kommuniserte med Raspberry Pi er i figur \ref{fig:prototypeoversikt}.
 \begin{figure}
 \includegraphics[width=0.55\textwidth, center]{fig/prototype/oversiktlosning}
 \caption{Sammenhengen mellom de ulike komponentene}
 \label{fig:prototypeoversikt}
 \end{figure}
 
+Klientsideløsningen ble utviklet rundt
+et Nonin 3230-pulsoksimeter utlånt av Trondhem kommune. Den kjørte på Node.js, en kryssplattform JavaScript-runtime som bruker den
+samme JavaScript-motoren som Chromium (V8). Løsningen bestod av én hovedapplikasjon, og en tilhørende modul hver for henholdsvis fingeravtrykksensoren,
+pulsoksimeteret og knapp/lysdioder. Disse modulene er utdypt nærmere i neste delkapittel, \textit{Implementasjon av klientkomponenter}.
+Koden til hovedmodulen er i vedlegg TODO.
+
+Applikasjonen startet automatisk opp på Raspberry Pi, og loggførte alle hendelser til en tekstfil.
+Prototypen sendte IP-adressen sin ved oppstart slik at det var mulig å nå den utenfra.
+Klientsiden snakket med serveren over MQTTS, og ble autentisert med et sertifikat. Sensordataen fra pulsoksimeteret ble publisert til
+AWS IoT dersom brukeren var autentisert med fingeravtrykksensor. Virkemåten til prototypen var den samme som det de funksjonelle
+kravene spesifiserte i kapittel \ref{ch:requirements}. Se figur TODO for et bilde av hvordan prototypen ble seende ut.
+
+Serveren, som var basert på AWS IoT, hadde en
+regel for å prosessere dataen som kommer inn. Denne regelen sendte dataen videre til en lambdafunksjon som puttet dataen
+i InfluxDB, en tidsseriedatabase. Denne databasen ble knyttet opp mot Grafana, et åpent kildekode-verktøy som integrerer
+med InfluxDB og viste fram grafer og metrikker i ulike konfigurerbare \textit{dashboards}. En arkitekturoversikt over løsningen
+kan finnes i figur TODO. Serverløsningen er videre utdypt i delkapittel \ref{sec:implementasjon_skytilkobling}.
+
 \section{Implementasjon av klientkomponenter}
 
 \subsection{Trykknapp og lysdioder}
 Figur \ref{fig:breadboard} viser hvordan trykknappen og lysdiodene ble koblet på
 portene til Raspberry Pi med et \textit{breadboard}. Oppkoblingen er logisk ekvivalent med prototypen.
-I selve prototypen ble to RGB-lysdioder og en knapp loddet fast med motstander på et et lite brett (se figur \ref{fig:brett}).
+I selve prototypen ble to RGB-lysdioder og en knapp loddet fast med motstander på et et lite brett av Terje Røsand (se figur \ref{fig:brett}).
 Koblingsskjemaet er i figur \ref{fig:schematics}. Alle komponentene delte felles jord.
 
 \begin{figure}
@@ -204,6 +215,7 @@ med et innlagt, mykt materiale. Raspberry Pi Zero W ble skrudd fast med fire skr
 \end{figure}
 
 \section{Implementasjon av skytilkobling}
+\label{sec:implementasjon_skytilkobling}
 
 \subsection{Registrering og oppkobling til AWS IoT}
 Som beskrevet i delkapittel \ref{sec:aws_iot}, må en enhet registreres i thing registry i AWS IoT og
@@ -301,4 +313,4 @@ const payload =
 };
 \end{lstlisting}
 
-
+\textbf{TODO:} Her kommer det litt mer om lamdafunksjon og visning av data fra en database
