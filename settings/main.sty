@@ -28,18 +28,21 @@
 \setcounter{tocdepth}{2} 
 \usepackage[colorlinks=true, pdfstartview=FitV,
 linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
-\pdfcompresslevel=9
+%\pdfcompresslevel=9
 
 \usepackage{tabularx,ragged2e}
 \usepackage{todonotes}
 
 \usepackage[export]{adjustbox}[2011/08/13]
 \usepackage{longtable}
+\usepackage{ifthen}
+
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Kodesnutt}% Listing -> Kodesnutt
 
 \usepackage[acronym, toc]{glossaries}
 \usepackage{settings/javascript}
+\include{content/forskningsspm}
 
 \makenoidxglossaries
 \addbibresource{referanser.bib}

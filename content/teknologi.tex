@@ -8,7 +8,8 @@ for kommunikasjon, skyteknologi og skyløsninger, plattformer for elektronikkpro
 Delkapittelet tar for seg WebSockets og \gls{mqtt} som kjører
 på \gls{tcp}, trådløsstandarden \gls{ble} og sikkerhetsutfordringer med \gls{ble} og seriell kommunikasjon og \gls{gpio} for kommunikasjongrensesnitt mellom elektronikk.
 
-\subsection{WebSockets og MQTT}
+\subsection{MQTT} % WebSockets
+\iffalse
 WebSockets er en protokoll for applikasjonslaget på toppen av \gls{tcp}
 som gjør det mulig med toveiskommunikasjon gjennom en enkelt \gls{tcp}-socket.
 I følge \citet{rfc6455} ble protokollen introdusert for å unngå tungvint \gls{http}-polling.
@@ -88,13 +89,12 @@ For å unngå passiv tyvlytting, krypterer BLE dataen som sendes mellom to enhet
 i nøkkelutvekslingen mellom de to enhetene. I den vanligste paringsmetoden i \textit{LE Legacy Pairing}, \textit{Just Works\texttrademark},
 brukes en svak midlertidig nøkkel (nøkkelen er tallet 0). Dermed er det enkelt for en angriper å finne ut hva korttidsnøkkelen
 blir med rå datakraft og gjetting. Andre paringsmetoder eksisterer, men disse trenger brukerinteraksjon eller andre trådløse protokoller (NFC).
-De er imidlertid rimelig sikre mot \gls{mitm}.
-%\todo{kilde: \url{https://eewiki.net/display/Wireless/A+Basic+Introduction+to+BLE+Security}}
+De er imidlertid rimelig sikre mot \gls{mitm} \citep{eewiki_ble}.
 
 4.2 introduserer \textit{LE Secure Connections}. I denne utgaven av Just Works\texttrademark-paring blir det kun generert
 én langtidsnøkkel ved hjelp av Elliptic Curve Diffie Hellman asymmetrisk kryptering. Dette løser problemet med passiv
 tyvlytting, men forbindelsen er fortsatt sårbar for \gls{mitm} siden autentisering mangler. Et lite tillegg til Just Works\texttrademark
-der man sammenligner om to verdier er like gjør denne metoden sikker mot \gls{mitm}.
+der man sammenligner om to verdier er like gjør denne metoden sikker mot \gls{mitm} \citep{eewiki_ble}.
 
 Etter at enhetene er paret, er det mulig å lagre nøklene på hver enhet slik at de kan gjenbrukes uten å gå igjennom hele
 paringsprosessen på nytt. Dette kalles \textit{bonding}.
@@ -216,8 +216,8 @@ Raspberry Pi Zero W kjører på Raspbian, et Debian-basert operativsystem laget 
 Raspberry Pi med Linux-kjernen i bunn..
 
 \begin{figure}
-\includegraphics[width=0.8\textwidth,center]{fig/pizero}
-\caption{Raspberry Pi Zero W. Foto: \url{https://www.raspberrypi.org}}
+\includegraphics[width=0.8\textwidth,center]{fig/prototype/pi}
+\caption{Raspberry Pi Zero W}
 \label{fig:pizero}
 \end{figure}
 
@@ -237,10 +237,10 @@ den fysiske omverdenen på en eller annen måte, for eksempel lysdioder, buzzere
 \subsection{Pulsoksimeter}
 Et pulsoksimeter er en sensor som måler oksygenmetning i blodet og pulsfrekvens.
 
-Trondheim kommune låner ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
+Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
 Nonin 3230 er et pulsoksimeter med støtte for \gls{ble} 4.0. Dette pulsoksimeteret ble anbefalt av \citet{austad2016sensorer}
 i rapporten \textit{Sensorer til støtte for avstandsoppfølging}. De trakk fram at alle Nonins produkter
-er klinisk validerte, at det er støtte for \gls{ble}, % @TODO OG BLABLA NOE MER 
+er klinisk validerte og at det er støtte for \gls{ble}. % @TODO OG BLABLA NOE MER
 
 Nonin 3230 måler oksygenmetning fra 0 til 100\% og pulsfrekvens fra 18 til 321 slag per minutt. Den går på to
 AAA-batterier, og er spesifisert for 2200 spotmålinger (25 sekunder per måling).
@@ -253,5 +253,25 @@ AAA-batterier, og er spesifisert for 2200 spotmålinger (25 sekunder per måling
 
 %https://www.protocentral.com/sensors/1030-protocentral-pulse-oximeter-heart-rate-sensor-based-on-max30100.html
 \subsection{Fingeravtrykksensor}
-\subsection{Trykknapp}
-\subsection{RGB LED}
+Fingeravtrykksensor er en sensor som kan prosessere et fingeravtrykk og verifisere og matche et avtrykk mot
+et tidligere lagret bilde av avtrykket. I dette prosjektet er det blitt kjøpt inn sensor som heter GT-511C3 (figur \ref{fig:gt511c3}).
+Prisen på denne sensoren er litt over 400 kr. Den tar i mot enkle kommandoer for å styre sensoren over seriell kommunikasjon.
+
+\begin{figure}
+\includegraphics[width=0.55\textwidth, center]{fig/prototype/fingerprintsensor}
+\caption{GT-511C3}
+\label{fig:gt511c3}
+\end{figure}
+
+\subsection{Trykknapp og lysdioder}
+Lysdioder er enkle aktuatorer som gir fra seg lys og kan styres programmatisk. I dette prosjektet brukes tre RGB-lysdioder og en hvit lysdiode.
+RGB-lysdiodene trenger tre tilkoblingspunkter
+for rødt, grønt og blått lys i tillegg til jording. RGB-lysdiodene må ha en motstand foran seg. Lysdiodene styres med pulsbreddemodulasjon i software.
+Det brukes også en helt enkel trykknapp som er konfigurert til pullup, det vil si at verdien er 0 (LOW) når knappen trykkes ned
+og 1 (HIGH) når knappen er åpen. Figur \ref{fig:lysdioder_motstander} viser noen av de ulike komponentene.
+
+\begin{figure}
+\includegraphics[width=0.55\textwidth, center]{fig/prototype/ledmotstandknapp}
+\caption{RGB-lysdiode, motstander og trykknapp}
+\label{fig:lysdioder_motstander}
+\end{figure}
