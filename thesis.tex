@@ -2,31 +2,42 @@
 \documentclass[12pt, a4paper, twoside, norsk, openright, notitlepage]{report}
 \usepackage{settings/main}
 \include{content/forkortelser}
-
 %%===================================
 \begin{document}
 \setcounter{page}{0}
 \pagenumbering{roman}
 
+\addcontentsline{toc}{chapter}{\abstractname}
 \include{content/sammendrag}
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\prefacename}
 \include{content/forord}
+\cleardoublepage
 
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
-\addcontentsline{toc}{chapter}{Innhold}
-\clearpage
+\cleardoublepage
 
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
-\addcontentsline{toc}{chapter}{Tabeller}
-\clearpage
+\cleardoublepage
 
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures									
-\addcontentsline{toc}{chapter}{Figurer}
-\clearpage
+\cleardoublepage
 
-\printglossary[type=\acronymtype,title=Forkortelser]
+\phantomsection
+\printnoidxglossary[type=\acronymtype,title=Forkortelser]
 \cleardoublepage
 
 \include{content/sitat}
+\thispagestyle{plain}
+\cleardoublepage
 
 %%=========================================
 \setcounter{page}{0}
