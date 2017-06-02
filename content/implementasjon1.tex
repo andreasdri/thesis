@@ -1,7 +1,7 @@
-\chapter{Design og implementasjon av et skytilkoblet pulsoksimeter}
+\chapter{Design og implementasjon av et skytilkoblet pulsoksymeter}
 \label{ch:implementation1}
 
-Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksimeter med innebygget autentisering ble utviklet.
+Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksymeter med innebygget autentisering ble utviklet.
 Første del av kapittelet handler om valg av teknologien før blabla
 Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med delkapitlene
 \textit{Implementasjon av klientkomponenter} og \textit{Implementasjon av skytilkobling}.
@@ -14,10 +14,10 @@ Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med 
           \item [\textbf{FK1.1}] Brukeren må legge fingeren på fingeravtrykksensoren for å autentisere innen 10 sekunder.
           \item [\textbf{FK1.2}] Ved vellykket autentisering skal brukeren få 120 sekunder til å gjennomføre
               en måling.
-          \item [\textbf{FK1.3}] Brukeren starter målingen ved å stikke fingeren inn i pulsoksimeteret.
+          \item [\textbf{FK1.3}] Brukeren starter målingen ved å stikke fingeren inn i pulsoksymeteret.
               En måling er definert som kontinuerlig datainnhenting i 20 sekunder.
           \item [\textbf{FK1.4}] Systemet skal sende data fra målingen kontinuerlig til en skytjeneste.
-          \item [\textbf{FK1.5}] Når en måling er ferdig, skal skjermen på pulsoksimeteret og lysdiodene indikere til brukeren
+          \item [\textbf{FK1.5}] Når en måling er ferdig, skal skjermen på pulsoksymeteret og lysdiodene indikere til brukeren
               at det er godkjent.
           \item [\textbf{FK1.6}]Systemet skal vise rødt lys og sende brukeren tilbake til sovende modus dersom et av de
               foregående kravene ikke oppfylles.
@@ -41,7 +41,7 @@ Prototypen bestod av følgende komponenter:
 \begin{itemize}
   \item Raspberry Pi Zero W
   \item GT-511C3 (fingeravtrykksensor)
-  \item Nonin 3230 (pulsoksimeter med \gls{ble})
+  \item Nonin 3230 (pulsoksymeter med \gls{ble})
   \item Standard trykknapp
   \item Tre RGB-lysdioder og én hvit lysdiode
   \item 3D-printet hus
@@ -61,14 +61,14 @@ Oversikt over klientsideløsningen med hvordan komponentene kommuniserte med Ras
 \end{figure}
 
 Klientsideløsningen ble utviklet rundt
-et Nonin 3230-pulsoksimeter utlånt av Trondhem kommune. Den kjørte på Node.js, en kryssplattform JavaScript-runtime som bruker den
+et Nonin 3230-pulsoksymeter utlånt av Trondhem kommune. Den kjørte på Node.js, en kryssplattform JavaScript-runtime som bruker den
 samme JavaScript-motoren som Chromium (V8). Løsningen bestod av én hovedapplikasjon, og en tilhørende modul hver for henholdsvis fingeravtrykksensoren,
-pulsoksimeteret og knapp/lysdioder. Disse modulene er utdypt nærmere i neste delkapittel, \textit{Implementasjon av klientkomponenter}.
+pulsoksymeteret og knapp/lysdioder. Disse modulene er utdypt nærmere i neste delkapittel, \textit{Implementasjon av klientkomponenter}.
 Koden til hovedmodulen er i vedlegg TODO.
 
 Applikasjonen startet automatisk opp på Raspberry Pi, og loggførte alle hendelser til en tekstfil.
 Prototypen sendte IP-adressen sin ved oppstart slik at det var mulig å nå den utenfra.
-Klientsiden snakket med serveren over MQTTS, og ble autentisert med et sertifikat. Sensordataen fra pulsoksimeteret ble publisert til
+Klientsiden snakket med serveren over MQTTS, og ble autentisert med et sertifikat. Sensordataen fra pulsoksymeteret ble publisert til
 AWS IoT dersom brukeren var autentisert med fingeravtrykksensor. Virkemåten til prototypen var den samme som det de funksjonelle
 kravene spesifiserte i kapittel \ref{ch:requirements}. Se figur TODO for et bilde av hvordan prototypen ble seende ut.
 
@@ -148,13 +148,13 @@ i tabell \ref{table:nonin-datapacket} og \textit{Nonin Control Point} som kan br
 indikere at en måling er ferdig, eller sette sikkerhetsmodus. 
 
 Et \gls{npm}-biblotek (fotnote url) kalt \textit{nonin-3230-ble} ble utviklet for å gjøre integrasjonen mot sensoren enklere.
-Biblioteket baserer seg på \textit{noble-device} (fotnote), og inneholder metoder for å oppdage et pulsoksimeter,
+Biblioteket baserer seg på \textit{noble-device} (fotnote), og inneholder metoder for å oppdage et pulsoksymeter,
 koble til, lytte etter ny sensordata og indikere at en måling er ferdig. Sensordata kommer som et JavaScript-objekt
 og inneholder teller, pulsfrekvens, SpO2 og et statusobjekt (se tabell \ref{table:nonin-status}).
 Koden er lagt ved i appendiks \ref{lst:nonin-3230-library}.
 Eksempel på bruk kan finnes i kodesnutt \ref{lst:nonin-3230-usage}.
 
-Koden slik den er i dag er lagt opp til å utføre kontinuerlige målinger hvor sensordata mottas hvert sekund. Pulsoksimeteret
+Koden slik den er i dag er lagt opp til å utføre kontinuerlige målinger hvor sensordata mottas hvert sekund. Pulsoksymeteret
 har også støtte for å utføre en spot-måling, det vil si én god måling som er kvalitetssikret av sensoren. Trondheim kommune
 bruker kun spot-målinger i sin løsning i dag.
 
@@ -189,7 +189,7 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 \centering
 \begin{tabular}{|l|l|l}
 \hline
-\multicolumn{3}{|l|}{\textbf{Datapakke til pulsoksimeter}} \\ \hline
+\multicolumn{3}{|l|}{\textbf{Datapakke til pulsoksymeter}} \\ \hline
 \textbf{Byte} & \textbf{Felt} & \multicolumn{1}{l|}{\textbf{Beskrivelse}} \\ \hline
 1 & Lengde & Antallet bytes inkludert denne. \\ \hline
 2 & Status & \multicolumn{1}{l|}{Indikerer nåværende enhetsstatus (tabell \ref{table:nonin-status}).} \\ \hline
@@ -225,12 +225,12 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 
 \subsection{3D-printet hus}
 Det 3D-printede huset til prototypen ble designet og printet ut av Terje Røsand basert på alle komponentstørrelsene i samarbeid
-med Andreas Drivenes. Å integrere pulsoksimeteret i huset var den mest utfordrende delen av designet, og det gjorde at det ikke var
-mulig å få plass til noen andre komponenter over denne sensoren. Alle de andre sensorene måtte plasseres til høyre for pulsoksimeteret.
+med Andreas Drivenes. Å integrere pulsoksymeteret i huset var den mest utfordrende delen av designet, og det gjorde at det ikke var
+mulig å få plass til noen andre komponenter over denne sensoren. Alle de andre sensorene måtte plasseres til høyre for pulsoksymeteret.
 Huset bestod av to uliker deler som klikkes sammen. Figur \ref{fig:3dmodell_topp1}
 og figur \ref{fig:3dmodell_topp2} viser toppdelen, og figur \ref{fig:3dmodell_bunn} viser bunndelen.
 
-Pulsoksimeteret og brettet med lysdioder og knapp ble skrudd fast med tre skruer til toppdelen. Pulsoksimeteret ble presset mot toppdelen
+Pulsoksymeteret og brettet med lysdioder og knapp ble skrudd fast med tre skruer til toppdelen. Pulsoksymeteret ble presset mot toppdelen
 med et innlagt, mykt materiale. Raspberry Pi Zero W ble skrudd fast med fire skruer til bunndelen.
 
 \begin{figure}

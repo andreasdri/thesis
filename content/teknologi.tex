@@ -48,19 +48,21 @@ dårlige nettverksforbindelser. \gls{mqtt} kjører direkte på \gls{tcp}/IP elle
 
 Protokollen er basert på \textit{publish-subscribe}-meldingsmønsteret. En klient kan publisere hva som helst til
 et emne (streng, eller liste av strenger). En annen klient som abonnerer på det samme emne
-vil motta datapakken fra den andre klienten. Dette gir de følgende klientmetodesignaturene for \gls{mqtt}:
+vil motta datapakken fra den andre klienten. Dette gir de følgende klientmetodesignaturene for \gls{mqtt}
+i kodesnutt \ref{lst:mqtt}:
 
-\begin{verbatim}
+\begin{lstlisting}[frame=single, caption=Klientside-API for MQTT, label=lst:mqtt]
     connect(mqtt://address:port)
     subscribe(topic: String | list of topics: String)
     unsubscribe(topic: String | list of topics: String)
     publish(topic: String, payload: String/binary)
     onMessageReceived(topic: String, payload: String/binary)
     close()
-\end{verbatim}
+\end{lstlisting}
 
 \gls{mqtt}-\textit{brokeren} tar i mot og behandler innkommende klienttilkoblinger og stopp av abonnement. I tillegg
-mottar den meldinger og sender meldinger videre til klienter som abonnerer på et emne.
+mottar den meldinger og sender meldinger videre til klienter som abonnerer på et emne. MQTT kjører på port 1883, mens
+MQTT over \gls{tls} kjører på port 8883.
 
 \subsection{Bluetooth Low Energy}
 \gls{ble}, tidligere markedsført som Bluetooth Smart, ble en del av Bluetooth-standarden fra versjon 4. BLE er egnet
@@ -234,11 +236,11 @@ den fysiske omverdenen på en eller annen måte, for eksempel lysdioder, buzzere
 % https://www.ntnu.no/wiki/display/plab/1.+Generelt+om+aktuatorer+og+LED
 % https://www.ntnu.no/wiki/display/plab/1.+Generelt+om+sensorer+og+trykknapper
 
-\subsection{Pulsoksimeter}
-Et pulsoksimeter er en sensor som måler oksygenmetning i blodet og pulsfrekvens.
+\subsection{Pulsoksymeter}
+Et pulsoksymeter er en sensor som måler oksygenmetning i blodet og pulsfrekvens.
 
 Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
-Nonin 3230 er et pulsoksimeter med støtte for \gls{ble} 4.0. Dette pulsoksimeteret ble anbefalt av \citet{austad2016sensorer}
+Nonin 3230 er et pulsoksymeter med støtte for \gls{ble} 4.0. Dette pulsoksymeteret ble anbefalt av \citet{austad2016sensorer}
 i rapporten \textit{Sensorer til støtte for avstandsoppfølging}. De trakk fram at alle Nonins produkter
 er klinisk validerte og at det er støtte for \gls{ble}. % @TODO OG BLABLA NOE MER
 
