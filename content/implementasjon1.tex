@@ -7,7 +7,6 @@ Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med 
 \textit{Implementasjon av klientkomponenter} og \textit{Implementasjon av skytilkobling}.
 
 \section{Designkrav til prototype}
-
 \begin{enumerate}
     \item [\textbf{FK1}] Når brukeren trykker på knappen skal systemet sette i gang en måling
         \begin{enumerate}
@@ -25,18 +24,28 @@ Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med 
     \item [\textbf{FK2}] Når brukeren holder inne knappen i over fire sekunder og slipper i utviklingsmodus,
         skal prosessen for å registrere et fingeravtrykk settes i gang.
         \begin{enumerate}
-          \item [\textbf{FK2.1}] Registreringen blir gjort sammen med helsepersonell som forklarer hva som skal gjøres.
+          \item [\textbf{FK2.1}] Registreringen blir gjort sammen med helsepersonell som forklarer hva som skal gjøres. Brukeren legger
+              fingeren på sensoren, venter til det blir et blått blink, og gjentar dette to ganger til med samme finger.
           \item [\textbf{FK2.2}] Dersom noe går galt under registreringen, skal systemet vise rødt lys og sende brukeren
               tilbake til sovende modus igjen.
         \end{enumerate}
 \end{enumerate}
 
-% Use case
-% Scenarie
-% Stegene
+\section{Bruksscenario}
+Geir (70) har KOLS og foretar en måling med pulsoksimeter hver dag som en del av morgenrutinen. I systemet har han lagt
+inn høyre pekefinger. Han ser at pulsoksimeteret
+er oppe og kjører og blinker gult. Han trykker på den hvite knappen som er øverst og fingeravtrykkssensoren begynner
+å lyse blått. Han vet at det betyr at han må legge pekefingeren sin på sensoren. Når han legger fingeren på sensoren blinker
+lyset blått og slår seg av. Den høyre lysdioden er grønn, og han skjønner at fingeren ble registrert riktig. En hvit lysdiode
+indikerer at det er på tide å stikke fingeren inn i måleren. Geir stikker fingeren inn i måleren som slår seg på,
+og observerer at Bluetooth-indikatoren blir grønn og at alt er greit. Han har fingeren i måleren helt til det kommer opp et kontrollmerke
+som indikerer at målingen er ferdig. Systemet går tilbake til å blinke gult.
+
+På sentralen oppdager sykepleier Lise (42) at sensordataene er kommet inn. Hun ser at batteriet til sensoren er lavt, og merker seg at hun
+må si i fra til Geir at han må huske å bytte batterier neste gang de har kontakt.
 
 \section{Beskrivelse av prototype}
-Prototypen bestod av følgende komponenter:
+Prototypen bestod av følgende komponenter på klientsiden:
 
 \begin{itemize}
   \item Raspberry Pi Zero W
@@ -47,16 +56,26 @@ Prototypen bestod av følgende komponenter:
   \item 3D-printet hus
 \end{itemize}
 
+Figur \ref{fig:ekte_prototype} viser prototypen når det ble gjennomført en vellykket
+måling med overføring.
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth, center]{fig/prototype/ekte_prototype}
+\caption{Prototypen ved fungerende måling}
+\label{fig:ekte_prototype}
+\end{figure}
+
 Komponentene ble presentert i forrige kapittel. Raspberry Pi Zero W ble valgt som prototypeplattform istedenfor
 alternativer som Tessel 2 og Arduino Yún. Det var et ønske om å bruke JavaScript og Node.js som utviklingsmiljø, og Arduino
 bruker C/C++ som utviklingsspråk. Tessel 2 er en prototypeplattform basert på Node.js, men har få konfigurasjonsmuligheter
 og \gls{ble} er ikke innebygget.
 
 Prototypen bestod av to deler, en klientsideløsning og en serverløsning.
-Oversikt over klientsideløsningen med hvordan komponentene kommuniserte med Raspberry Pi er i figur \ref{fig:prototypeoversikt}.
+Arkitekturoversikt over løsningen med hvordan komponentene kommuniserte med Raspberry Pi, og hvordan
+Pi-en kommuniserte med serverløsningen basert på AWS er i figur \ref{fig:prototypeoversikt}.
 \begin{figure}
-\includegraphics[width=0.55\textwidth, center]{fig/prototype/oversiktlosning}
-\caption{Sammenhengen mellom de ulike komponentene}
+\includegraphics[width=1.0\textwidth, center]{fig/arkitektur}
+\caption{Arkitekturoversikt over løsningen}
 \label{fig:prototypeoversikt}
 \end{figure}
 
@@ -64,7 +83,7 @@ Klientsideløsningen ble utviklet rundt
 et Nonin 3230-pulsoksymeter utlånt av Trondhem kommune. Den kjørte på Node.js, en kryssplattform JavaScript-runtime som bruker den
 samme JavaScript-motoren som Chromium (V8). Løsningen bestod av én hovedapplikasjon, og en tilhørende modul hver for henholdsvis fingeravtrykksensoren,
 pulsoksymeteret og knapp/lysdioder. Disse modulene er utdypt nærmere i neste delkapittel, \textit{Implementasjon av klientkomponenter}.
-Koden til hovedmodulen er i vedlegg TODO.
+Koden til hovedmodulen er i vedlegg \ref{appendix:smart-pulse-oximeter}.
 
 Applikasjonen startet automatisk opp på Raspberry Pi, og loggførte alle hendelser til en tekstfil.
 Prototypen sendte IP-adressen sin ved oppstart slik at det var mulig å nå den utenfra.
@@ -75,8 +94,8 @@ kravene spesifiserte i kapittel \ref{ch:requirements}. Se figur TODO for et bild
 Serveren, som var basert på AWS IoT, hadde en
 regel for å prosessere dataen som kommer inn. Denne regelen sendte dataen videre til en lambdafunksjon som puttet dataen
 i InfluxDB, en tidsseriedatabase. Denne databasen ble knyttet opp mot Grafana, et åpent kildekode-verktøy som integrerer
-med InfluxDB og viste fram grafer og metrikker i ulike konfigurerbare \textit{dashboards}. En arkitekturoversikt over løsningen
-kan finnes i figur TODO. Serverløsningen er videre utdypt i delkapittel \ref{sec:implementasjon_skytilkobling}.
+med InfluxDB og viste fram grafer og metrikker i ulike konfigurerbare \textit{dashboards}.
+Serverløsningen er videre utdypt i delkapittel \ref{sec:implementasjon_skytilkobling}.
 
 \section{Implementasjon av klientkomponenter}
 
@@ -99,7 +118,7 @@ Koblingsskjemaet er i figur \ref{fig:schematics}. Alle komponentene delte felles
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.95\textwidth, center]{fig/prototype/schmeatic}
+\includegraphics[width=0.99\textwidth, center]{fig/prototype/schmeatic}
 \caption{Koblingsskjema av trykknapp og lysdioder}
 \label{fig:schematics}
 \end{figure}
@@ -142,13 +161,16 @@ Derfor ble \textit{mini-uart} slått på (fotnote). Dette er en seriell port med
 \subsection{Nonin 3230}
 Utgaven av Nonin 3230 Trondheim kommune har kjøpt inn bruker en proprietær Bluetooth-tjeneste med 128-bit \gls{uuid}.
 I nyere utgaver kan man også bruke den åpne spesifikasjonen til \textit{Bluetooth SIG Pulse Oximeter Service}.
-Den proprietære tjenesten heter \textit{Nonin Oximetry Service} og har \gls{uuid} \textit{46a970e00d5f11e28b5e0002a5d5c51b}.
+Den proprietære tjenesten heter \textit{Nonin Oximetry Service} og har \gls{uuid} \textit{46a970e00d5f11e28b5}\newline
+\textit{e0002a5d5c51b}.
 Tjenesten har to karakteristikker -- \textit{Nonin Oximetry Measurement} som sender data hvert sekund som spesifiert
 i tabell \ref{table:nonin-datapacket} og \textit{Nonin Control Point} som kan brukes til å synkronisere skjermen,
 indikere at en måling er ferdig, eller sette sikkerhetsmodus. 
 
-Et \gls{npm}-biblotek (fotnote url) kalt \textit{nonin-3230-ble} ble utviklet for å gjøre integrasjonen mot sensoren enklere.
-Biblioteket baserer seg på \textit{noble-device} (fotnote), og inneholder metoder for å oppdage et pulsoksymeter,
+Et \gls{npm}-biblotek \footnote{\url{https://github.com/andybb/nonin-3230-ble}} kalt \textit{nonin-3230-ble} ble utviklet
+for å gjøre integrasjonen mot sensoren enklere.
+Biblioteket baserer seg på \textit{noble-device} \footnote{\url{https://github.com/sandeepmistry/noble-device}}
+, og inneholder metoder for å oppdage et pulsoksymeter,
 koble til, lytte etter ny sensordata og indikere at en måling er ferdig. Sensordata kommer som et JavaScript-objekt
 og inneholder teller, pulsfrekvens, SpO2 og et statusobjekt (se tabell \ref{table:nonin-status}).
 Koden er lagt ved i appendiks \ref{lst:nonin-3230-library}.

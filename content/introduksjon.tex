@@ -21,13 +21,36 @@ og fjernoppdatering av programvare i biler, til oppfølging av helseproblemer in
 har blitt mye billigere, noe som gjør at man i større grad enn tidligere kan samle inn informasjon om verden rundt oss
 med sensorer. De to største leverandørene av skytjenester, \gls{aws} og Microsoft Azure,
 har i løpet av det siste halvannet året lansert nye tjenester for å få sensorenheter tilkoblet til Internett
-på en enkel og sikker måte (ref. AWS, Azure).
+på en enkel og sikker måte \citep{aws_announcement} \citep{azure_announcement}.
 
 Velferdsteknologi har vært høyt prioritert av helsemyndighetene i Norge de siste årene. Trondheim kommune prøver ut
 et prosjekt med avstandsoppfølging av kronisk syke kalt HelsaMi+ på oppdrag fra Helsedirektoratet. 
 Avstandsoppfølging kan øke trygghetsfølelsen for innbyggerne og føre til lavere kostnader og færre sykehusinnleggelser (kilde?).
-Løsningen til Trondheim kommune innebærer bruk av et nettbrett der man daglig svarer på spørsmål om hvordan formen er. Noen av pasientene
+Løsningen til Trondheim kommune innebærer bruk av et nettbrett der man daglig svarer på spørsmål om hvordan formen er
+(figur \ref{fig:intro_helsami}). Noen av pasientene
 kan måle vekt, blodtrykk, pulsfrekvens og oksygenmetning ved hjelp av sensorer koblet til nettbrettet.
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth,center]{fig/intro_helsami}
+\caption{Bruk av nettbrett i HelsaMi+}
+\label{fig:intro_helsami}
+\end{figure}
+
+Tidligere prosjekter som KOLS Heim har også undersøkt hvordan en bedre kan behandle kroniske pasienter hjemme, og få til økt grad
+av samarbeid mellom sykehusene og den kommunale helsetjenesten. KOLS Heim gikk fra 2008 til 2011,
+og målet var at \textquote[\cite{kols_idamille}]{(...) bedre samhandling skal kunne
+bedre pasientens behandlingstilbud, helsetilstand og livskvalitet, øke kunnskapen om KOLS innen hjemmetjenesten og forhindre
+hyppige sykehusinnleggelser}{.} Masteroppgaven «Alternativer for registrering av
+pasientopplysninger i hjemmetjenesten» sammenlignet tre ulike teknologier for KOLS Heim: digital penn og papir, PDA/mobiltelefon
+og laptop (figur  \ref{fig:intro_gammelkols}).
+Der ble digital penn og papir foretrukket \citep{kols_solberg}. Mye har skjedd i den digitale utviklingen siden den gang,
+avstandsoppfølging blir dermed en naturlig etterfølger til arbeidet og forskningen som er gjort tidligere.
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth,center]{fig/intro_gammelkols}
+\caption{Bruk av digital penn \citep{kols_solberg}}
+\label{fig:intro_gammelkols}
+\end{figure}
 
 % En rekke utfordringer, deriblant brukervennlighet, sikkerhet. (bake inn i avsnittet under)
 Med avstandsoppfølging følger det med seg en rekke utfordringer knyttet til sikkerhet, autentisering, samhandling,

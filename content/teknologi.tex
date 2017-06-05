@@ -132,7 +132,18 @@ brukes til \textit{interrupts}.
 
 \subsection{Skybasert tingenes internett}
 % \todo{Sikkerhet, personvern, kvalitetsattributter}
-\blindtext
+
+Det er flere skyløsninger på markedet med støtte for \gls{iot} og det er et marked i stor vekst.
+Microsoft Azure IoT Hub og AWS IoT er allerede nevnt. IBM har en løsning kalt Watson Internet of Things Platform og
+Google har Google Cloud IoT
+som prøver å løse lignende problemer som Microsoft og Amazon.
+Disse fire leverandørene dominerer markedet totalt. Data fra \citet{srg_cloud}
+viser at AWS holder seg på 40 \% markedsandel i slutten av 2016, mens Microsoft,
+Google og IBM har 23 \% markedsandel kombinert. De tre sistnevnte leverandørene vokser raskere enn AWS.
+
+Dette prosjektet vil ta i fokusere på AWS IoT siden AWS er mest brukt i markedet i dag
+og har et veldig modent økosystem. Azure IoT Hub nevnes kort. De fleste skysystemene tilbyr veldig like
+løsninger.
 
 \subsection{AWS IoT}
 \label{sec:aws_iot}
@@ -185,9 +196,9 @@ har et navn, og kan valgfritt ha attributter i nøkkel-verdi-par, for eksempel m
 for en lyspære. Det er mulig å lage forskjellige typer ting og assosierere disse typene med en ting.
 
 \subsection{Microsoft Azure IoT Hub}
-Microsoft Azure IoT Hub har mange av de samme egenskapene som AWS IoT med andre navn: \textit{cloud gateway},
+Microsoft Azure IoT Hub (figur \ref{fig:azure_iot}) har mange av de samme egenskapene som AWS IoT med andre navn: \textit{cloud gateway},
 \textit{device twins} og \textit{identity registry}. Autentisering gjøres enten med et unikt token per enhet eller med
-X.509-sertifikater. I praksis tilbyr de to skyteknologileverandørene akkurat det samme.
+X.509-sertifikater. I praksis tilbyr de to skyteknologileverandørene veldig mye av det samme.
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth,center]{fig/iot-reference-architecture}
