@@ -191,7 +191,7 @@ der brukeren klikke på en knapp og setter måleren på fingeren. Brukeren må h
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth,center]{fig/helsami/pulsoksimeter_veiledning}
-\caption{Pulsoksimeter-veiledning}
+\caption{HelsaMi+: Pulsoksimeter-veiledning}
 \label{fig:helsami_pulsoksimeter_veiledning}
 \end{figure}
 
@@ -296,9 +296,24 @@ operativsystemet til enheten,
 men at en nettside er pakket sammen som en applikasjon. Det kan føre til at applikasjonen føles treig. Brukergrensesnittet er litt låst til
 hvordan Imatis har valgt å bygge opp applikasjonen.
 
-%problemer med sensorikken, åpnet masse faner, slått av automatiske oppdateringer, ny androidversjon, flere runder
-% for å få robust nok løsning. problemer med at sensoren timet ut i starten. ikke forstyrr-funksjonalitet, gjort applikasjonen tilgjengelig på forsiden
-% sikkerhet, passord, tofaktorautentisering, sertifikater
+Kommunen jobbet med å få til sertifikater knyttet til brukeren: \textquote{(...) vi skal nå ut med sertifikater. Unike sertifikater
+på hvert nettbrett som er kobla med
+brukeren. Slik at ikke et nettbrett kommer på avveie, og så kan noen tilfeldigvis greie å logge seg på, sant}{.} Dette var ikke
+til stede i løsningen per mars 2017. Brukeren må logge inn med brukernavn og passord.
+Kommunen arbeidet med denne problematikken parallelt med å få applikasjonen inn i Norsk helsenett, et eget
+lukket nett for helsevesenet. En annen del av oppdraget var å finne løsninger som kan øke sikkerheten, men som ikke er for komplisert for brukeren:
+\blockquote{(...) vi kunne sagt at 'ja vi skal ha en tofaktorautentisering for alle brukerne som skal logge seg på'. Teknisk så hadde det
+    vært helt problemløst å fikse det. Utfordringen er at da kan man sannsynligvis si at 60-70 \% brukerne -- det blir for komplisert, sant.
+    Og da vil de på en måte ikke kunne bruke den tjenesten. Og det har vi fått aksept for, men da må vi introdusere alternative sikkerhetsmekanisker
+som er god nok da.}
+
+Andre problemer var blant annet knyttet til valget av Android som teknologiplattform. Det ble problemer når det kom ut en ny Android-versjon --
+automatiske oppdateringer til operativsystemet ble dermed slått av. Ikke forstyrr-funksjonalitet ble slått på for at ikke andre elementer
+på nettbrettet skulle ta fokuset vekk fra HelsaMi+. Applikasjonen ligger lett tilgjengelig på startskjermen til nettbrettet. I starten var det også
+problemer med sensortilkoblingen, sa I. B. Sandvik, sensoren fikk tidsavbrudd. Trondheim kommune måtte jobbe tett med leverandør
+for å få løsningen stabil nok, og det førte
+til utviklingen av sensorhuben som har ansvaret for Bluetooth-tilkoblingen. Kommunen slet også med at applikasjonen åpnet masse faner i og med at
+det var en innpakket webapplikasjon.
 
 \section{HelsaMi+ i fremtiden}
 \textit{\textquote[Trondheim kommune, 2017]{Prosjektet vil i løpet av 2017 videreutvikle tjenesten til å rette et større fokus på forebyggende
