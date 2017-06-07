@@ -4,24 +4,29 @@
 \section{Forskningsspørmål 1}
 \textbf{\fs{1}}
 
-I Trondheim kommune har over 70 brukere fått avstandsoppfølging hjemme. Det
+I Trondheim kommune har ca. 70 brukere fått avstandsoppfølging hjemme. Det
 foregår med et Android-nettbrett brukerne får utlevert. Dette nettbrettet har en
 applikasjon der brukerne kan svare på hvordan dagsformen er. Spørsmålene er
 tilpasset diagnosen til brukeren. I samråd med fastlegen har brukeren en
 egenbehandlingsplan som iverksettes på bakgrunn av helsetilstanden. Fastlegen
-har ikke direkte tilgang til avstandsoppfølgingssystemet. Koordinasjon skjer via med
-helsevakta i Trondheim kommune. Noen få brukere har fått sensorer de kan bruke
-til målinger. Dette gjøres også via applikasjonen. Helsevakta får tilgang til
-spotmålingen og svarene på spørsmålene i en adminapplikasjon. Tilbakemeldingene
-på prosjektet er positive.
+har ikke direkte tilgang til avstandsoppfølgingssystemet per i dag. Koordinasjon skjer via
+helsevakta i Trondheim kommune. Seks brukere har fått sensorer (pulsoksymeter, vekt, blodtrykksmåler) de kan bruke
+til målinger. Dette gjøres også via applikasjonen. Helsevakta får tilgang på
+spotmålingen og svarene på spørsmålene i en adminapplikasjon.
+Tilbakemeldingene på prosjektet i seg selv er veldig positive.
 
+Prosjektledelsen har hatt utfordringer med stabiliteten til sensorløsningen.
+De ser også utfordringer med personvern og å la brukeren få muligheten til å administrere og se mer av sin egen data.
+Kommunen jobber med å få til sertifikater på nettbrettene, men det er ikke så lett. En annen erfaring
+kommunen har gjort seg, er at brukerne er veldig forskjellige. Kommunen ønsker å være tidlig ute med
+ny teknologi, men det viser seg å ikke være så enkelt å få til i praksis.
 
 \section{Forskningsspørmål 2}
 \textbf{\fs{2}}
 
-En mulig teknologistakk for realisering av skybasert \gls{iot} for
+En mulig arkitektur for realisering av skybasert \gls{iot} for
 avstandsoppfølging er skissert i figur TODO. Denne er basert på arbeidet som er
-gjort i dette prosjektet med noen små modifikasjoner. Stakken har en hub som
+gjort i dette prosjektet med noen små modifikasjoner. Arkitekturen har en hub som
 alle sensorene kobler seg på. Sensorene kommuniserer med huben med Bluetooth 4.2
 eller nyere. Alle sensorer skal bondes med huben slik at sensorene ikke må pares
 på nytt hver gang det skal sendes data. En mulig strategi for autentisering er å
@@ -35,17 +40,19 @@ uansett alltid skje med ende-til-ende-kryptering (\gls{tls}).
 % http://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html
 % http://www.seedbox.com/en/blog/2015/06/05/oauth-2-vs-json-web-tokens-comment-securiser-un-api/
 
-Teknologistakken har en regelbasert backend der dataen lagres fortløpende og
-prosesseres i sanntid.
+Arkitekturen har en regelbasert backend der dataen lagres fortløpende og
+prosesseres i sanntid. Denne arkitekturen løser ikke problemer knyttet til personvern
+og datalagring. Det er noe som må implementeres på toppen av skyløsningen. AWS gir allikevel
+mange gode verktøy ut av boksen for å få til dette. Det kan understøtte mange av de
+tjenesteutfordringene som HelsaMi+ opplever i dag.
 % @Todo: klientside, node? noe mer?
-
 
 \section{Forskningsspørmål 3}
 \textbf{\fs{3}}
 
 Prosjektledere i Trondheim kommune mente at prototypen hadde tilstrekkelig
-brukskvalitet til å rulles ut til brukere. De mente imidlertid at det var bedre at
-sensor og hub var adskilt og ikke koblet sammen til ett smartprodukt.
+brukskvalitet til å rulles ut til brukere. De mente imidlertid at det kanskje var bedre at
+sensor og hub var adskilt og ikke koblet sammen til ett produkt.
 
 Forskere ved SINTEF var enige i at sensor og hub heller kunne vært adskilt, og trakk
 fram at prototypen manglet muligheten til å svare på hvordan
@@ -83,9 +90,18 @@ Dette er implikasjonene for sikkerhet i avstandsoppfølging:
   med hvorfor dataen må lagres.
 \end{itemize}
 
-Mer forskning trengs på hva man kan gjøre med dataen etter at den forlater sensoren.
-Avstandsoppfølging har et stort potensiale til å gjøre sanntidsberegninger på data
-som kommer inn. Disse beregningene kan påvirkes av menneskelige vurderinger knyttet
-opp mot hver enkelt bruker.
-
 %@ TODO: Dag: Brukervennlighet, funksjonelle krav, pris etc.
+
+\section{Videre arbeid}
+Det er mye som kan jobbes med videre innenfor avstandsoppfølging. Spesielt lovende virker det å få til
+en høyere grad av toveiskommunikasjon. Brukeren kan for eksempel få et varsel når det er på tide å gjøre en måling.
+Det er mulig å bake inn kommunikasjon med Helsevakta inne i applikasjonen, enten med chat eller med videosamtale.
+Sanntidsanalyse av data basert på grenseverdier hadde vært teknologisk mulig å få til uten for mye styr. Helsevakta
+kunne fått opp et varsel i sin adminapplikasjon. Om brukeren selv skulle fått opp et slikt varsel måtte i så fall blitt
+individuelt tilpasset. Som erfaringene til Trondheim kommune viser har ikke alle så godt av å vite for mye om sin egen
+helsetilstand. Analyse av data tilbake i tid kunne også vært gjort. Her peker fastlegen på at alt ikke er så klart og
+at det trengs mer forskning og flere erfaringer.
+
+Det er også potensiale i overvåke alle sensorene på en bedre måte, slik at en kan følge med på hvor mye batteri som er igjen
+og hva kvaliteten på sensordataen er. Her må en benytte alle de mulighetene sensoren gir for integrasjon, som for eksempel
+checkmark når brukeren er ferdig med en måling.

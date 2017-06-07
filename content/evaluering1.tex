@@ -31,8 +31,35 @@ Alle disse temaene ble relatert til den løsningen som Trondheim kommune har i d
 \subsection{Tilbakemeldinger på prototypen}
 De generelle tilbakemeldingene var at prototypen var enkel og at de var imponert over hvor kort tid det hadde tatt å utvikle den.
 \textquote[R. Enger, 2. mai, personlig kommunikasjon]{Jeg synes konseptet er veldig bra. Det virka. Jeg synes jo at den prototypen er brukervennlig}{.}
+\blockquote[I. B. Sandvik 2. mai, personlig kommunikasjon]{Nei, så konseptet her er jo veldig interessant da. Og det viser jo at det er relativt enkelt å få til da.
+Du har jo sikkert brukt en del timer på det da. (...) Det var jo veldig enkelt å forstå konseptet her, sant. Du brukte jo bare ett og to minutt å forklare (...)}{.}
+
+Senere i samtalen:\newline
+\textbf{R. Enger:} \textquote{Ja den der ville ha fungert hjemme hos veldig mange av våre brukere.} \newline
+\textbf{I. B. Sandvik}: \blockquote{Sant. Da tenker jeg at -- la oss si da -- tenkt deg brukerscenario da at noen brukere kan være -- det er liksom SpO2-måler som er
+    interessant, trenger ikke å rapportere noe annet, ikke sant. Så sier vi at du tar dette her tre ganger i uka. Og så bare tar du målinga og så er dataen sendt. That's
+    it. du trenger ikke å slå på noen nettbrett -- du trenger ikke å slå på noen pc, du bare, hvis du ikke vil se grafen din som du kan, men, det er det du gjør, ikke
+sant. Tar målingen. Så får du kvittert ferdig (...).}
+
+\textbf{I. B. Sandvik:}
+\textquote{Jeg må si at innenfor de rammene du har så syntes jeg det her ble bra jeg.} (...)
+\textquote{Så er det litt artig å se ting som fungerer og ikke bare -- det er nok av leverandører som prater om hvor bra alt skal bli.}
+
+Kommunen sa at Nonin kunne tenkt på et lignende produkt: \textquote[I. B. Sandvik]{Det første som slår meg det er jo dette med at sånn som Nonin som lager denne her, de
+kunne jo på en måte ha laget alt sammen i den enheten da sant. Som kanskje hadde blitt litt større.}
 
 \subsection{Brukeropplevelse}
+En workshop med brukere av HelsaMi+ viste, i følge I. B. Sandvik, at de fleste brukerne syntes nåværende løsning var enkel. Dette var noe som overrasket
+kommunen litt, i og med at de ikke syntes at nåværende brukerapplikasjon var så imponerende.
+\textquote{Og vi hadde jo ønsket oss at leverandøren kunne ha vært litt mer framoverlent og litt mer i forkant av ting da. Men det er nå på en måte det vi har da.
+Men det interessante det var at brukerne synes at det var enkelt og greit.}
+
+Aldersspennet på brukerne som var med på workshopen var fra 58 opp til rundt 82. R. Enger sa at den yngste brukeren som har HelsaMi+ er 52 år.
+
+At brukeren får et checkmark opp på skjermen til pulsoksymeteret når målingen er ferdig, var noe kommunen ikke hadde i deres løsning. Det var
+de interessert i å få med, og de tok bilde av det. I.B Sandvik sa: \textquote{Det der burde vi ha fått fiksa på. Det på en måte -- det gir en endelig
+    beskjed til brukeren at den er ferdig.}
+
 \subsection{Pris}
 I. B. Sandvik spurte om prisen på systemet. Han syntes løsningen var billig. Merk at svaret om prisen på fingeravtrykksensoren var feil.
 Det ble oppgitt at den kostet 25 dollar når den egentlige prisen er 50 dollar. Prisen på Raspberry Pi Zero W er 10 dollar, men det kan
@@ -46,76 +73,53 @@ være vanskelig å få tak i kun enheten uten å kjøpe en startpakke i tillegg.
 \end{description}
 
 \subsection{Sikkerhet og autentisering}
-\subsection{Fremtidige løsninger}
+Kommunen var i gang med å få på plass sertifikater på nettbrettene, men I. B. Sandvik sa at de hadde problemer med å finne en god metode
+for å distribuere og håndtere sertifikatene:
+\blockquote{(...) vi skal prøve å få implementert sertifikat på nettbrettene, på devicene. Så har vi en sak gående med Evry, som er kommunen sin part, leverandør.
+    Men vi har
+    ikke fått noen gode løsninger på hvordan vi skal gjøre det her. Hvordan skal du distribuere et sånt sertifikat ut til et nettbrett som er levert ut til en
+    privatperson.
+
+(...) for det vi holder på med og så se på sammen med e-helse og Norsk Helsenett, det er nå og så teste ut at vi kan legge
+sertifikatsdistribusjonen som en komponent i
+kall det -- helseapplikasjonen da. Slik at du kan pushe ut sertifikater i fra applikasjonen til devicen.}
+
+\subsection{Fremtidige løsninger i avstandsoppfølging og HelsaMi+}
+Kommunen har erfart at brukerne er veldig forskjellige. Noen er veldig komfortable med teknologi og føler seg hjemme, mens andre
+kun trykker på det de har fått opplæring i.
+\blockquote{
+(...) man gjøre en individuell vurdering da -- okei, for deg som er aktuell for tjenesten -- okei, har du nettbrett i dag? Ja.
+Da kan vi kanskje bare pushe ut en applikasjon som
+du får tilgang til med sikkerheten. Har du nettbrett eller er du familiær med teknologi? Nei aldri brukt det før -- okei,
+da har vi utstyr som du kan få låne av kommunen og du får opplæring, ikke sant.
+}
+
+I. B. Sandvik sin konklusjon var at kommunen må tilpasse tjenesten til brukeren. Det må gjøre en individuell vurdering i hvert enkelt tilfelle --
+dette passer også bra inn i kommunens strategi ellers. Å være til stede på de plattformene brukeren er på gjør også at kommunen kan
+bruke færre ressurser på å eie og vedlikeholde masse utstyr.
+
+Brukerne var forskjellige når det gjaldt å ha tilgang på egne målinger: \textquote[I. B. Sandvik]{(...) noen tenkte jo at 'ja, sikkert ikke så dumt'.
+mens andre 'nei, ikke interessert'. Det
+handla også sikkert om en del andre ting også. Diagnosen og ja, vil helst ikke forholde seg til det}{.}
+Det er ikke et krav at brukeren må se sine egne data om brukeren ikke har lyst: \textquote[I. B. Sandvik]{(...) det trenger ikke nødvendigvis å være
+noe som du må ha tilgang til som bruker da, men at det -- du skal kunne ha tilgang til det}{.}
+
+Kommunen fikk forespeilet en løsning hvor sensoren var utenfor huben. Det vil si at produktet ikke er fullintegrert, men består
+av en løsning med flere sensorer rundt enn hub som kan ligne på den som ble utviklet i dette prosjektet. I. B Sandvik sa
+at en slik løsning kanskje hadde vært bedre. Den løsningen hadde gitt mulighet til å koble på blodtrykksmåler og vekt i tillegg til
+pulsoksymeter.
+
+Kommunen ville holde seg på seks brukere med sensorer ut året fordi det var nok å administere alt med de stabilitetsproblemene som
+som var i løsningen i dag.
+\textquote[R. Enger]{(...) og så har vi for dårlig grafer og sånn til at vi kan gjøre oss noe god faglig nytte av det per i dag da. Så vi
+    er veldig i utvkling med leverandøren. Men de som har sensorer er jo veldig fornøyd. Det er de.
+De synes jo at det er en ekstra trygghet å få vurdert sensordataen sine}{.} Fastlegen skal kobles på for å sette grenseverdier på sensordataen,
+men det har ikke skjedd ennå i påvente på at løsningen skal bli litt mer stabil.
 
 
 % For tettere mellomrom:
 %\providecommand{\tightlist}{%
 %  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-\def\tightlist{}
-
-\begin{itemize}
-\tightlist
-\item
-  Tilstede: Renate Enger (09.30-10.15) og Ingar Børre Sandvik
-  (09.30-10.00)
-\item
-  Dato: tirsdag 2. mai kl. 09.30 til kl. 10.15
-\item
-  Sted: Nidarvoll helsehus
-\item
-  Formål: Demonstrere og vise fram prototypen. Gi muligheten til på
-  prøve selv. Ha en samtale om hva som vil bli viktig i utviklingen av
-  produkter for avstandsoppfølging i fremtiden.
-\item
-  Stil: Uformelt, ikke noe brukertest. Semistrukturert intervju etterpå
-  der intervjueren hadde forberedt samtaleemner og noen spørsmål.
-\item
-  Oppsummering av tilbakemeldinger på prototypen
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Veldig enkelt å bruke.
-  \item
-    Imponert over hvor kort tid det hadde tatt å utvikle den, og hvor
-    billig løsningen var.
-  \item
-    Kunne vært rullet ut for pasienter.
-  \item
-    De var mer optimistiske på vegne av løse sensorer rundt en liten hub
-    enn å integrere sensoren i selve produktet. Dette passer også bedre
-    om en kommune skal bruke flere forskjellige sensorer.
-  \item
-    De mente at Nonin burde utviklet et pulsoksymeter som var mer
-    integrert. Vi snakket litt om at det er enklere for Nonin å kun
-    utvikle måleteknologien og gi instruksjoner for hvordan man henter
-    ut data enn å lage en liten datamaskin.
-  \item
-    At det kommer opp et ``checkmark'' på pulsoksymeteret når en måling
-    er ferdig var noe de ikke hadde i sin egen løsning i dag, og var
-    interessert i å implementere selv.
-  \item
-    Trondheim kommune gjør en ``spot-check''-måling (kun én måling som
-    er verifisert bra sendes) og ikke kontinuerlige målinger.
-  \end{itemize}
-\item
-  Oppsummering av tanker om fremtiden
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Trondheim kommune ønsker å være tilstede på de plattformene brukerne
-    er fra før av, det seg være iOS, Android, PC osv.
-  \item
-    De ser for seg i fremtiden at brukeren selv kan velge hva slags
-    løsning de vil bruke og at de slipper å levere ut et eget nettbrett
-    til brukeren.
-  \item
-    En egenutviklet hub kan være en del av en slik fremtid.
-  \end{itemize}
-\end{itemize}
 
 \section{Intervju med SINTEF}\label{intervju-med-sintef}
 
