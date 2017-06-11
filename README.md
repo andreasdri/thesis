@@ -9,4 +9,5 @@ Otherwise, ShareLatex can be used to compile.
   - https://github.com/andybb/smart-pulse-oximeter - proof of concept of a cloud-connected pulse oximeter
   - https://github.com/andybb/pigpio-components - LED and button components for `pigpio`
   - https://github.com/andybb/nonin-3230-ble - Noble abstraction for the Nonin 3230 pulse oximeter
+  - https://github.com/andybb/smart-pulse-oximeter-grafana - AWS Lambda, InfluxDB and Grafana setup
   - https://github.com/andybb/pulse-oximeter-rn - cross-platform React Native application for Nonin 3230
