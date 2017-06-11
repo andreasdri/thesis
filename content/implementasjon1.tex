@@ -2,7 +2,8 @@
 \label{ch:implementation1}
 
 Kapittelet beskriver hvordan en prototype av et skytilkoblet pulsoksymeter med innebygget autentisering ble utviklet.
-Første del av kapittelet handler om valg av teknologien før blabla
+Første del av kapittelet handler om designkrav, brukerscenario og beskriver hvordan prototypen ble laget
+og hvordan den ble seende ut.
 Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med delkapitlene
 \textit{Implementasjon av klientkomponenter} og \textit{Implementasjon av skytilkobling}.
 
@@ -88,8 +89,8 @@ Koden til hovedmodulen er i vedlegg \ref{appendix:smart-pulse-oximeter}.
 Applikasjonen startet automatisk opp på Raspberry Pi, og loggførte alle hendelser til en tekstfil.
 Prototypen sendte IP-adressen sin ved oppstart slik at det var mulig å nå den utenfra.
 Klientsiden snakket med serveren over MQTTS, og ble autentisert med et sertifikat. Sensordataen fra pulsoksymeteret ble publisert til
-AWS IoT dersom brukeren var autentisert med fingeravtrykksensor. Virkemåten til prototypen var den samme som det de funksjonelle
-kravene spesifiserte i kapittel \ref{ch:requirements}. Se figur TODO for et bilde av hvordan prototypen ble seende ut.
+AWS IoT dersom brukeren var autentisert med fingeravtrykksensor. Virkemåten til prototypen var den samme som designkravene 
+fra starten av dette kapittelet.
 
 Serveren, som var basert på AWS IoT, hadde en
 regel for å prosessere dataen som kommer inn. Denne regelen sendte dataen videre til en lambdafunksjon som puttet dataen
@@ -156,7 +157,7 @@ verifiseres ved å legge riktig finger på sensoren. I prototypen ble det antatt
 
 Fingeravtrykksensoren ble koblet til GPIO14 (TX) og GPIO15 (RX) som har seriell kommunikasjon. Sensoren ble også koblet til jord
 og 5V for strøm. Ut av boksen støtter ikke Raspberry Pi Zero W seriell kommunikasjon fordi Bluetooth opptar den serielle porten.
-Derfor ble \textit{mini-uart} slått på (fotnote). Dette er en seriell port med mindre hastighet knyttet til CPU-frekvensen.
+Derfor ble \textit{mini-uart} slått på. Dette er en seriell port med mindre hastighet knyttet til CPU-frekvensen.
 
 \subsection{Nonin 3230}
 Nonin ble kontaktet for å tilgang på integrasjonsguiden og kommunikasjonsprotokollen til pulsoksymeteret.
@@ -224,7 +225,7 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 9-10 & Pulsfrekvens & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Pulsfrekvens i slag per minutt, 0-321\\ (gjennomsnitt av fire slag).\end{tabular}} \\ \hline
 \textgreater11 & Reservert & \multicolumn{1}{l|}{Reservert til fremtidig bruk} \\ \hline
 \end{tabular}
-\caption{Nonin 3230: Format på datapakke ref: nonin integration guide}
+\caption{Nonin 3230: Format på datapakke \citep[s. 20]{nonin_integration}}
 \label{table:nonin-datapacket}
 \end{table}
 
@@ -243,7 +244,7 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 1 & Lavt/svakt signal & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Styrken til pulssignalet er 0,3 \% modulasjonsgrad\\ eller mindre.\end{tabular}} \\ \hline
 0 & \begin{tabular}[c]{@{}l@{}}Indikering av\\ skjermsynkronisering\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Indikerer at skjermen er synkronisert med\\ innsamleren av data.\end{tabular}} \\ \hline
 \end{tabular}
-\caption{Nonin 3230: Format på statusfeltet til datapakke ref: nonin integration guide}
+\caption{Nonin 3230: Format på statusfeltet til datapakke \citep[s. 20]{nonin_integration}}
 \label{table:nonin-status}
 \end{table}
 
@@ -353,12 +354,28 @@ device.publish('oximetry', JSON.stringify({ oximetry }));
 \end{lstlisting}
 
 \subsection{Oppsett av businessregler og visning av data}
+Kommandoen i kodesnutt \ref{lst:aws_business} satte opp en businessregel i rules engine. Denne
+regelen sørget for å kjøre en AWS Lambda-funksjon med all dataen fra emnet \textit{oximetry}. Lambda-funksjonen
+er i kodesnutt \ref{lst:aws_lambda}. Den ble basert på eksisterende kode for å sette opp og rulle ut en
+AWS Lambda-funksjon \footnote{\url{https://github.com/andybb/smart-pulse-oximeter-grafana}}. Under panseret
+tok den i bruk kommandoene \verb|aws lambda create-function|, \verb|aws lambda update-function-code| og
+\verb|aws lambda update-function-configuration|.
+
+Lambda-funksjonen satte inn data fra oximetry i InfluxDB som ble koblet sammen med Grafana for å vise
+fram dataene. InfluxDB og Grafana kjørte på Amazon EC2 (én instans av en vanlig virtuell server i skyen)
+i Docker. Grafana ble satt opp med tre paneler: ett panel for puls, ett panel for oksygenmetning og
+ett panel hvor alle var samlet. Se figur \ref{fig:grafana}.
+
+\begin{figure}
+\includegraphics[width=0.99\textwidth, center]{fig/grafana}
+\caption{Grafana-dashboard av pulsoksymeterdataen}
+\label{fig:grafana}
+\end{figure}
 
 \begin{lstlisting}[frame=single, language=bash, caption=Sette opp en businessregel i AWS IoT, label=lst:aws_business]
-aws iot create-topic-rule --rule-name "smart-pulse-oximeter-Rule" --topic-rule-payload "file://payload.json"
+aws iot create-topic-rule --rule-name "smart-pulse-oximeter-Rule" --topic-rule-payload "file://payload.json" 
 
-//payload.json mock:
-const payload =
+#payload.json file:
 {
   "sql": "SELECT * from 'oximetry'",
   "description": "Send data from pulse oximeter to a database and viewing tool",
@@ -371,7 +388,37 @@ const payload =
   ],
   "ruleDisabled": false,
   "awsIotSqlVersion": "2016-03-23"
-};
+}
 \end{lstlisting}
 
-\textbf{TODO:} Her kommer det litt mer om lamdafunksjon og visning av data fra en database
+\begin{lstlisting}[language=JavaScript, frame=single,
+    caption=AWS Lambda-funksjon for å sette dataen inn i en database, label=lst:aws_lambda]
+import 'babel-polyfill';
+import λ from 'apex.js';
+import Influx from 'influx';
+import config from './config';
+
+const influx = new Influx.InfluxDB({
+    host: config.influx,
+    database: config.influxDatabase
+});
+
+export default λ((event, ctx) => influx.writePoints([
+    {
+        measurement: 'oxygenSaturation',
+        fields: { measurement: Number(event.oxygenSaturation) }
+    },
+    {
+        measurement: 'pulseRate',
+        fields: { measurement: Number(event.pulseRate) }
+
+    }
+])
+.then(() => {
+    ctx.succeed();
+})
+.catch((err) => {
+    console.log(err);
+    ctx.fail();
+}));
+\end{lstlisting}

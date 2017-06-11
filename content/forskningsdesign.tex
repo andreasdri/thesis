@@ -38,10 +38,11 @@ det prosjektet ønsker å undersøke nærmere. Alle forskningsstrategiene utdype
 
 Avstandsoppfølging er ganske nytt i Norge, og det foreligger ikke så mye informasjon om hvordan det gjøres ettersom
 det i skrivende stund fortsatt er i testfasen i mange kommuner. Trondheim kommune vil bli brukt som et eksempel på hvordan avstandsoppfølging
-gjøres i dag og hvilke planer de har for ny teknologi i tiden som kommer.
+gjøres i dag og hvilke planer de har for ny teknologi i tiden som kommer. Forskningsprosjektet vil finne ut hvilke utfordringer
+kommunen har med avstandsoppfølging i dag og hvilke erfaringer de har gjort seg hittil.
 
 For å belyse spørsmålet er forskningsløpet som i figur \ref{fig:oates_fs1}. Case-studie er hovedstrategien, og intervjuer og dokumenter
-er datagenereringsmetodene.
+er datagenereringsmetodene. Intervjuene transkriberes der det er relevant og analyseres basert på temaer.
 
 \begin{figure}
 \centering
@@ -54,12 +55,13 @@ er datagenereringsmetodene.
 \textbf{\fs{2}}
 
 Hovedstrategien er design og kreasjon, med intervjuer og dokumenter som datagenereringsmetode (figur \ref{fig:oates_fs2}). Ved å lage
-et \textit{proof of concept} basert på eksisterende skyteknologi, er målet å finne en mulig teknologistakk. Case-studien av Trondheim
-kommune hjelper til med å forstå brukskonteksten og kravene til en slik teknologistakk.
+et \textit{proof of concept} basert på eksisterende skyteknologi, er målet å finne en mulig arkitektur for teknologien. Case-studien av Trondheim
+kommune hjelper til med å forstå brukskonteksten og kravene til en slik arkitektur og om denne arkitekturen kan hjelpe kommunen med de
+utfordringene som blir belyst i case-studien.
 
-Teknologistakk er definert
-som klientsiden av applikasjonen, hvordan denne snakker med sensorene rundt -- og på hvilken måte sensordataene sendes og behandles av
-en bakenforliggende serverløsning.
+Arkitektur er definert
+som strukturen til klientsiden av applikasjonen, hvordan denne fungerer og snakker med sensorene rundt -- og på hvilken måte sensordataene sendes
+fra klienten og behandles av en bakenforliggende serverløsning. Hele dette samspillet danner en mulig arkitektur for avstandsoppfølging.
 
 \begin{figure}
 \centering
@@ -100,21 +102,15 @@ Figur \ref{fig:oates_fs4} oppsummerer hele forskningsløpet.
 
 \section{Forskningsstrategier}
 \label{sec:forskningsstrategier}
-Dette delkapittelet drøfter kort fordelene og ulempene til forskningsstrategiene som er valgt.
+Dette delkapittelet drøfter og beskriver kort hva som skal skje i de forskningsstrategiene som er valgt.
 
 \subsection{Design og kreasjon av et pulsoksymeter}
-I følge \citet[s.121-122]{oates} er fordelene til design og kreasjon-strategien at det er enklere å relatere til noe
-som eksisterer i virkeligheten enn en íde, en tanke eller et konsept.
-Den raske teknologiutviklingen gjør også at det er mulig å foreslå og utvikle nye artefakter, og at man dermed bidrar til ny kunnskap.
-
-Ulempen med å velge denne strategien er at det er fort gjort at en kun demonstrerer
-teknisk kompetanse uten at det kvalifiserer som god forskning. I tillegg til det nye produktet må ny kunnskap utvikles, bygget
-på analyse, argumenter og kritiske evalueringer \citep[s. 109]{oates}. En ting er at det lages et nytt produkt i et domene --
-viktigere momenter er hvilken ny informasjon den fører med seg og konteksten den blir satt inn i.
-
 Artefakten i dette prosjektet er en høynivå prototype i form av et proof of concept, både på hardware- og softwaresiden.
 Siden teknologiutforsking er et mål, vil
-prototypen implementeres, og ikke være en lavnivå papirprototype. Den industrielle utformingen av prototypen vektlegges ikke. Det er
+prototypen implementeres på et ganske høyt nivå, og ikke være en lavnivå papirprototype. Prototypen vil sammenlignes
+med den eksisterende løsningen og vises fram til prosjektledere og forskere innen velferdsteknologi.
+
+Den industrielle utformingen av prototypen vektlegges ikke. Det er
 ikke meningen at prototypen skal ut i produksjon slik som den er designet. En annen tilnærming kunne vært å vektlegge brukerperspektivet enda mer,
 og gjennomføre flere runder med brukertester med helsepersonell og pasienter. Brukertester med pasienter ville medført krav om
 riktig behandling av sensitive helseopplysninger og en godkjent søknad til Norsk senter for forskningsdata (NSD).
@@ -145,11 +141,9 @@ Det er flere tilnærminger til avstandsoppfølging, og det er flere kommuner enn
 Sarpsborg og Oslo. Fordelen med å velge ut én kommune er at det belyser hvordan de har tilnærmet seg avstandsoppfølging
 som helhet og forenkler datainnhentingen -- det er naturlig å velge ut Trondheim kommune siden det gjør at tilgangen på personer er bedre.
 
-Ulemper med denne strategien er, i følge \citet{oates}, at mangelen på streng krav kan føre til generaliseringer med
-lav kredibilitet, at det kan være
-vanskelig å få tilgang til riktige personer og riktig informasjon, samt at forskeren i seg selv kan påvirke mye av det som blir gjort fordi det er
-så få regler. Målet med case-studien er å skjønne hvilke problemstillinger Trondheim kommune prøver å løse, hvordan de løser det og hvilke
-erfaringer de har gjort seg hittil. Dette vil påvirke den nye teknologien som bygges i dette forskningsprosjektet.
+Målet med case-studien er å skjønne hvilke problemstillinger Trondheim kommune prøver å løse, hvordan de løser dem og hvilke
+erfaringer de har gjort seg hittil. Dette vil påvirke den nye teknologien som bygges i dette forskningsprosjektet. Case-studien
+vil gi en oversikt over tjenesten fra A til Å, fra hvordan brukerne blir rekruttert til hvordan de bruker løsningen hjemme.
 
 Datageneringsmetoder i dette case-studiet er semistrukturerte intervjuer og dokumenter. Observasjon av hvordan pasientene bruker Trondheim kommunes løsning
 kunne vært en god metode, men for å snevre inn omfanget og slippe å innhente tillatelser velges ikke denne metoden. Det hadde vært mer
@@ -184,8 +178,8 @@ Alle intervjuene med Trondheim kommune må tolkes med det faktum at prosjektlede
 gjør at de ønsker at avstandsoppfølgingprosjektet
 skal lykkes i bakhodet. Aktører direkte involvert i et prosjekt er mottakelige for bekreftelsestendenser der man søker etter å bekrefte noe
 man allerede tror. Selv om SINTEF er en tredjepart som bistår Trondheim kommune, er de også mye involvert i prosjektet.
-Det er mulig at forskningen kunne blitt enda mer troverdig med en kritisk tredjepart uten direkte tilknytning til velferdsteknologiprosjektet i Trondheim.
-Gjerne en stemme som ikke er udelt positiv til avstandsoppfølging som teknologi for velferd.
+Det er mulig at forskningen kunne blitt enda mer troverdig med en kritisk tredjepart uten direkte tilknytning til velferdsteknologiprosjektet i Trondheim --
+gjerne en stemme som ikke er udelt positiv til avstandsoppfølging som teknologi for velferd.
 Fordelen med å snakke med personer som jobber med avstandsoppfølging i Trondheim kommune, er at de har veldig god kunnskap om temaet
 og muligheten til å sammenligne løsningen som presenteres i denne forskningen med noe som eksisterer i praksis i dag.
 De er en troverdig stemme i avstandsoppfølgingdebatten.
