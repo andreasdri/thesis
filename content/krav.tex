@@ -1,14 +1,11 @@
-\chapter{Krav til løsning}
+\chapter{Kvalitetskrav til løsning}
 \label{ch:requirements}
 
-% øke vinduet for autentisering: mange mange minutter. tilbakemelding fra sintef
-
-\section{Kvalitetskrav}
-
+Kvalitetskrav er test- og målbare ikke-funksjonelle krav til et system.
 I følge \citet{softarch} er sikkerhet, ytelse og tilgjengelighet de viktigste kvalitetskravene for skyteknologi.
 Personvern er viktig for kritiske helsedata, og er noe som Datatilsynet legger stor vekt på. I tillegg til disse kvalitetskravene
 er interoperabilitet og brukervennlighet trukket fram som kvalitetskrav. Basert på bakgrunnsmaterialet og case-studien,
-ble kvalitetskravene rangert for en frittstående skybasert velferdsteknologiløsning.
+ble kvalitetskravene rangert for en frittstående skybasert velferdsteknologiløsning:
 
 \begin{enumerate}
     \item Sikkerhet
@@ -21,49 +18,48 @@ ble kvalitetskravene rangert for en frittstående skybasert velferdsteknologilø
 
 Disse kvalitetskravene er beskrevet nøyere i de neste delkapitlene.
 
-\subsection{Sikkerhet}
+\section{Sikkerhet}
 Systemet skal være beskyttet mot \gls{mitm} og tyvlytting, og skal ha tilgangskontroll på alle ressurser.
-Alle kommuniserende enheter skal være autentisert for å unngå "forging of data". % @TODO fix
-Det skal være intern tilgangskontroll for utviklere, helsepersonell og tredjepartsløsninger.
+Alle kommuniserende enheter skal være autentisert for å unngå at data kan bli endret.
+Det skal være intern tilgangskontroll for utviklere, helsepersonell og tredjepartsløsninger. Når en
+applikasjon kjører som en tjeneste på andre sin infrastruktur, betyr det i praksis at den fysiske
+sikkerheten og tilgangen til data er satt bort til en tredjepartsleverandør. Det er et viktig
+moment å vurdere for noen som tenker på å kjøpe infrastruktur.
 
-\subsection{Personvern}
+\section{Personvern}
 Datatilsynet foreslår at alle nye velferdsteknologisystemer lages med innebygd personvern (\textit{privacy by design}),
 noe som vil si at det tas hensyn til personvern i alle fasene av utviklingsløpet \citep{datatilsynet_privacy}. Det er mye billigere
-enn å endre systemet for øke personvernshensynet i etterkant.
+enn å endre systemet for øke personvernshensynet i etterkant. Det er lov til
+å overføre personopplysninger til land utenfor Norge så lenge disse sikrer en forsvarlig
+behandling av opplysningene \citep{datatilsynet_utlandet}. I teorien gjør dette det mulig å kjøre helseapplikasjoner i AWS-regioner
+som er innenfor EU, for eksempel Frankfurt og Irland. Norge har allikevel pleid å sette
+som krav at helseopplysninger skal lagres i Norge, og det har vært en debatt i midten
+av 2017 om utfordringene ved å ha opplysninger lagret i Norge som det er mulig å nå fra
+andre land som drifter tjenesten.
 
-\subsection{Interoperabilitet}
+\section{Interoperabilitet}
 Det er forventet at andre og tidligere utviklede systemer må integreres i løsningen. Derfor trenger løsningen flere forskjellige
-grensesnitt som gjør det mulig å kommunisere med andre plattformer. Norge har bestemt at Continua-rammeverket skal brukes i nye
+grensesnitt som gjør det mulig å kommunisere med andre plattformer.
+Norge har bestemt at Continua-rammeverket skal brukes i nye
 velferdsteknologiløsninger.
 
-\subsection{Tilgjengelighet}
+\section{Tilgjengelighet}
 I velferdsteknologi kan tilgjengelighet være et spørsmål om liv og død. Dersom den nødvendige informasjonen ikke blir gitt til den
-riktige personen kan liv gå tapt. En leverandør av skytjenester lover typisk en oppetid på 99,95 \% i løpet av et år.
+riktige personen kan liv gå tapt. En leverandør av skytjenester lover typisk en oppetid på 99,95 \% i løpet av et år,
+noe som betyr at tjenesten er forventet å ikke være tilgjengelig rundt fire og en halv time
+i gjennomsnitt i løpet av et år. I noen systemer kan en sånn nedetid være helt ødeleggende.
+Netflix kjører hele sin platform (unntatt videostrømming som er i forskjellige
+\textit{content delivery networks}) på \gls{aws} \citep{netflix_aws}. Netflix får til en oppetid
+på nesten 99,99 \% ved å legge til redundans og mykfeil (graceful degradation) på toppen av
+upålitelige komponenter.
 
-\subsection{Ytelse}
+\section{Ytelse}
 Løsningen må kunne skalere fra noen få brukere til flere tusen brukere. Hvis én bruker sender noen meldinger hver dag, kan det
 bety opp mot en million meldinger i døgnet. Løsningen må håndtere mange meldinger uanstrengt og uten avbrytelse.
 
-\subsection{Brukervennlighet}
+\section{Brukervennlighet}
 Brukervennlighet i denne konteksten betyr brukervennlighet for sluttbruker, utvikler og systemadministrator.
 Sluttbrukeren må føle seg trygg når løsningen benyttes, og forstå hvordan sensormålingene utføres.
 For utvikler og systemadminstrator er spørsmålene hvor god dokumentasjonen er, om det er mulig å automatisere
 utvikling og vedlikehold og hvordan løsningen man vedlikeholder og overvåker løsningen.
 
-\subsection{Krav til velferdsteknologi}
-%Helsedirektoratet
-\subsection{Krav til prototypeplattform}
-
-\begin{itemize}
-    \item Kjøre på Node.js/JavaScript
-    \item Være basert på Linux
-    \item Støtte full TCP/IP-stakk
-    \item Ha innebygget \gls{ble}.
-\end{itemize}
-
-
-%helsedir/datatilsynet
-
-% @TODO: https://www.datatilsynet.no/Sektor/Helse-og-omsorg/Velferdsteknologi/#
-% https://www.datatilsynet.no/Regelverk/EUs-personvernforordning/hva-betyr/
-% https://www.datatilsynet.no/Teknologi/Innebygd-personvern/

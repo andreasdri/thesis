@@ -327,7 +327,7 @@ aws iot attach-principal-policy --principal "[sertifikats-ARN generert paa linje
 
 For å koble klientsiden av prototypen til AWS IoT, ble nøklene og sertifikatet generert over brukt.
 AWS IoT autentiserer prototypen basert på tingnavnet, nøklene og sertifikatet.
-Se kodesnutt \ref{lst:aws_connect}.
+Se kodesnutt \ref{lst:aws_connect}. Skyløsningen kjørte på AWS sin region i Frankfurt, \textit{eu-central-1}.
 %\lstset{
 %   aboveskip=20pt, belowskip=20pt,
 %   numbers=left
@@ -358,19 +358,15 @@ Kommandoen i kodesnutt \ref{lst:aws_business} satte opp en businessregel i rules
 regelen sørget for å kjøre en AWS Lambda-funksjon med all dataen fra emnet \textit{oximetry}. Lambda-funksjonen
 er i kodesnutt \ref{lst:aws_lambda}. Den ble basert på eksisterende kode for å sette opp og rulle ut en
 AWS Lambda-funksjon \footnote{\url{https://github.com/andybb/smart-pulse-oximeter-grafana}}. Under panseret
-tok den i bruk kommandoene \verb|aws lambda create-function|, \verb|aws lambda update-function-code| og
-\verb|aws lambda update-function-configuration|.
+tok den i bruk kommandoene \textit{aws lambda create-function}, \textit{aws lambda update-function-code} og
+\textit{aws lambda update-function-configuration}.
 
 Lambda-funksjonen satte inn data fra oximetry i InfluxDB som ble koblet sammen med Grafana for å vise
 fram dataene. InfluxDB og Grafana kjørte på Amazon EC2 (én instans av en vanlig virtuell server i skyen)
 i Docker. Grafana ble satt opp med tre paneler: ett panel for puls, ett panel for oksygenmetning og
-ett panel hvor alle var samlet. Se figur \ref{fig:grafana}.
-
-\begin{figure}
-\includegraphics[width=0.99\textwidth, center]{fig/grafana}
-\caption{Grafana-dashboard av pulsoksymeterdataen}
-\label{fig:grafana}
-\end{figure}
+ett panel hvor alle var samlet. Se figur \ref{fig:grafana} og \ref{fig:grafana_setup}. Grafana bruker et SQL-lignende
+spørrespråk for å hente ut og aggregere data. InfluxDB er en åpen kildekode-tidsseriedatabase som er spesielt egnet for
+monitorering, metrikk og sensordata.
 
 \begin{lstlisting}[frame=single, language=bash, caption=Sette opp en businessregel i AWS IoT, label=lst:aws_business]
 aws iot create-topic-rule --rule-name "smart-pulse-oximeter-Rule" --topic-rule-payload "file://payload.json" 
@@ -392,9 +388,9 @@ aws iot create-topic-rule --rule-name "smart-pulse-oximeter-Rule" --topic-rule-p
 \end{lstlisting}
 
 \begin{lstlisting}[language=JavaScript, frame=single,
-    caption=AWS Lambda-funksjon for å sette dataen inn i en database, label=lst:aws_lambda]
+caption=AWS Lambda-funksjon for å sette dataen inn i en database, label=lst:aws_lambda, mathescape=true]
 import 'babel-polyfill';
-import λ from 'apex.js';
+import $\lambda$ from 'apex.js';
 import Influx from 'influx';
 import config from './config';
 
@@ -403,7 +399,7 @@ const influx = new Influx.InfluxDB({
     database: config.influxDatabase
 });
 
-export default λ((event, ctx) => influx.writePoints([
+export default $\lambda$((event, ctx) => influx.writePoints([
     {
         measurement: 'oxygenSaturation',
         fields: { measurement: Number(event.oxygenSaturation) }
@@ -422,3 +418,15 @@ export default λ((event, ctx) => influx.writePoints([
     ctx.fail();
 }));
 \end{lstlisting}
+
+\begin{figure}
+\includegraphics[width=0.99\textwidth, center]{fig/grafana}
+\caption{Grafana-dashboard av pulsoksymeterdataen}
+\label{fig:grafana}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.0\textwidth, center]{fig/grafana_setup}
+\caption{Oppsett av Grafana-dashboard}
+\label{fig:grafana_setup}
+\end{figure}

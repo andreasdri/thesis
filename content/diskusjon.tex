@@ -5,30 +5,43 @@
 Kapittel \ref{ch:case} viser at Trondheim kommune ønsker å være tidlig ute med ny teknologi, men at dette kan være vanskelig å
 få til i praksis. De er også klare på at det er teknologien som skal understøtte tjenesten og ikke motsatt. Den største
 utfordringen er å få rullet ut tjenesten til flere hundre brukere i en stor organisasjon. Det er i denne konteksten
-man må se hvordan teknologi kan hjelpe kommunen med å løse sine problemer.
-% teknologien må understøtte tjenesten
-% brukerne er veldig forskjellige
-% kommunen må forholde seg til leverandører av helseprodukter osv.
+man må se hvordan teknologi kan hjelpe kommunen med å løse sine problemer. Kommunen opplever at brukerne er veldig forskjellige, og
+at de har forskjellige behov. Det er ikke alle som kan bruke sensorer. De er klare på at tjenesten må tilpasses individuelt til hver
+enkelt bruker. Målet er at brukeren skal oppleve økt trygghet.
+
+Under evalueringen pekte kommunen på at de i dag har for dårlige verktøy
+til å se på måledata, og dermed ikke kan nyttiggjøre seg sensorteknologien så veldig godt. Dette er noe som kommunen og andre kan jobbe med
+for å forbedre. Det er ikke så komplisert å sette opp enkle grafsystemer. Grafana som ble brukt under dette prosjektet er åpen kildekode.
+Kommunen har ikke så mye annet valg enn å forholde seg til leverandører av programvare og helseprodukter dersom de
+ikke skal ha utviklere ansatt hos seg. Leverandørene og produsentene
+har dermed et stort anvar for å lage gode løsninger og ta i bruk ny teknologi tidlig. Det er tydelig at de løsningene kommunen bruker i dag
+ikke ser så moderne ut og bruker modifisert hyllevare. Allikevel sier brukerne at de synes systemene er greie å bruke. Nonin kunne ha laget
+et mer helintegrert pulsoksymeter, men det ville komplisert deres ansvarsområder veldig. Det er enklere for produsenten å konsentrere seg om
+selve oksimeterteknologien og gi et grensesnitt for andre å integrere med.
 
 \section{Utvikling og evaluering av en frittstående prototype}
 Utviklingen av prototypen skjedde ikke så brukernært som det kanskje var ønsket i starten av prosjektet. Det ble kun tid
 til én iterasjon der målet først var å få til to runder med tilbakemelding i mellom. Det tok litt tid før alle komponenter kom fram,
 og i starten ble en annen prototypeplattform valgt og prøvd istedenfor Raspberry Pi Zero W.
 Det var også opprinnelig et ønske om å få til mer toveiskommunikasjon, for eksempel et varsel med pulserende lys til brukeren
-når det var tid for å foreta en måling. Dette ble det ikke tid til, men kan være noe å prøve ut i fremtiden.
+når det var tid for å foreta en måling. Dette ble det ikke tid til, men kan være noe å prøve ut i fremtiden. I implementasjonsperioden
+var det utfordrende å få klientprototypen til å fungere tilfredsstillende siden det var så mange komponenter som skulle fungere sammen
+med forskjellige eventer, avbrudd og en komplisert tilstandsmaskin. Disse utfordringene gjorde at det ikke ble så god tid til å jobbe
+med toveiskommunikasjon og en større skyimplementasjon.
 
 Fingeravtrykket fra enheten må lagres i skyløsningen som en fil, og knyttes til hver enkelt bruker. Når brukeren
 ønsker å autentisere seg, må fingeravtrykket hentes til enheten, og så sjekkes. Tofaktorautentisering er at man
 sier hvem man er på to forskjellige måter. Som oftest er det to av følgende: noe en vet, noe en har eller noe en er.
 Enhet med sertifikat er noe en har, og fingeravtrykk er noe en er. I teorien kan det dermed bety at prototypen
-oppfyller kravene til en tofaktorautentisering.
+oppfyller kravene til en tofaktorautentisering, men dette er noe som må undersøkes nærmere med eksperter på sikkerhet.
 
 Fordelen med å basere seg på eksisterende plattformer som Android og iOS er at man får mye gratis i form
 av blant annet sikkerhetsoppdateringer og rammeverk for brukergrensesnitt. Dette er noe en må ordne selv i en
 frittstående løsning. Eksisterende plattformer har allerede mye infrastruktur som kan av laste kommunen. I tillegg
 har mange av brukerne enheter som kjører på disse plattformene fra før av. iOS-telefoner og mange Android-telefoner
 har innebygget fingeravtrykkssensor og muligheten til å styre disse fra programvare. Det kunne erstattet behovet for
-en tredjepartssensor.
+en tredjepartssensor. Det ville muligens tatt kortere tid å implementere noe på disse plattformene siden det ville vært
+mindre behov for å skrive helt nye integrasjoner mot komponenter og mindre jobb med den fysiske utformingen.
 
 \section{En arkitektur for skybasert IoT}
 En arkitektur for skybasert IoT for avstandsoppfølging kan være basert på AWS IoT som gir mye verdi for en utvikler ut av boksen.
@@ -43,9 +56,18 @@ for avstandsoppfølging.
 Device shadows ble ikke brukt i dette prosjektet, men det kunne gitt en bra base for å håndtere tilstanden til hver enhet, og manipulere denne tilstanden
 fra en adminapplikasjon. Det hadde vært relevant for å implementere en økt grad av toveiskommunikasjon. AWS gir flere slike nyttige verktøy for
 å håndtere infrastrukturen på en enklere måte.
+% noe om sanntidsanalyse
 
 \section{Metodediskusjon}
+Det hadde vært nyttig med mer teknisk informasjon om hvordan HelsaMi+ fungerer for å sammenligne,
+se hvor langt de har kommet sikkerhetsmessig og hva de tenker om fremtiden. Leverandøren Imatis ble kontaktet for et
+intervju, men svarte ikke på henvendelsen. Kanskje mer burde blitt gjort for å snakke med en leverandør av tekniske løsninger
+til dette prosjektet. Det er en viktig komponent som mangler litt.
 
+Hele temaet er også veldig stort, og det hadde kanskje vært
+lurere å snevret inn hvilke kvalitetskrav man skulle sette ekstra søkelys på, og hvordan disse kravene
+skulle vært testet slik at en kunne gjort et bedre dypdykk
+og snakket med eksperter innenfor det området.
 
 \iffalse
 \section{Begrensninger med
