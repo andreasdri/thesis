@@ -35,15 +35,42 @@ Siste del av kapittelet går mer detaljert inn i utviklingen av prototypen, med 
 \section{Bruksscenario}
 Geir (70) har KOLS og foretar en måling med pulsoksimeter hver dag som en del av morgenrutinen. I systemet har han lagt
 inn høyre pekefinger. Han ser at pulsoksimeteret
-er oppe og kjører og blinker gult. Han trykker på den hvite knappen som er øverst og fingeravtrykkssensoren begynner
-å lyse blått. Han vet at det betyr at han må legge pekefingeren sin på sensoren. Når han legger fingeren på sensoren blinker
-lyset blått og slår seg av. Den høyre lysdioden er grønn, og han skjønner at fingeren ble registrert riktig. En hvit lysdiode
+er oppe og kjører og blinker gult.
+Han trykker på den hvite knappen som er øverst og fingeravtrykkssensoren begynner
+å lyse blått (\textbf{steg 1, figur \ref{fig:steg1}})  Han vet at det betyr at han må legge pekefingeren sin på sensoren. Når han legger fingeren på sensoren blinker
+lyset blått og slår seg av. Den høyre lysdioden er grønn, og han skjønner at fingeren ble registrert riktig (\textbf{steg 2, figur \ref{fig:steg2}}). En hvit lysdiode
 indikerer at det er på tide å stikke fingeren inn i måleren. Geir stikker fingeren inn i måleren som slår seg på,
-og observerer at Bluetooth-indikatoren blir grønn og at alt er greit. Han har fingeren i måleren helt til det kommer opp et checkmark
-som indikerer at målingen er ferdig. Systemet går tilbake til å blinke gult.
+og observerer at Bluetooth-indikatoren blir grønn og at alt er greit (\textbf{steg 3, figur \ref{fig:steg3}}). Han har fingeren i måleren helt til det kommer opp et checkmark
+som indikerer at målingen er ferdig. Systemet går tilbake til å blinke gult (\textbf{steg 4, figur \ref{fig:steg4}}).
 
 På sentralen oppdager sykepleier Lise (42) at sensordataene er kommet inn. Hun ser at batteriet til sensoren er lavt, og merker seg at hun
 må si i fra til Geir at han må huske å bytte batterier neste gang de har kontakt.
+
+\begin{figure*}
+\begin{subfigure}{.5\textwidth}
+  \includegraphics[width=1.0\linewidth]{fig/prototype/steg1}
+  \caption{Steg 1 av 4. 00:02/01:05}
+  \label{fig:steg1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \includegraphics[width=1.0\linewidth]{fig/prototype/steg2}
+  \caption{Steg 2 av 4. 00:05/01:05}
+  \label{fig:steg2}
+\end{subfigure}
+\label{fig:test}
+\begin{subfigure}{.5\textwidth}
+  \includegraphics[width=1.0\linewidth]{fig/prototype/steg3}
+  \caption{Steg 3 av 4. 00:25/01:05}
+  \label{fig:steg3}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \includegraphics[width=1.0\linewidth]{fig/prototype/steg4}
+  \caption{Steg 4 av 4. 00:43/01:05}
+  \label{fig:steg4}
+\end{subfigure}
+\caption{Stegene i brukerinteraksjonen \citep{youtube}}
+\label{fig:brukerinteraksjonen}
+\end{figure*}
 
 \section{Beskrivelse av prototype}
 Prototypen bestod av følgende komponenter på klientsiden:
@@ -59,7 +86,7 @@ Prototypen bestod av følgende komponenter på klientsiden:
 
 Figur \ref{fig:ekte_prototype} viser prototypen når det ble gjennomført en vellykket
 måling med overføring. \citet{youtube} viser en video av en vellykket måling og et forsøk på å autentisere med feil
-fingeravtrykk etterpå\footnote{\url{https://www.youtube.com/watch?v=lJzevhiDeBs}}.
+fingeravtrykk etterpå\footnote{\url{https://www.youtube.com/watch?v=ALizPkFko9U}}.
 
 \begin{figure}
 \includegraphics[width=0.8\textwidth, center]{fig/prototype/ekte_prototype}

@@ -32,7 +32,7 @@ eller nyere. Alle sensorer skal bondes med huben slik at sensorene ikke må pare
 på nytt hver gang det skal sendes data. En mulig strategi for autentisering er å
 bruke et klientsidesertifikat, og at dette sertifikatet er unikt for hver bruker
 av løsningen. Dette er mest egnet for en backendløsning som håndterer
-sertifikater, for eksempel AWS, der MQTT over \gls{tls} med egne sertifikater
+sertifikater, for eksempel AWS IoT, der MQTT over \gls{tls} med egne sertifikater
 støttes. Det er helt klart mulig å benytte andre metoder for autentisering slik
 at brukeren slipper å skrive inn passord hele tiden. Transport av data skal
 uansett alltid skje med ende-til-ende-kryptering (\gls{tls}).
@@ -49,7 +49,8 @@ tjenesteutfordringene som HelsaMi+ opplever i dag.
 Prosjektledere i Trondheim kommune mente at prototypen hadde tilstrekkelig
 brukskvalitet til å rulles ut til brukere. De mente imidlertid at det kanskje var bedre at
 sensor og hub var adskilt og ikke koblet sammen til ett produkt. Prisen på prototypen
-ble vurdert som rimelig.
+ble vurdert som rimelig. Indikering av at en måling er ferdig på skjermen til pulsoksymeteret
+var noe kommunen ikke hadde med i sin løsning.
 
 Forskere ved SINTEF var enige i at sensor og hub heller kunne vært adskilt, og trakk
 fram at prototypen manglet muligheten til å svare på hvordan
@@ -60,19 +61,20 @@ for eksempel en modul med muligheten til å svare på spørsmål.
 \textbf{\fs{4}}
 
 Konklusjonen til dette forskningsspørsmålet deles opp
-i avsnittene sikkerhet og autentisering, personvern, brukervennlighet og
+i avsnittene sikkerhet og autentisering, personvern, utviklingsomgivelser og
 pris.
 
 \subsection{Sikkerhet og autentisering}
 \begin{itemize}
   \item Benytt ende-til-ende-kryptering (TLS).
   \item Autentiser brukeren med sertifikater eller tokens og benytt tofaktorautentisering.
-  \item Bruk den nyeste utgaven av Bluetooth-standarden som sensoren din
+  \item En moderne skytjeneste som AWS med sin løsning AWS IoT gir
+      god innebygd sikkerhet som standard med TLS og sertifikater. Dette gjelder fra klient til skyen,
+      men i en del tilfeller vil man ha et sikkerhetsproblem mellom klient og sensor.
+  \item Bruk den nyeste utgaven av Bluetooth-standarden mellom klient og sensor som sensoren din
   støtter. Helst utgave 4.2 eller nyere. Hvis du må bruke en eldre versjon må
   du være observant på hvilke angrepspunkter som finnes og minimere risikoen for
   sikkerhetsbrudd. Les nøye hva beste praksis er.
-  \item En moderne skytjeneste som AWS med sin løsning AWS IoT gir
-      god innebygd sikkerhet som standard med TLS og sertifikater.
 \end{itemize}
 
 \subsection{Personvern}
@@ -80,6 +82,8 @@ pris.
   \item Helsedata lagres primært i Norge i dag. Dette utelukker skyløsninger
   som har mange nødvendige sikkerhetsprimitiver innebygd som minstestandard, selv
   om personopplysningsloven åpner for å flytte data til utlandet dersom visse kriterier er oppfylt.
+  I skrivende stund tilbyr verken AWS eller Microsoft skyløsninger med lagring i Norge, men dette er et rent
+  praktisk problem. Det har ikke noe med teknologien å gjøre.
   \item Med EUs nye personvernsforordning får brukeren enda mer rett over sin egen data.
   Brukeren må kunne se hva som er lagret, slette det og tilbyderen må kunne argumentere
   med hvorfor dataen må lagres. Dette kompliserer utviklingen av tjenester til bruk i avstandsoppfølging
@@ -88,28 +92,36 @@ pris.
   gode verktøy og et helhetlig økosystem for integrasjon slik at implementasjonen blir enklere.
 \end{itemize}
 
-\subsection{Brukervennlighet}
+\subsection{Utviklingsomgivelser}
 \begin{itemize}
-    \item Kommunen sa at prototypen var brukervennlig og at den kunne blitt brukt hjemme hos deres brukere. De var imponert over
-        at de fungerte og hvor kort tid det hadde tatt å utvikle den.
-    \item Brukere og helsepersonell i avstandsoppfølging fortjener gode og bra utformet løsninger. Det er fortsatt en jobb
+    \item De var imponert over
+        at det fungerte og hvor kort tid det hadde tatt å utvikle den.
+    \item AWS IoT er brukervennlig og har mange grensesnitt for en utvikler.
+    \item Todo: Skrive mer.
+\end{itemize}
+
+\iffalse
+\item Brukere og helsepersonell i avstandsoppfølging fortjener gode og bra utformet løsninger. Det er fortsatt en jobb
         å gjøre på det området. Helsepersonell savner å kunne se grafer av måledata over tid, og kan derfor ikke få så god
         nytte av dataen per i dag. Her må leverandørene jobbe tett sammen med interesseholderne for å møte behovene.
-    \item Leverandøren av tekniske løsninger må sette seg inn i teknologien som brukes for å gi brukeren en best mulig opplevelse.
+\item Leverandøren av tekniske løsninger må sette seg inn i teknologien som brukes for å gi brukeren en best mulig opplevelse.
         Det gjelder for eksempel å indikere at en måling er ferdig på skjermen til sensoren.
     \item Brukerne sier, i følge Trondheim kommune, at de synes HelsaMi+ er enkelt å bruke.
-    \item AWS IoT er brukervennlig og har mange grensesnitt for en utvikler.
-\end{itemize}
+\fi
 
 \subsection{Pris og administrasjon av utstyr}
 \begin{itemize}
-    \item Kommunen mente at prototypen var billig.
     \item Det er en stor kostnad for kommunen å administrere og vedlikeholde nettbrett.
     \item Direktoratet for e-helse anbefaler at kommunen skal eie hele verdikjeden, og kommunen eier
         dermed SIM-kort og abonnement for tilkobling til nettet. Det er potensiale for å se på
         effektivisering her dersom brukeren kan ha utstyret selv, eller bruke 3G som ekstrametode
         for tilkobling hvis det ikke går an å koble på WIFI.
+    \item Det kan være billigere for kommunen å være til stede på de plattformene brukeren er fra før av.
+        Det kan føre til lavere administrasjonskostnader. Kommunen trenger i så fall kun å dele ut sensorer.
 \end{itemize}
+
+\section{Refleksjoner rundt overordnet forskningsspørsmål}
+\textbf{Hvor egnet er skybasert IoT som teknologisk plattform for avstandsoppfølging av kronisk syke?}
 
 \section{Videre arbeid}
 Det er mye som kan jobbes med videre innenfor avstandsoppfølging. Spesielt lovende virker det å få til
