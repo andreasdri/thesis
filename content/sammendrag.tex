@@ -4,15 +4,16 @@
 Kroniske sykdommer er den mest vanlige dødsårsaken på verdensbasis.
 Ved å følge opp pasienter i sitt eget hjem med egenrapportering av dagsform
 og innrapportering av sensordata, ønsker man å redusere sykehusinnleggelser
-og øke trygghet- og mestringsfølelsen. Avstandsoppfølging er et satsingsområde for
+og øke trygghet- og mestringsfølelsen. Avstandsoppfølging av kronisk syke
+(avstandsoppfølging) er et satsingsområde for
 Norge som har bevilget 30 millioner til et prosjekt for å teste ut dette i fire
 kommuner: Sarpsborg, Oslo, Stavanger og Trondheim.
 
 \noindent \newline
 I denne masteroppgaven ble en frittstående prototype av et skytilkoblet pulsoksimeter
 evaluert for bruk i avstandsoppfølging. Løsningen var basert på en Raspberry Pi
-Zero W, en fingeravtrykksensor for autentisering av pasienten, en knapp og to lysdioder.
-Hensiktet med dette var å finne en teknologistakk for avstandsoppfølging basert på moderne
+Zero W, en fingeravtrykksensor for autentisering av pasienten, en knapp og tre lysdioder.
+Hensiktet med dette var å finne en arkitektur for avstandsoppfølging basert på moderne
 tingenes internett (IoT)-skyløsninger lansert i løpet av de siste par årene, og
 hva som vil bli viktige aspekter ved utviklingen av et en slik teknologisk plattform
 fremover.
@@ -20,17 +21,18 @@ fremover.
 \noindent \newline
 Det ble gjennomført en case-studie for å se hvordan Trondheim kommune jobber med
 avstandsoppfølging, og hva som er status på det prosjektet i første halvdel av 2017.
-To runder med intervjuer av prosjektledere i Trondheim kommune ble gjennomført,
-først et rent bakgrunnsintervju, og deretter et evaluerings- og oppsummeringsintervju
+To runder med intervjuer av en prosjektleder og en som jobber med velferdsteknologi
+i Trondheim kommune ble gjennomført:
+først et rent bakgrunnsintervju og deretter et evaluerings- og oppsummeringsintervju
 hvor de fikk se på og prøve ut prototypen. Det ble også gjort et evaluerings- og
 oppsummeringsintervju med to forskere fra SINTEF.
 
 \noindent \newline
-Resultatene viste at en mulig teknologistakk for avstandsoppfølging kan realiseres
+Resultatene viste at en mulig arkitektur for avstandsoppfølging kan realiseres
 med skyplattformen AWS IoT som gir god innebygd sikkerhet. Problemet med denne
 plattformen er at dataen ikke lagres i Norge, som som har vært et ønske
 i Norge for helseapplikasjoner.
-Andre viktige tekniske aspekter som ble avdekket, var at sensorer tidlig
+Et annet viktig teknisk aspekt som ble avdekket, var at sensorer tidlig
 må ta i bruk nye Bluetooth-versjoner -- og helst versjon 4.2 eller nyere.
 Den nye personsvernforordningen til EU som implementeres i norsk lov i starten
 av 2018 gir brukerne enda mer kontroll over egne data, og kommer
@@ -44,9 +46,9 @@ er teknologien, men å få løsningen til å fungere i storskala i en kommune me
 hundre brukere.
 De mente at prototypen var enkelt å bruke og kunne vært brukt av
 pasienter. De ville kanskje heller ha en løsning med flere sensorer rundt en sentral hub
-(som godt kunne være frittstående), enn å ha alt integrert i sensoren. Prosjektlederne
+(som godt kunne være frittstående), enn å ha alt integrert i sensoren. De
 så for seg en fremtid der brukeren selv kan velge hva slags løsning de vil bruke
-og at kommunen kan være tilstede på de plattformene brukeren er fra før av -- det
+og at kommunen kan være til stede på de plattformene brukeren er fra før av -- det
 seg være iOS, Android, PC eller en frittstående løsning.
 
 \noindent \newline
@@ -57,12 +59,3 @@ De var teknologioptimisiske når
 det gjaldt innrapportering av sensordata, og så på automatisk analyse av data
 og bedre toveiskommunikasjon som noe positivt å jobbe med videre.
 \end{abstract}
-
-\cleardoublepage
-
-\begin{otherlanguage}{english} 
-\begin{abstract}
-\blindtext
-\blindtext
-\end{abstract}
-\end{otherlanguage}
