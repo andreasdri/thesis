@@ -130,7 +130,8 @@ Forskerne fikk et innblikk i bakgrunnen til prosjektet og hensiktet med utviklin
 før de presenterte seg selv og hva de jobbet med. Deretter handlet samtalen om
 HelsaMi+ og avstandsoppfølging. Prototypen ble vist fram, men ikke prøvd av
 forskerne. Samtaleemner var forberedt på forhånd, men intervjuobjektene fikk styre samtalen inn på emner
-de ville snakke om.
+de ville snakke om. Intervjuet ble markert utifra temaene forbedringspotensiale i HelsaMi+, bruken av
+sensorer og måledata, tilbakemeldinger på prototypen og oppsummering og veien videre.
 Forskerne blir betegnet som henholdsvis F1 og F2 i intervjuet.
 
 \subsection{Forbedringspotensiale i HelsaMi+}
@@ -152,22 +153,80 @@ hvis du trykker på gul eller rødt så blir du alltid ringt opp. Og det gjennom
 Konsekvensen av dette kan bli at brukeren får grønn, grønn, grønn og så plutselig en rød måling. Systemet fanger ikke opp at brukerne holder på å bli
 dårlige fordi de venter for lenge.
 
-
 \subsection{Bruken av sensorer og måledata}
 \textit{«Har dere (...) troen på at man ved hjelp av sensorer kan (...) automatisere den prosessen i framtiden?»}
 
 F1 svarte: \blockquote{Jeg tror det blir mer et veldig viktig beslutningsstøtteverktøy for helsepersonell. Ja, det tror jeg. Og det å ha noen objektive data i tillegg --
 for den her scoringa rød gul grønn, den er jo subjektiv, utifra hvordan de føler seg (...)}
 F1 sa videre at brukerne kan oppleve økt egenmestring gjennom å få tilgang på egne måledata. Brukeren kan selv skjønne hvilke data som gjør at det er lurt å
-ta kontakt med legen. F1 viste til et eksempel i en annen kommune enn Trondheim der en bruker var hos fastlegen og viste fram kurvene som
-fastlegen brukte til å regulere blodtrykksmedisinen.
+ta kontakt med legen. F1 viste til et eksempel i en annen kommune enn Trondheim der en bruker var hos fastlegen og viste fram kurvene, som
+fastlegen deretter brukte til å regulere blodtrykksmedisinen. Andre kommuner enn Trondheim har mer bruk av sensorer og mulighet fra brukerne sin side
+til å se på dataen. Disse kommunene har en annen teknologileverandør enn Trondheim kommune.
 
 Selv om forskerne tror at sensorer er veien å gå, påpekte forskerne også at det er viktig å få med nyansene her.
 Telefonsamtalen fører til økt trygghet og mestring for veldig mange og er mer lavterskel enn å vente i telefonkø hos
 fastlegen. \blockquote[F1]{(...) så det er liksom sånne nyanser da som er ganske interessante. Men jeg tror at det med sensorer er absolutt veien å gå da. Så lenge man
 har -- for alle vil jo ha ulike terskelverdier for hva som er riktig for dem. Og det er jo viktig at man tar inn da i en sånn tjeneste.}
-I følge F1 har fastlegene sagt at de synes det er vanskelig å ha ansvaret for å sette grenseverdier
-for sensormålingene -- hva om de setter feil grenseverdier og brukeren blir syk?
+I følge F1 har fastlegene sagt at de kan synes det er vanskelig å ha ansvaret for å sette grenseverdier
+for sensormålingene -- hva om de setter feil grenseverdier og brukeren blir syk? Det oppleves som et stort ansvar.
+
+\subsection{Tilbakemeldinger på prototypen}
+Forskerne mente at tidsvinduet for å gjennomføre en måling etter autentisering burde økes. Her kan man legge seg på industristandarder
+som for eksempel nettbanker bruker for hver økt etter at brukeren logger inn med BankID -- 10-15 minutter.
+Om det korte tidsvinduet: \newline
+\textbf{F1:} \textquote{Og så fører det til så mye unødvendig stress, som igjen fører til at det tar lenger tid (...)}{.} \newline
+\textbf{F2:} \textquote{(...) som igjen kan føre til en feilmåling. Hvis de blir stressa om de må rekke det (...)}
+
+De sa at fingeravtrykksensor ikke er optimalt for alle brukere. Noen av diabetespasientene har nesten ikke fingeravtrykk igjen etter alle stikkene
+i fingeren. Andre autentiseringsmetoder må også undersøkes.
+
+\textit{(...) hva tenker dere om frittstående løsninger sammenlignet med at det er tablet for eksempel? (...)}
+
+F2 svarte: \textquote{Jeg at for de brukerne som ikke har behov for den der rapporteringen med tablet daglig, så kan det være greit å ha kun den her,
+som en sånn dings du kan ha på nattbordet eller --}
+F1 sa videre: \textquote{(...) de som kanskje ikke trenger de her subjektive målingene, men de kunne hatt en sånn der "jeg har det i bra i dag". Ferdig med det.}
+
+\textit{Vil du heller ha sensorene for seg selv (...) og så huben som en sånn liten boks (...)  -- eller ha sensoren innbakt? (...)  Eller er det
+nødvendigvis ikke en motsetning}
+
+\textbf{F1:} \textquote{Det siste du sa. Jeg ser for meg, kall det et modulsystem, som er avtagbart. At du kan gjøre som du vil.} \newline
+\textbf{F2:} \textquote{Se for deg sånn legobrikker. At en legobrikke er pålogging (...)}
+
+Forskerne så for seg at det beste kanskje kunne være å ha en hovedmodul som hadde autentisering slik at en kunne logge seg på der
+og ta i bruk alle de andre modulene rundt. Det må være greit å samle alt sammen og ta det med seg på en enkel måte.
+
+Om brukervennlighet i prototypen:\newline
+\textbf{F1:} \textquote{(...) det ser jo enkelt og lekkert ut med lysende dioder og diskret knapp. (...) men samtidig ikke så veldig lett å skjønne hva
+som er hva. (...) Hvorfor blinker den nå?}
+
+Som skrevet tidligere savnet forskerne en måte for brukeren å gjøre en subjektiv vurdering av egen helsetilstand i prototypen. Det er noe
+som må legges inn dersom noe lignende skal produksjonssettes.
+
+\subsection{Oppsummering og veien videre}
+\textit{Hvordan blir veien videre for Trondheim kommune nå? Hva tror dere blir resultatene av det prosjektet? (...) hva er fremtiden for
+avstandsoppfølging? Sånn i praksis.}
+
+F2 svarte at det er et stort ønske om å bygge alt ferdig. Det er målet både fra direktoratet og kommunen sitt ståsted. Samtidig må det noen
+endringer til for at det skal være nyttig og bærekraftig overtid med tanke på økonomi og andre ting.
+
+F1 sa:
+\blockquote{Jeg innbiller meg at noe av det som gjøres i Sarpsborg og forsåvidt Oslo også, med at de har mer bruk av sensorer og også det at -- selv om det varierer hvor
+    mye brukerne selv ser på kurvene sine og sånn, men at de har mulighet til det og kan lære av det. Men også det å få inn, sånn som vi snakket om i sted, få
+    egenbehandlingsplanen inn i systemet. Det vil jo ikke det her svare på i utgangspunktet. Så det er jo et minus vil jeg absolutt si. Sånn sett. Så det må løses på en
+    eller annen måte. Trenger ikke å være mer komplisert enn at man ved en type måling som tilsier at man bør følge noen instruksjoner får beskjed om det. For det er jo
+    det som mangler nå at når du kommer i gul sone, så skal du egentlig gjøre noe. Men du får ikke beskjed om det, annet enn på telefon. Og det er ikke nødvendigvis slik
+at du trenger det når det skal være en egenbehandling.}
+
+Brukerne må altså få mer informasjon tilbake fra systemet, gjerne umiddelbart. Brukeren vet ikke hva som skjer med det som sendes inn.
+F2 sa:
+\blockquote{Det har vi også tilbakemeldinger om (...) i Trondheim så har du mulighet til å sende inn en fritekstkommentar. Og der er det jo en del som skriver
+    noe inn, men så vet de jo ikke hva som skjer, fordi at de får ikke noe respons. De vet ikke liksom 'er det datamaskin som tar i mot det her, eller leser de det her
+eller' (...) så det ønsker de en respons på da (...)}
+
+F1: \textquote{for å ta den der dioden videre, så kunne det her vært tre dioder som lyste grønt, oransje og rødt.
+(...)  men som viser at 'her har jeg faktisk tatt en måling som ikke var helt innenfor'.} \newline
+F2: \textquote{Men da må brukeren også vite hva man skal gjøre da hvis man ikke er innenfor -- det må følge med en tjeneste.}
+
 
 \iffalse
 

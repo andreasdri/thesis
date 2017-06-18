@@ -183,6 +183,7 @@ Amazon S3, Amazon Machine Learning, Amazon DynamoDB, Amazon CloudWatch og Amazon
 integrasjoner.
 
 \subsubsection{Device shadows}
+\label{sec:deviceshadows}
 Alle enheter koblet til device gateway har en thing shadow som er et JSON-dokument
 med nåværende tilstand og informasjon om enheten. En thing shadow til en ting er alltid tilgjengelig,
 selv om enheten er koblet fra Internett. Den kan alltid bli hentet og endret over HTTP eller MQTT. En thing shadow
@@ -195,6 +196,7 @@ har et navn, og kan valgfritt ha attributter i nøkkel-verdi-par, for eksempel m
 for en lyspære. Det er mulig å lage forskjellige typer ting og assosierere disse typene med en ting.
 
 \subsection{Microsoft Azure IoT Hub}
+\label{sec:azureiot}
 Microsoft Azure IoT Hub (figur \ref{fig:azure_iot}) har mange av de samme egenskapene som AWS IoT med andre navn: \textit{cloud gateway},
 \textit{device twins} og \textit{identity registry}. Autentisering gjøres enten med et unikt token per enhet eller med
 X.509-sertifikater. I praksis tilbyr de to skyteknologileverandørene veldig mye av det samme.

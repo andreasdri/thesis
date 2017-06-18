@@ -94,10 +94,14 @@ pris.
 
 \subsection{Utviklingsomgivelser}
 \begin{itemize}
-    \item De var imponert over
-        at det fungerte og hvor kort tid det hadde tatt å utvikle den.
-    \item AWS IoT er brukervennlig og har mange grensesnitt for en utvikler.
-    \item Todo: Skrive mer.
+    \item AWS IoT var enkelt å komme i gang med for en utvikler og har mange gode
+        verktøy som egner seg for avstandsoppfølging av kronisk syke.
+    \item Plattformen har flere ulike grensesnitt for tilkobling og integreringen
+        mot andre tjenester i økosystemet er veldig god.
+    \item Kommunen var imponert over
+        at prototypen fungerte og hvor kort tid det hadde tatt å utvikle den.
+        Skyplattformen gjorde at det var mulig å komme raskt i gang slik at det
+        var mulig å bruke mer tid på prototypen på klientsiden.
 \end{itemize}
 
 \iffalse
@@ -123,20 +127,50 @@ pris.
 \section{Refleksjoner rundt overordnet forskningsspørsmål}
 \textbf{Hvor egnet er skybasert IoT som teknologisk plattform for avstandsoppfølging av kronisk syke?}
 
+Som utvikler var det enkelt å jobbe med AWS IoT som teknologisk plattform for avstandsoppfølging av kronisk
+syke. Denne plattformen bygger på det som har blitt en ganske standard arkitektur for \gls{iot}
+med innebygget infrastruktur for å håndtere ting og hvordan tingene kobles til skyløsningen på en enkel og sikker
+måte. Prosjektet hadde stor tillit til plattformen og det var behagelig at sikkerhet var standard
+og med fra starten av. Det førte til at prosjektet kunne konsentere seg om å jobbe med prototypen som tok
+mesteparten av utviklingstiden. Det tok svært kort tid å sette opp AWS IoT.
+
+AWS IoT er veldig godt dokumentert og kan konfigureres og brukes med nettside, kommandolinjeverktøy og
+flere forskjellige programmeringsspråk. For utviklere er det behagelig å ha mange verktøy i verktøyskassen,
+uten at man må lage alle verktøy fra bunnen av selv.
+
+AWS IoT er en proprietær og kommersiell
+tjeneste som baserer seg på ganske standard arkitektur. Ulempen med å velge en slik leverandør er at man kan
+bli ganske låst til leverandøren og økosystemet til leverandøren. Det er ikke helt klart om det er enkelt
+å bytte mellom ulike leverandører. Kanskje er det mulig å skrive abstraksjoner som gjør at den underliggende
+plattformen kan byttes ut. Fordelen er at man aldri trenger å tenke på skaleringen til tjenesten
+og fysisk driftssikkerhet. Det er en styrke for plattformen at selv om den er proprietær, så baserer den seg på åpne protokoller
+(MQTT) der det er mulig.
+AWS IoT vil være svært godt egnet dersom kommuner vil samle inn enda mer
+data i fremtiden, for eksempel hvis en bruker går med en sensor over lengre perioder hver dag.
+
+
 \section{Videre arbeid}
 Det er mye som kan jobbes med videre innenfor avstandsoppfølging. Spesielt lovende virker det å få til
 en høyere grad av toveiskommunikasjon. Brukeren kan for eksempel få et varsel når det er på tide å gjøre en måling.
 Det er mulig å bake inn kommunikasjon med Helsevakta inne i applikasjonen, enten med chat eller med videosamtale.
 Sanntidsanalyse av data basert på grenseverdier hadde vært teknologisk mulig å få til uten for mye styr. Helsevakta
 kunne fått opp et varsel i sin adminapplikasjon. Om brukeren selv skulle fått opp et slikt varsel måtte i så fall blitt
-individuelt tilpasset. Som erfaringene til Trondheim kommune viser har ikke alle så godt av å vite for mye om sin egen
-helsetilstand. Analyse av data tilbake i tid kunne også vært gjort. Her peker fastlegen på at alt ikke er så klart og
+individuelt tilpasset.
+Som erfaringene til Trondheim kommune viser har ikke alle så godt av å vite for mye om sin egen
+helsetilstand. SINTEF sa at det kunne være mye positivt i at en bruker blir kjent med sine egne målinger.
+Analyse av data tilbake i tid kunne også vært gjort. Her peker fastlegen på at alt ikke er så klart og
 at det trengs mer forskning og flere erfaringer.
+
+Egenbehandlingsplanen til brukeren må bakes inn i alle løsninger slik at brukeren får et bedre forhold til den.
+Basert på hva brukeren rapporterer inn av dagsform og sensordata må det komme opp hvilke tiltak brukeren skal
+iverksette. Dette vil øke egenmestringen til brukeren.
 
 Det er også potensiale i overvåke alle sensorene på en bedre måte, slik at en kan følge med på hvor mye batteri som er igjen
 og hva kvaliteten på sensordataen er. Her må en benytte alle de mulighetene sensoren gir for integrasjon, som for eksempel
-checkmark når brukeren er ferdig med en måling. Kommunen ønsker å være tidlig ute med
+checkmark når brukeren er ferdig med en måling. Teknologi som device shadow og device twins (delkapittel \ref{sec:deviceshadows}
+og \ref{azureiot}) kan brukes til å holde styr på tilstanden og manipulere tilstanden fra ulike applikasjoner.
+Kommunen ønsker å være tidlig ute med
 ny teknologi, men det viser seg å ikke være så enkelt å få til i praksis.
 
 Mye kan gjøres i utviklingen av applikasjoner på eksisterende plattformer (Android, iOS, web). Disse applikasjonene bør helst være native for best
-mulig ytelse og brukeropplevelse. Her kan en med fordel nyttiggjøre seg av ny teknologi for å få til dette på en bedre måte.
+mulig ytelse og brukeropplevelse. Her kan en med fordel nyttiggjøre seg av ny teknologi og nye løsninger laget fra bunnen av for å få til dette på en bedre måte.
