@@ -110,7 +110,7 @@ Pi-en kommuniserte med serverløsningen basert på AWS er i figur \ref{fig:proto
 
 Klientsideløsningen ble utviklet rundt
 et Nonin 3230-pulsoksymeter utlånt av Trondhem kommune. Den kjørte på Node.js, en kryssplattform JavaScript-runtime som bruker den
-samme JavaScript-motoren som Chromium (V8). Løsningen bestod av én hovedapplikasjon, og en tilhørende modul hver for henholdsvis fingeravtrykksensoren,
+samme JavaScript-motoren som Chromium (V8). Løsningen bestod av én hovedapplikasjon, og én tilhørende modul hver for henholdsvis fingeravtrykksensoren,
 pulsoksymeteret og knapp/lysdioder. Disse modulene er utdypt nærmere i neste delkapittel, \textit{Implementasjon av klientkomponenter}.
 Koden til hovedmodulen er i vedlegg \ref{appendix:smart-pulse-oximeter}.
 
@@ -183,7 +183,7 @@ på 498 bytes. Dette avtrykket kan og bør lagres i en skytjeneste, men dette bl
 Den andre metoden har støtte for å ta inn et slikt avtrykk, og legge det inn i databasen til sensoren før avtrykket
 verifiseres ved å legge riktig finger på sensoren. I prototypen ble det antatt at avtrykket lagres på samme sted i databasen hver gang.
 
-Fingeravtrykksensoren ble koblet til GPIO14 (TX) og GPIO15 (RX) som har seriell kommunikasjon. Sensoren ble også koblet til jord
+Fingeravtrykksensoren ble koblet til GPIO14 (TX) og GPIO15 (RX) på Raspberry Pi som har seriell kommunikasjon. Sensoren ble også koblet til jord
 og 5V for strøm. Ut av boksen støtter ikke Raspberry Pi Zero W seriell kommunikasjon fordi Bluetooth opptar den serielle porten.
 Derfor ble \textit{mini-uart} slått på. Dette er en seriell port med mindre hastighet knyttet til CPU-frekvensen.
 
@@ -267,7 +267,7 @@ Kildekoden er åpen og kan kjøres fra alle enheter som har støtte for Node og 
 6 & Kryptering & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1 = tilkoblingen er kryptert\\ 2 = tilkoblingen er ikke kryptert\end{tabular}} \\ \hline
 5 & Lavt batteri & \multicolumn{1}{l|}{Batterinivået er lavt. Bytt batteri.} \\ \hline
 4 & CorrectCheck & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1 = OK\\ 2 = Plasser fingeren lengre inn i enheten\end{tabular}} \\ \hline
-3 & Søker & \multicolumn{1}{l|}{Oksimeteret søker etter etterfølgende pulssignaler.} \\ \hline
+3 & Søker & \multicolumn{1}{l|}{Oksymeteret søker etter etterfølgende pulssignaler.} \\ \hline
 2 & SmartPoint & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Brukt til å indikere at dataen har bestått SmartPoint-\\ algoritmen.\end{tabular}} \\ \hline
 1 & Lavt/svakt signal & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Styrken til pulssignalet er 0,3 \% modulasjonsgrad\\ eller mindre.\end{tabular}} \\ \hline
 0 & \begin{tabular}[c]{@{}l@{}}Indikering av\\ skjermsynkronisering\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Indikerer at skjermen er synkronisert med\\ innsamleren av data.\end{tabular}} \\ \hline

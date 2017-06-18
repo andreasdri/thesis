@@ -203,11 +203,9 @@ X.509-sertifikater. I praksis tilbyr de to skyteknologileverandørene veldig mye
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth,center]{fig/iot-reference-architecture}
-\caption{Microsoft Azure IoT Hub: Løsningsarkitektur} % \todo{sitering?}
+\caption{Microsoft Azure IoT Hub: Løsningsarkitektur \citep{azure_architecture}}
 \label{fig:azure_iot}
 \end{figure}
-
-% \section{Utviklingsmiljø} \todo{Skal dette være med egentlig? Er det relevant å bable om Node.js her?}
 
 \section{Prototypeplattform: Raspberry Pi Zero W}
 Raspberry Pi Zero W er en liten og billig datamaskin med lavt strømforbruk lansert i februar 2017 (figur \ref{fig:pizero}).
@@ -230,8 +228,8 @@ Raspberry Pi Zero W kjører på Raspbian, et Debian-basert operativsystem laget 
 Raspberry Pi med Linux-kjernen i bunn..
 
 \begin{figure}
-\includegraphics[width=0.8\textwidth,center]{fig/prototype/pi}
-\caption{Raspberry Pi Zero W}
+\includegraphics[width=0.85\textwidth,center]{fig/prototype/pi_comparison}
+\caption{Raspberry Pi Zero W. Foto: \url{http://www.raspberrypi-spy.co.uk/}}
 \label{fig:pizero}
 \end{figure}
 
@@ -282,7 +280,7 @@ Lysdioder er enkle aktuatorer som gir fra seg lys og kan styres programmatisk. I
 RGB-lysdiodene trenger tre tilkoblingspunkter
 for rødt, grønt og blått lys i tillegg til jording. RGB-lysdiodene må ha en motstand foran seg. Lysdiodene styres med pulsbreddemodulasjon i software.
 Det brukes også en helt enkel trykknapp som er konfigurert til pullup, det vil si at verdien er 0 (LOW) når knappen trykkes ned
-og 1 (HIGH) når knappen er åpen. Figur \ref{fig:lysdioder_motstander} viser noen av de ulike komponentene.
+og 1 (HIGH) når knappen er åpen. Figur \ref{fig:lysdioder_motstander} viser noe som tilsvarer de ulike komponentene.
 
 \begin{figure}
 \includegraphics[width=0.55\textwidth, center]{fig/prototype/ledmotstandknapp}

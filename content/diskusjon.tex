@@ -1,6 +1,69 @@
 \chapter{Diskusjon}
 \label{ch:discussion}
 
+Det er arkitekturen og basisteknologien som er det viktige i dette forskningsprosjektet. Basisteknologien
+ble satt inn i et praktisk problem i et komplekst domene. Sensorer til støtte for avstandsoppfølging er et
+godt eksempel på noe som kan kobles til den nye arkitekturen for tingenes internett, som beskrevet av \citet{iot_harvard_smart}.
+
+Prototypen ble laget
+for å si noe om denne basisteknologien med forskningsstrategien design og kreasjon. Case-studien av avstandsoppfølging
+i Trondheim kommune ble gjennomført for å øke kunnskapen om domenet og finne ut hvilke utfordringer kommunen sliter med.
+Det viste seg at kommunen hadde problemer med å få til tofaktorautentisering eller noe med tilsvarende grad av sikkerhet. Kommunen
+jobbet også med å få til sertifikater og distribusjon av sertifikater. Eksisterende skyteknologi har allerede noe av dette innebygget.
+AWS IoT har infrastruktur for å håndtere sertifikater, selv om distribusjonen av sertifikatene
+til enhetene må ordnes på egenhånd.
+
+Prosjektet viste at det er enkelt å sette opp et standard grafsystem med målinger tilbake i tid på toppen av åpne kildekode-løsninger
+på veldig kort tid. Kommunen var imponert over hvor langt prosjektet hadde kommet på en måned med utvikling.
+Under evalueringen pekte kommunen på at de i dag har for dårlige verktøy til å se på måledata, og dermed
+ikke kan nyttiggjøre seg sensorteknologien. Leverandørene av tjenester til bruk i velferdsteknologi har et ansvar for
+å levere gode løsninger og ta i bruk ny teknologi, spesielt dersom de får være med på forsknings- og utviklingsprosjekt (FOU). Kommunen
+har selv sagt i intervju at de ønsker å være fremoverlente på teknologi og til stede på de plattformene brukerne er.
+Det er tydelig at de løsningene kommunen bruker i dag
+ikke ser så moderne ut og bruker modifisert hyllevare fra leverandøren.
+
+Det hadde vært ønskelig om prosjektet hadde kommet enda lengre med implementasjonen av en større skyløsning med
+toveiskommunikasjon og mer tilbakemeldinger til brukeren for å løse flere av utfordringene kommunen og SINTEF pekte på.
+Dette kunne dannet et enda større bilde av egnetheten
+til skybasert IoT som teknologisk plattform for avstandsoppfølging. Allikevel er erfaringene at arkitekturen for sensoren fungerte
+veldig bra og at det var enkelt å komme i gang med. Dokumentasjonen til skyteknologien var god. Prosjektet sitter igjen med at
+plattformen var til å stole på og har høy tillit til at det fungerer.
+
+MQTT ble brukt som kommunikasjonsprotokoll mellom prototype og skyløsning.
+På en annen side kunne kanskje en mer tradisjonell løsning også fungert.
+MQTT-protokollen egner seg kanskje enda bedre for sensorer
+som sender data kontinuerlig. Brukeren sender 20 sekunder med data hver dag i bruksscenarioet som ble skissert i dette prosjektet. Det er ikke så veldig
+mye data. Den samme dataen kunne blitt sendt over HTTPS og en standard arkitektur som REST istedenfor.
+Istedenfor sertifikater for autentisering kunne en brukt tokens med så og så lang gyldighet som bevis på at enheten er logget inn.
+
+I fremtiden kan det hende at det blir mer aktuelt å gå med sensorer over lengre tidsperioder dersom det blir vurdert som klinisk relevant
+for en bruker. I så fall vil AWS IoT være veldig skalerbar og pålitelig for å håndtere en økt mengde meldinger. Verdien av
+automatisk skalerbarhet, en lang rekke med mulige integrasjoner og at man slipper å ha egen infrastruktur må ikke undervurderes.
+
+Selv om AWS IoT har god nytteverdi mellom klient og server, har ikke skyplattformen noe med kommunikasjonen fra sensor til klient. Her er det
+det Bluetooth-teknologien som råder og kommunen er prisgitt at leverandørene er tidlig ute med ny teknologi. I praksis vil nok ikke
+sikkerhetsrisikoen ved bruk av Bluetooth være så stor. Angriperne må være helt i nærheten for at det skal være teoretisk mulig å sette i gang
+et angrep.
+
+\section{Metodediskusjon}
+Starten av diskusjonskapittelet trakk mest fram det positive med valgene av metodikk i dette prosjektet.
+Det hadde vært nyttig med mer teknisk informasjon om hvordan HelsaMi+ fungerer fra leverandøren for å sammenligne,
+se hvor langt de har kommet sikkerhetsmessig og hva de tenker om fremtiden. Leverandøren Imatis ble kontaktet for et
+intervju, men de svarte ikke på henvendelsen. Kanskje mer burde blitt gjort for å snakke med en leverandør av tekniske løsninger
+til dette prosjektet. Det er en viktig komponent som mangler litt. Det er en annen leverandør i Oslo og Sarpsborg.
+De to leverandørene kunne blitt sammenlignet med tanke på hva de tilbyr av tjenester og hvordan de har bygget opp sin løsning
+mot avstandsoppfølging. Det kunne vært interessant å høre hva leverandørene tenker om denne arkitekturen for avstandsoppfølging,
+hva de identifiserer som de største utfordringene for en slik arkitektur og om de planlegger å gå over på en lignende
+arkitektur selv. Dette er noe som kan jobbes videre med i andre forskningsprosjekt. Mulighetene er absolutt til stede
+for å sette opp en lignende arkitektur fra bunnen av selv med egen infrastruktur.
+
+Hele temaet er veldig stort, og det hadde kanskje vært
+lurere å snevret inn hvilke kvalitetskrav man skulle sette ekstra søkelys på, og hvordan disse kravene
+skulle vært testet slik at en kunne gjort et bedre dypdykk
+og snakket med eksperter innenfor det området. På den måten kunne en for eksempel sett nærmere på problematikken rundt
+tofaktorautentisering og snakket med eksperter på det.
+
+\iffalse
 \section{Utfordringer for teknologi i avstandsoppfølging}
 Kapittel \ref{ch:case} viser at Trondheim kommune ønsker å være tidlig ute med ny teknologi, men at dette kan være vanskelig å
 få til i praksis. De er også klare på at det er teknologien som skal understøtte tjenesten og ikke motsatt. Den største
@@ -58,19 +121,9 @@ Device shadows ble ikke brukt i dette prosjektet, men det kunne gitt en bra base
 fra en adminapplikasjon. Det hadde vært relevant for å implementere en økt grad av toveiskommunikasjon. AWS gir flere slike nyttige verktøy for
 å håndtere infrastrukturen på en enklere måte.
 % noe om sanntidsanalyse
+\fi
 
-\section{Metodediskusjon}
-Det hadde vært nyttig med mer teknisk informasjon om hvordan HelsaMi+ fungerer for å sammenligne,
-se hvor langt de har kommet sikkerhetsmessig og hva de tenker om fremtiden. Leverandøren Imatis ble kontaktet for et
-intervju, men svarte ikke på henvendelsen. Kanskje mer burde blitt gjort for å snakke med en leverandør av tekniske løsninger
-til dette prosjektet. Det er en viktig komponent som mangler litt.
-
-Hele temaet er også veldig stort, og det hadde kanskje vært
-lurere å snevret inn hvilke kvalitetskrav man skulle sette ekstra søkelys på, og hvordan disse kravene
-skulle vært testet slik at en kunne gjort et bedre dypdykk
-og snakket med eksperter innenfor det området.
-
-\section{Tillit til forskningen} % Dag: validitet (??)
+\section{Validitet} % Dag: validitet (??)
 \label{sec:validitet}
 
 \subsection{Bekreftbarhet og pålitelighet}
@@ -94,6 +147,10 @@ Spørsmålet som må stilles er om funnene og arbeidet gjort i dette prosjektet 
 Trondheim kommune brukes som eksempel, og konklusjonen vil generalisere med kun dette tilfellet som bakgrunn.
 Er det faktisk mulig å finne noen implikasjoner for utviklingen av skybasert \gls{iot} som teknologisk plattform for avstandsoppfølging?
 Hvilke resonnementer og argumenter er i så fall disse resonnementene fundert i?
+
+Trondheim kommune har ikke så mange brukere med sensorer, og SINTEF trakk fram at andre kommuner har kommet lengre på det området. Uansett
+vil det være rimelig å anta at andre kommuner og leverandører vil ha noe av den samme problematikken som Trondheim med sikkerhet, sertfikater, autentisering,
+personvern og skalering.
 % @Todo ??? 
 % Det som taler for at man kan det er at
 % Det som taler mot er at 
