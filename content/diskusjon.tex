@@ -63,67 +63,7 @@ skulle vært testet slik at en kunne gjort et bedre dypdykk
 og snakket med eksperter innenfor det området. På den måten kunne en for eksempel sett nærmere på problematikken rundt
 tofaktorautentisering og snakket med eksperter på det.
 
-\iffalse
-\section{Utfordringer for teknologi i avstandsoppfølging}
-Kapittel \ref{ch:case} viser at Trondheim kommune ønsker å være tidlig ute med ny teknologi, men at dette kan være vanskelig å
-få til i praksis. De er også klare på at det er teknologien som skal understøtte tjenesten og ikke motsatt. Den største
-utfordringen er å få rullet ut tjenesten til flere hundre brukere i en stor organisasjon. Det er i denne konteksten
-man må se hvordan teknologi kan hjelpe kommunen med å løse sine problemer. Kommunen opplever at brukerne er veldig forskjellige, og
-at de har forskjellige behov. Det er ikke alle som kan bruke sensorer. De er klare på at tjenesten må tilpasses individuelt til hver
-enkelt bruker. Målet er at brukeren skal oppleve økt trygghet.
-
-Under evalueringen pekte kommunen på at de i dag har for dårlige verktøy
-til å se på måledata, og dermed ikke kan nyttiggjøre seg sensorteknologien så veldig godt. Dette er noe som kommunen og andre kan jobbe med
-for å forbedre. Det er ikke så komplisert å sette opp enkle grafsystemer. Grafana som ble brukt under dette prosjektet er åpen kildekode.
-Kommunen har ikke så mye annet valg enn å forholde seg til leverandører av programvare og helseprodukter dersom de
-ikke skal ha utviklere ansatt hos seg. Leverandørene og produsentene
-har dermed et stort anvar for å lage gode løsninger og ta i bruk ny teknologi tidlig. Det er tydelig at de løsningene kommunen bruker i dag
-ikke ser så moderne ut og bruker modifisert hyllevare. Allikevel sier brukerne at de synes systemene er greie å bruke. Nonin kunne ha laget
-et mer helintegrert pulsoksymeter, men det ville komplisert deres ansvarsområder veldig. Det er enklere for produsenten å konsentrere seg om
-selve oksimeterteknologien og gi et grensesnitt for andre å integrere med.
-
-\section{Utvikling og evaluering av en frittstående prototype}
-Utviklingen av prototypen skjedde ikke så brukernært som det kanskje var ønsket i starten av prosjektet. Det ble kun tid
-til én iterasjon der målet først var å få til to runder med tilbakemelding i mellom. Det tok litt tid før alle komponenter kom fram,
-og i starten ble en annen prototypeplattform valgt og prøvd istedenfor Raspberry Pi Zero W.
-Det var også opprinnelig et ønske om å få til mer toveiskommunikasjon, for eksempel et varsel med pulserende lys til brukeren
-når det var tid for å foreta en måling. Dette ble det ikke tid til, men kan være noe å prøve ut i fremtiden. I implementasjonsperioden
-var det utfordrende å få klientprototypen til å fungere tilfredsstillende siden det var så mange komponenter som skulle fungere sammen
-med forskjellige eventer, avbrudd og en komplisert tilstandsmaskin. Disse utfordringene gjorde at det ikke ble så god tid til å jobbe
-med toveiskommunikasjon og en større skyimplementasjon.
-
-Fingeravtrykket fra enheten må lagres i skyløsningen som en fil, og knyttes til hver enkelt bruker. Når brukeren
-ønsker å autentisere seg, må fingeravtrykket hentes til enheten, og så sjekkes. Tofaktorautentisering er at man
-sier hvem man er på to forskjellige måter. Som oftest er det to av følgende: noe en vet, noe en har eller noe en er.
-Enhet med sertifikat er noe en har, og fingeravtrykk er noe en er. I teorien kan det dermed bety at prototypen
-oppfyller kravene til en tofaktorautentisering, men dette er noe som må undersøkes nærmere med eksperter på sikkerhet.
-Andre autentiseringsstrategier enn fingeravtrykkssensor må uansett undersøkes siden den ikke passer for alle brukere.
-
-Fordelen med å basere seg på eksisterende plattformer som Android og iOS er at man får mye gratis i form
-av blant annet sikkerhetsoppdateringer og rammeverk for brukergrensesnitt. Dette er noe en må ordne selv i en
-frittstående løsning. Eksisterende plattformer har allerede mye infrastruktur som kan av laste kommunen. I tillegg
-har mange av brukerne enheter som kjører på disse plattformene fra før av. iOS-telefoner og mange Android-telefoner
-har innebygget fingeravtrykkssensor og muligheten til å styre disse fra programvare. Det kunne erstattet behovet for
-en tredjepartssensor. Det ville muligens tatt kortere tid å implementere noe på disse plattformene siden det ville vært
-mindre behov for å skrive helt nye integrasjoner mot komponenter og mindre jobb med den fysiske utformingen.
-
-\section{En arkitektur for skybasert IoT}
-En arkitektur for skybasert IoT for avstandsoppfølging kan være basert på AWS IoT som gir mye verdi for en utvikler ut av boksen.
-
-MQTT ble brukt som kommunikasjonsprotokoll mellom prototype og skyløsning. Denne protokollen egner seg kanskje enda bedre for sensorer
-som sender data kontinuerlig. Brukeren sender 20 sekunder med data hver dag i bruksscenarioet som ble skissert i dette prosjektet. Det er ikke så veldig
-mye data. Den samme dataen kunne blitt sendt over HTTPS og en standard arkitektur som REST istedenfor. Det hadde vært mulig å bruke
-en mer tradisjonell backendløsning istedenfor å basere seg på AWS IoT. Istedenfor sertifikater for autentisering
-kunne en brukt tokens med så og så lang gyldighet som bevis på at enheten er logget inn. Spørsmålet er hvor mye verdi AWS IoT egentlig gir
-for avstandsoppfølging.
-
-Device shadows ble ikke brukt i dette prosjektet, men det kunne gitt en bra base for å håndtere tilstanden til hver enhet, og manipulere denne tilstanden
-fra en adminapplikasjon. Det hadde vært relevant for å implementere en økt grad av toveiskommunikasjon. AWS gir flere slike nyttige verktøy for
-å håndtere infrastrukturen på en enklere måte.
-% noe om sanntidsanalyse
-\fi
-
-\section{Validitet} % Dag: validitet (??)
+\section{Validitet}
 \label{sec:validitet}
 
 \subsection{Bekreftbarhet og pålitelighet}
@@ -132,7 +72,7 @@ titte på den. Transkriberinger av intervjuene er tilgjengelige ved forespørsel
 så god detalj at det er mulig å lage noe tilsvarende kun ved å lese i teksten og se på koden.
 
 \subsection{Troverdighet}
-Alle intervjuene med Trondheim kommune må tolkes med det faktum at prosjektlederne har en tilknytning som
+Alle intervjuene med Trondheim kommune må tolkes med det faktum at prosjektledere og ansatte har en tilknytning som
 gjør at de ønsker at avstandsoppfølgingprosjektet
 skal lykkes i bakhodet. Aktører direkte involvert i et prosjekt er mottakelige for bekreftelsestendenser der man søker etter å bekrefte noe
 man allerede tror. Selv om SINTEF er en tredjepart som bistår Trondheim kommune, er de også mye involvert i prosjektet.
@@ -141,6 +81,17 @@ gjerne en stemme som ikke er udelt positiv til avstandsoppfølging som teknologi
 Fordelen med å snakke med personer som jobber med avstandsoppfølging i Trondheim kommune, er at de har veldig god kunnskap om temaet
 og muligheten til å sammenligne løsningen som presenteres i denne forskningen med noe som eksisterer i praksis i dag.
 De er en troverdig stemme i avstandsoppfølgingdebatten.
+
+I fokusgrupper, brukbarhetstester og intervjuer har deltakerne en tendens til å ville blidgjøre
+den som har laget produktet (i dette tilfellet utvikleren), dersom det er samme person som
+gjennomfører testene. Dette er en veldig menneskelig egenskap. SINTEF var en uavhengig tredjepart i intervjuer
+med brukere av HelsaMi+ for å få brukerne til å snakke mer fritt. I dette prosjektet har samme person utviklet og gjennomført
+intervjuene, men det virker som intervjudeltakerne har snakket veldig fritt og vært åpne i samtalene.
+
+Transkriberingen av store deler av de tre gjennomførte intervjuene ble gjort for å øke troverdigheten og motvirke egen
+tendens til å tolke alt på en spesiell måte. Det gjorde at man fikk konteksten til hele intervjuet. Et spørsmål
+er uansett om man med utviklerblikket som er perspektivet i dette prosjektet er i stand til å tolke alt som blir sagt.
+Noe av det må nødvendigvis bli subjektivt.
 
 \subsection{Overførbarhet}
 Spørsmålet som må stilles er om funnene og arbeidet gjort i dette prosjektet kan overføres til avstandsoppfølging som generelt tilfelle.
@@ -151,92 +102,18 @@ Hvilke resonnementer og argumenter er i så fall disse resonnementene fundert i?
 Trondheim kommune har ikke så mange brukere med sensorer, og SINTEF trakk fram at andre kommuner har kommet lengre på det området. Uansett
 vil det være rimelig å anta at andre kommuner og leverandører vil ha noe av den samme problematikken som Trondheim med sikkerhet, sertfikater, autentisering,
 personvern og skalering.
-% @Todo ??? 
-% Det som taler for at man kan det er at
-% Det som taler mot er at 
 
-\iffalse
-\section{Begrensninger med
-prototypen}\label{begrensninger-med-prototypen}
+\section{Avgrensning av forskningen}
+Flere av utfordringene som ble identifisert i dette prosjektet kunne vært tema for andre og mer detaljerte undersøkelser. Det ble allikevel
+vurdert som nyttig å ta med helheten i avstandsoppfølgingsprosjektet, selv om kanskje ikke alt var direkte relevant for forskningsspørsmålene.
+I virkeligheten er alt komplekst, og mange ting spiller inn på arkitekturen til en løsning. Det er krav fra flere forskjellige hold som en må ta hensyn til
+og forholde seg til.
 
-\begin{itemize}
-\tightlist
-\item
-  Lav grad av toveiskommunikasjon implementert i prototypen, men rammeverket gjør det mulig.
-\item
-  Fingeravtrykk-template lagres direkte på sensoren, den burde blitt
-  hentet fra sensoren og så lagret i skyen. Deretter burde den blitt
-  hentet hver gang man trengte den.
-\item
-  Paring og bonding med Bluetooth. Enheten må pares hver gang i
-  prototypen. Dette er en begrensning med det underliggende rammeverket
-  som brukes.
-\item
-  I prototypen brukes MQTT over WebSockets til å sende data. Men det er
-  såpass få målepunkter som sendes hver dag at man like gjerne kunne
-  brukt HTTP REST med kryptering. Det er få fordeler med å bruke en
-  protokoll som MQTT i dette prosjektet. Det hadde vært mer relevant om
-  sensorene sendte data kontinuerlig hele døgnet.
-\end{itemize}
+Det har vært et bevisst valg å distansere seg fra flere av disse kravene for å ikke drukne i informasjon, slik at søkelyset kunne ligge på IoT som
+teknologisk plattform med arkitektur og programvareutvikling. Flere ting kommunen og SINTEF nevner kunne blitt nøyere undersøkt,
+men her har bare disse instansene vært sannhetsvitner for problematikk
+som dukker opp i praksis når dette skal ut i produksjon. Selv om ikke brukbarhet har vært viktig for prosjektet, er tilbakemeldingene på prototypen når det gjelder
+brukskvalitet tatt med allikevel for å få med det store bildet.
 
-\section{Sikkerhet}\label{sikkerhet}
-
-\begin{itemize}
-\tightlist
-\item
-  Tofaktorautentisering
-\item
-  Hva oppfyller kravene til tofaktorautentisering? Oppfyller
-  klientsertifikat og enhet utplassert i hjem sammen med
-  fingeravtrykksensor kravene?
-\item
-  Hvilke alternativer finnes det til å bruke fingeravtrykkssensor som
-  autentisering? Både med tanke på brukbarhet og sikkerhet.
-\item
-  Bluetooth
-\item
-  BLE har flere sikkerhetsproblemer, spesielt i versjon 4.0 og 4.1. Skal
-  man gjøre en oppfordring om kun å bruke Bluetooth 4.2? Hvilke
-  avveininger og anbefalinger burde man gjøre dersom man må bruke en
-  enhet med 4.0 eller 4.1? Det tar lang tid å ta i bruk en ny
-  Bluetooth-standard. Produsenter av velferdsteknologi må følge med på
-  den teknologiske utviklingen. Problemer her: tar lang tid å få et
-  produkt godkjent, koster sikkert masse penger.
-\end{itemize}
-
-\section{Personvern og datalagring}\label{personvern-og-datalagring}
-
-\begin{itemize}
-\tightlist
-\item
-  Krav om at norske helsedata skal ligge i Norge. Dermed kan man ikke
-  bruke en eksisterende skyløsning som AWS. AWS lagrer data i Europa.
-  Det fører til at mye av infrastrukturen må lages fra bunnen av. Snakk
-  om at Azure skal få til en løsning der man har hele økosystemet
-  kjørende i Norge.
-\item
-  Ny personvernforordning gir flere rettigheter til forbrukere. Det
-  gjelder blant annet kontroll på egen data, oversikt over hva den
-  brukes til, mulighet til å slette den osv. Man må kunne argumentere
-  for at dataen som lagres er nyttig for forbrukeren. Er da å lagre all
-  sensordataen nyttig? Kan man argumentere for det?
-\end{itemize}
-
-\section{Frittstående løsninger kontra nettbrett, mobil,
-PC}\label{frittstuxe5ende-luxf8sninger-kontra-nettbrett-mobil-pc}
-
-Diskusjon og drøfting på bakgrunn av evalueringen om hvor vellykket det
-var å implementere en frittstående løsning. Hvilke fordeler og ulemper
-har man med å ta i bruk et eksisterende økosystem? Stikkord:
-sikkerhetsoppdateringer, vedlikehold, innkjøpskostnad, hva har brukere
-hjemme osv.
-
-\section{Metodediskusjon}\label{metodediskusjon}
-
-\begin{itemize}
-\tightlist
-\item
-  Diskutere forskningsmetodene som er brukt? Hvor stor troverdighet kan
-  man ha til forskningen? Kunne noe vært gjort annerledes?
-\end{itemize}
-\fi
+Slik det ble forklart i delkapittel \ref{sec:avgrensning}, har ikke de kliniske vurderingene man kan gjøre med sensordataene vært drøftet
+i prosjektet.

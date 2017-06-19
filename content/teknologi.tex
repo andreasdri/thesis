@@ -8,41 +8,8 @@ for kommunikasjon, skyteknologi og skyløsninger, plattformer for elektronikkpro
 Delkapittelet tar for seg \gls{mqtt} som kjører
 på \gls{tcp}, trådløsstandarden \gls{ble} og sikkerhetsutfordringer med \gls{ble} og seriell kommunikasjon og \gls{gpio} for kommunikasjongrensesnitt mellom elektronikk.
 
-\subsection{MQTT} % WebSockets
-\iffalse
-WebSockets er en protokoll for applikasjonslaget på toppen av \gls{tcp}
-som gjør det mulig med toveiskommunikasjon gjennom en enkelt \gls{tcp}-socket.
-I følge \citet{rfc6455} ble protokollen introdusert for å unngå tungvint \gls{http}-polling.
-
-Websockets har et lite klient-\gls{api} der en kan få en god oversikt ved å lese
-kodesnutt \ref{lst:websockets}. \gls{api}-et er basert på eventer, og forskjellige \textit{callback}-funksjoner
-vil bli kalt når det skjer noe spesielt, for eksempel når en ny melding er sendt til klienten eller
-når tilkoblingen lukkes. Protokollen støtter \gls{tls}, og er implementert i alle de største nettleserne.
-Den kan også brukes i andre miljøer og språk med gode nettverksbyggeklosser.
-
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single, language=JavaScript,
-    caption=WebSockets: JavaScript-eksempelkode, label=lst:websockets]
-    //Initiate a new secure WebSocket connection with TLS
-    const ws = new WebSocket("wss://address:port");
-
-    //Attach functions to event handlers
-    ws.onmessage = function(e) {
-        var data = JSON.parse(e.data);
-    };
-
-    ws.onclose = function() {} //connection is closed
-
-    ws.onerror = function() {} //something went wrong
-    
-    ws.onopen = function() {
-        ws.send(JSON.stringify({ msg: "Hello, World" }));
-    }
-\end{lstlisting}
-\end{minipage}
-\fi
-
-\gls{mqtt} er et lettvekt og meldingbasert klient-tjener-protokoll bygget for \gls{iot}-kommunikasjon
+\subsection{MQTT}
+\gls{mqtt} er en lettvekt og meldingbasert klient-tjener-protokoll bygget for \gls{iot}-kommunikasjon
 og \gls{m2m} \citep{mqtt_standard}. Den er designet for å bruke lite data og fungere bra på
 dårlige nettverksforbindelser. \gls{mqtt} kjører direkte på \gls{tcp}/IP eller over WebSockets.
 
@@ -70,7 +37,7 @@ for trådløs direktekommunikasjon mellom små enheter med lavt strømforbruk.
 
 Bluetooth-standarden opererer med applikasjonsprofiler som beskriver hvordan man skal samhandle med
 en Bluetooth-enhet. Profilene er bygget på \textit{generic attribute profile} (GATT), en spesifikasjon for å sende og motta
-små databiter (attributter) over en datalink. %\todo{Kilde? \url{https://www.bluetooth.com/specifications/generic-attributes-overview}}
+små databiter (attributter) over en datalink \citep{bluetooth_gatt}.
 En profil har typisk flere ulike tjenester, som igjen har flere ulike karakteristikker (se figur \ref{fig:gatt}).
 Karakteristikkene har ulike egenskaper, attributtverdi og en databeskriver. Egenskapene definerer hvilke operasjoner som er lov
 til å gjøre på en attributtverdi, for eksempel lese, skrive og lytte på. Bluetooth-standarden definerer en rekke standardiserte
@@ -78,7 +45,7 @@ profiler på \url{bluetooth.com}, blant annet \textit{Pulse Oximeter Service} og
 
 \begin{figure}
 \includegraphics[width=0.6\textwidth,center]{fig/gatt}
-\caption{Hierarki for GATT-profiler} %\todo{Kilde? \url{https://www.bluetooth.com/specifications/generic-attributes-overview}}
+\caption{Hierarki for GATT-profiler \citep{bluetooth_gatt}}
 \label{fig:gatt}
 \end{figure}
 
@@ -103,35 +70,27 @@ paringsprosessen på nytt. Dette kalles \textit{bonding}.
 
 Bluetooth 5 som begynner å komme i produkter våren 2017, lover lengre rekkevidde og økt hastighet.
 
-%https://electronics.stackexchange.com/questions/284056/can-ble-transactions-be-encrypted-without-pairing
-%https://security.stackexchange.com/questions/100554/is-bluetooth-4-0-traffic-encrypted-by-default-design
-%https://piratecomm.wordpress.com/2014/01/19/ble-pairing-vs-bonding/
-%https://community.nxp.com/thread/332191
-
 \subsection{Seriell kommunikasjon og GPIO}
 Det er flere ulike kommunikasjonsprotokoller for å snakke med annen elektronikk og andre integrerte kretser.
 Seriell kommunikasjon består, i sin enkleste form, av å sende og motta binærdata over en asynkron seriell datalink.
 Figur \ref{fig:serial} viser oppsettet mellom to enheter. En seriell enhet må ha en port for å motta data (RX)
-og en port for å sende data (TX).
+og en port for å sende data (TX) \citep{spark_serial}.
 
 \Gls{gpio} er et generisk tilkoblingspunkt på en datamaskin eller integrert krets. Det er et grensesnitt mellom enheten
 og omverdenen som gjør det mulig koble til for eksempel knapper og lys. Tilkoblingspunktene kan være konfigurert som
 input eller output. I output-modus kan tilstanden til et punkt være enten høy (typisk 5V eller 3.3V) eller lav (0V).
 I input-modus leses også signalet som høyt eller lavt med en trekk opp- eller trekk ned-motstand, og kan dermed
-brukes til \textit{interrupts}.
-%\todo{Kilde: \url{https://www.raspberrypi.org/documentation/usage/gpio/}}
+brukes til \textit{interrupts} \citep{gpio_pi}.
 
 \begin{figure}
 \includegraphics[width=0.5\textwidth,center]{fig/serial}
-\caption{Seriell databuss}
+\caption{Seriell databuss \citep{spark_serial}}
 \label{fig:serial}
 \end{figure}
 
 \section{Skyteknologi}
 
 \subsection{Skybasert tingenes internett}
-% \todo{Sikkerhet, personvern, kvalitetsattributter}
-
 Det er flere skyløsninger på markedet med støtte for \gls{iot} og det er et marked i stor vekst.
 Microsoft Azure IoT Hub og AWS IoT er allerede nevnt. IBM har en løsning kalt Watson Internet of Things Platform og
 Google har Google Cloud IoT
@@ -208,8 +167,10 @@ X.509-sertifikater. I praksis tilbyr de to skyteknologileverandørene veldig mye
 \end{figure}
 
 \section{Prototypeplattform: Raspberry Pi Zero W}
-Raspberry Pi Zero W er en liten og billig datamaskin med lavt strømforbruk lansert i februar 2017 (figur \ref{fig:pizero}).
-Den har følgende spesifikasjoner: % \todo{https://www.raspberrypi.org/help/faqs https://www.raspberrypi.org/products/pi-zero-w/}
+Raspberry Pi Zero W \footnote{\url{https://www.raspberrypi.org/products/pi-zero-w/}}
+\footnote{\url{https://www.raspberrypi.org/help/faqs}} er en liten og billig datamaskin med
+lavt strømforbruk lansert i februar 2017 (figur \ref{fig:pizero}).
+Den har følgende spesifikasjoner:
 \begin{itemize}
     \item 1GHz, énkjerne-CPU
     \item 512MB RAM
@@ -252,7 +213,7 @@ Et pulsoksymeter er en sensor som måler oksygenmetning i blodet og pulsfrekvens
 Trondheim kommune lånte ut en Nonin 3230 (se figur \ref{fig:nonin-3230}) til bruk i denne masteroppgaven.
 Nonin 3230 er et pulsoksymeter med støtte for \gls{ble} 4.0. Dette pulsoksymeteret ble anbefalt av \citet{austad2016sensorer}
 i rapporten \textit{Sensorer til støtte for avstandsoppfølging}. De trakk fram at alle Nonins produkter
-er klinisk validerte og at det er støtte for \gls{ble}. % @TODO OG BLABLA NOE MER
+er klinisk validerte og at det er støtte for \gls{ble}.
 
 Nonin 3230 måler oksygenmetning fra 0 til 100\% og pulsfrekvens fra 18 til 321 slag per minutt. Den går på to
 AAA-batterier, og er spesifisert for 2200 spotmålinger (25 sekunder per måling).
@@ -263,7 +224,6 @@ AAA-batterier, og er spesifisert for 2200 spotmålinger (25 sekunder per måling
 \label{fig:nonin-3230}
 \end{figure}
 
-%https://www.protocentral.com/sensors/1030-protocentral-pulse-oximeter-heart-rate-sensor-based-on-max30100.html
 \subsection{Fingeravtrykksensor}
 Fingeravtrykksensor er en sensor som kan prosessere et fingeravtrykk og verifisere og matche et avtrykk mot
 et tidligere lagret bilde av avtrykket. I dette prosjektet er det blitt kjøpt inn sensor som heter GT-511C3 (figur \ref{fig:gt511c3}).
